@@ -562,7 +562,6 @@ function App() {
         })
 
         if (previousScroll >= (2 * window.innerHeight)) {
-          console.log("sahdshada");
           $("#sec2-skills-title, #sec2-skills-description").css("transition", "opacity .43s ease-in-out .6s, transform .85s ease-in-out .6s");
           $("#wheelPointer, #skillsWheel").css("transition", "transform .69s cubic-bezier(0.33, 0.65, 0.39, 0.94) .6s, opacity 1.5s ease-in-out .6s");
           setTimeout(() => {
@@ -676,6 +675,39 @@ function App() {
       }
     }
 
+    let previousScrollTop = 0;
+    let currentItemIndex = 0;
+    let isRunning = false;
+    let isAnimating = false;
+
+    function aboutMeScroller() {
+      if (isRunning || isAnimating) return;
+
+      isRunning = true;
+
+      let currentScrollTop = $(window).scrollTop();
+
+        if (currentScrollTop > previousScrollTop +2 && currentItemIndex < 5) {
+          currentItemIndex += 1;
+        } else if (currentScrollTop < previousScrollTop -2 && currentItemIndex > 0) {
+          currentItemIndex -= 1;
+        }
+
+      isAnimating = true;
+      $('html, body').animate({
+        scrollTop: ((window.innerHeight) * (2.25 + 0.15 * currentItemIndex))
+      }, 300, function() {
+        isAnimating = false;
+      });
+
+      setTimeout(() => {
+        changeSlide();
+        isRunning = false;
+      }, 300);
+
+      previousScrollTop = (window.innerHeight) * (2.25 + 0.15 * currentItemIndex);
+    }
+
     function changeSlide() {
 
       $(".aboutme-section-title").css("opacity", "0");
@@ -782,7 +814,7 @@ function App() {
           top: "25vh"
         });
 
-      } else if (($(window).scrollTop() / $(window).innerHeight()) >= 2.25) {
+      } else if (($(window).scrollTop() / $(window).innerHeight()) >= 2.20) {
         $(".abt1").css({
           opacity: "1",
           top: "8.4vh"
@@ -813,6 +845,7 @@ function App() {
     }
 
     let debounceTimer;
+    let debounceTimerAboutMeScroller;
     let isWaveInitialized = false;
     let waveTimeouts = [];
 
@@ -829,7 +862,7 @@ function App() {
       $(() => {
         const waveContainer = $(".wave-container");
         const wave = $(".wave");
-        const numberOfWaves = 50;
+        const numberOfWaves = 60;
 
         wave.css("left", "0");
       
@@ -881,22 +914,28 @@ function App() {
         clearTimeout(debounceTimer);
         debounceTimer = setTimeout(() => {
           updateItems();
-
-          if ($(window).scrollTop() > (2.2 * window.innerHeight)) {
+          if ($(window).scrollTop() > (2.21 * window.innerHeight)) {
             window.history.pushState('', 'About Me!', '/AboutMe');
             document.title = "About Me";
-            changeSlide();
+            if (!isAnimating && !isRunning) {
+              clearTimeout(debounceTimerAboutMeScroller);
+              debounceTimerAboutMeScroller = setTimeout(() => {
+                aboutMeScroller();
+              }, 300);
+            }
           } else if ($(window).scrollTop() > (2 * window.innerHeight)) {
-           window.history.pushState('', 'Projects!', '/Projects');
-            document.title = "My Projects"
+            window.history.pushState('', 'Projects!', '/Projects');
+            document.title = "My Projects";
+            currentItemIndex = 0;
           } else if ($(window).scrollTop() > 5) {
             window.history.pushState('', 'Skills!', '/Skills');
-            document.title = "My Skills"
+            document.title = "My Skills";
+            currentItemIndex = 0;
           } 
           previousScroll = $(window).scrollTop();
 
         }, 15);
-        // added debouncer to check performance regarding updateItems() after figuring I saw some performance issues on slower machines. It ended up beeing a GPU-related problem with a filter CSS property on the animated background. Thus the debouncer is set to 0ms
+        // added debouncer to check performance regarding updateItems() after figuring I saw some performance issues on slower machines. It ended up beeing a GPU-related problem with a filter CSS property on the animated background. Thus the debouncer is set to 15ms
       }
 
       if ($(`.project-${currentProjectTag}`).hasClass("expanded-project")) {
@@ -1081,7 +1120,7 @@ function App() {
           }, 0);
           setTimeout(() => {
             $('html, body').animate({
-              scrollTop: (2.26 * (window.innerHeight))
+              scrollTop: (2.25 * (window.innerHeight))
             }, 650);
           }, 1000);
         }
@@ -1454,16 +1493,16 @@ function App() {
               </div>
             </div>
 
-            <div className="project-item hoverable project-item-bottom" tag="ToBeDecided"></div>
-            <div className="project-item hoverable" tag="ToBeDecided" ></div>
-            <div className="project-item hoverable project-item-bottom" tag="ToBeDecided" ></div>
+            <div className="project-item project-item-bottom" tag="ToBeDecided"></div>
+            <div className="project-item" tag="ToBeDecided" ></div>
+            <div className="project-item project-item-bottom" tag="ToBeDecided" ></div>
           </div>
           <div className="project-Numero">
             <p className="project-Numero-paragraph project-Numero-par1 fade-transform">
-              Discover <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span>, your personal academic assistant.
+              Discover <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span>, your personal academic assistant.
             </p>
             <p className="project-Numero-paragraph project-Numero-par2 fade-transform">
-              Effortlessly enter your grades, understand your current standing, and determine what’s needed to progress to the next academic year. Let <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span> be your guide to success.
+              Effortlessly enter your grades, understand your current standing, and determine what’s needed to progress to the next academic year. Let <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span> be your guide to success.
             </p>
             <div className="project-Numero-line fade-transform"></div>
             <div className="project-Numero-line-hor hor-line-1 fade-transform"></div>
@@ -1483,8 +1522,8 @@ function App() {
               <img src={phoneNumero3} alt="login screen Numero3" className="project-Numero-phone phone-3" />
             </div>
             <p className="project-Numero-paragraph project-Numero-par3 fade-transform">
-              <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span> was born out of a collaboration between a classmate and myself for our final project in the Computer Science class at Fioretti College Lisse. We developed this innovative tool for a teacher at DaVinci College Leiden, aiming to revolutionize the way his students navigate their academic journey.
-              <br></br><br></br>The end goal for <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span> was set out to be an up and running web based application with scalability as its central point.
+              <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span> was born out of a collaboration between a classmate and myself for our final project in the Computer Science class at Fioretti College Lisse. We developed this innovative tool for a teacher at DaVinci College Leiden, aiming to revolutionize the way his students navigate their academic journey.
+              <br></br><br></br>The end goal for <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span> was set out to be an up and running web based application with scalability as its central point.
             </p>
 
             <p className="project-Numero-paragraph project-Numero-par4">
@@ -1493,7 +1532,7 @@ function App() {
               Throughout this process, we held regular Scrum meetings with the project requestor for reviews, ensuring we were on track. This Scrum approach led to the successful delivery of the project.
             </p>
             <p className="project-Numero-paragraph project-Numero-par5">
-              Looking forward, the scalability inherent in <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span> paves the way for future enhancements by other teams. We’ve ensured it can adapt to evolving school policies and accommodate diverse academic paths. We’re proud to have laid a robust foundation for <span style={{"font-family": "Kalam, sans-serif"}}>Numero</span>, and are excited to see how it will continue to transform students’ academic experiences.
+              Looking forward, the scalability inherent in <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span> paves the way for future enhancements by other teams. We’ve ensured it can adapt to evolving school policies and accommodate diverse academic paths. We’re proud to have laid a robust foundation for <span style={{"fontFamily": "Kalam, sans-serif"}}>Numero</span>, and are excited to see how it will continue to transform students’ academic experiences.
             </p>
 
       
@@ -1524,7 +1563,7 @@ function App() {
             </div>
           </div>
           <div className="project-Various">
-            <div class="wave-container">
+            <div className="wave-container">
               <img alt="singular-wave" src="https://i.ibb.co/QCZv8JZ/Group-14.png" className="wave"/> 
             </div>
             <div className="project-Various-title-letters">
