@@ -1,0 +1,13 @@
+tentamen 04-01-13
+
+1. 
+a)
+
+void klein (int A[], int i, int & kl, int n) {
+	int kl = i;
+	for (int j = i+1; j < n; j++) {
+		if (A[j] < A[kl]) {
+			kl = j;
+		}
+	}
+}//klein
