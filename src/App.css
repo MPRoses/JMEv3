@@ -1177,11 +1177,13 @@ p {
 .project-Portfolio img {
   position: fixed;
   left: 4.6vw;
+  opacity: .05;
+  filter: drop-shadow(4px 4px 6px #000);
 }
 
 .project-Portfolio p {
   position: fixed;
-  left: 55vw;
+  left: 54vw;
   max-width: 40vw;
   text-align: left;
   color: #FFF;
@@ -1197,34 +1199,48 @@ p {
   font-size: 80px !important;
   max-width: 60vw !important;
   font-weight: 600 !important;
-  left: 53vw !important;
+  left: 51.7vw !important;
 
 }
 
 .Portfolio-title-1 {
   top: 4vh;
+  transition: transform 1.78s ease-in-out .6s, opacity 1.78s ease-in-out .6s
 }
 
 .Portfolio-description-1 {
   top: 15vh;
+  transition: transform 1.78s ease-in-out .8s, opacity 1.78s ease-in-out .8s;
 }
 
 .Portfolio-title-2 {
   top: 42vh;
+  transition: transform 1.78s ease-in-out 1s, opacity 1.78s ease-in-out 1s;
 }
 
 .Portfolio-description-2 {
   top: 53vh;
+  transition: transform 1.78s ease-in-out 1.2s, opacity 1.78s ease-in-out 1.2s;
 }
 
 .Portfolio-title-3 {
   top: 60vh;
+  transition: transform 1.78s ease-in-out 1.4s, opacity 1.78s ease-in-out 1.4s;
 }
 
 .Portfolio-description-3 {
   top: 71vh;
+  transition: transform 1.78s ease-in-out 1.6s, opacity 1.78s ease-in-out 1.6s
 }
 
+.project-Portfolio-fadeIn {
+  opacity: 0;
+  transform: translateY(500px);
+}
+.project-Portfolio-fadeIn-active {
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .project-Numero {
   position: fixed;

@@ -383,6 +383,10 @@ function App() {
 
       removeProject();
 
+      if ($(".project-Portfolio-fadeIn").hasClass("project-Portfolio-fadeIn-active")) {
+        $(".project-Portfolio-fadeIn").removeClass("project-Portfolio-fadeIn-active");
+      };
+
       window.history.pushState('', 'Home!', '/');
 
       document.title = "Jens van der Sloot";
@@ -696,14 +700,14 @@ function App() {
       isAnimating = true;
       $('html, body').animate({
         scrollTop: ((window.innerHeight) * (2.25 + 0.15 * currentItemIndex))
-      }, 300, function() {
+      }, 100, function() {
         isAnimating = false;
       });
 
       setTimeout(() => {
         changeSlide();
         isRunning = false;
-      }, 300);
+      }, 100);
 
       previousScrollTop = (window.innerHeight) * (2.25 + 0.15 * currentItemIndex);
     }
@@ -921,7 +925,7 @@ function App() {
               clearTimeout(debounceTimerAboutMeScroller);
               debounceTimerAboutMeScroller = setTimeout(() => {
                 aboutMeScroller();
-              }, 300);
+              }, 100);
             }
           } else if ($(window).scrollTop() > (2 * window.innerHeight)) {
             window.history.pushState('', 'Projects!', '/Projects');
@@ -1235,6 +1239,12 @@ function App() {
     $(".project-item").on("click", (e) => {
       var projectTag = $(e.target).attr("tag");
       currentProjectTag = projectTag;
+
+      $("body").css({
+        "height": "400vh",
+        "overflow": "unset",
+        "overflow-x": "hidden"
+      });
       
       if (projectTag !== "ToBeDecided") {
         
@@ -1259,6 +1269,12 @@ function App() {
         }
 
         if (projectTag === "Portfolio") {
+          $("body").css({
+            "height": "100vh",
+            "overflow": "hidden"
+          });
+
+          $(".project-Portfolio-fadeIn").addClass("project-Portfolio-fadeIn-active");
         }
 
         newCircle(e.clientX, e.clientY, ".sec2-item:eq(1)");
@@ -1288,6 +1304,16 @@ function App() {
       window.history.pushState('', 'Projects!', `/Projects`);
 
       $(".background").css("display", "block");
+
+      $("body").css({
+        "height": "400vh",
+        "overflow": "unset",
+        "overflow-x": "hidden"
+      });
+
+      if ($(".project-Portfolio-fadeIn").hasClass("project-Portfolio-fadeIn-active")) {
+        $(".project-Portfolio-fadeIn").removeClass("project-Portfolio-fadeIn-active");
+      }
 
       removeProject();
 
@@ -1595,22 +1621,22 @@ function App() {
           </div>
           <div className="project-Portfolio">
             <img src={projectban1} alt=""/>
-            <p className="project-Portfolio-title Portfolio-title-1">
+            <p className="project-Portfolio-title Portfolio-title-1 project-Portfolio-fadeIn">
               GENERAL
             </p>
-            <p className="Portfolio-description-1">
+            <p className="Portfolio-description-1 project-Portfolio-fadeIn">
               I started this project with a mere want for a personal site to serve as an introduction. Over time, it grew and grew, and here we are now!<br></br><br></br>Unlike with any of my other projects, with this project I was rather flexible, instead of designing the entire site in one go, I designed sections and let my creativity flow when coding.<br></br><br></br>I wanted to make sure of that when someone would enter this site they would immediately know who they are working with, a creative individual with a love for designing and coding. All in all I think I did a pretty good job with that :)
             </p>
-            <p className="project-Portfolio-title Portfolio-title-2">
+            <p className="project-Portfolio-title Portfolio-title-2 project-Portfolio-fadeIn">
               METHODOLOGY
             </p>
-            <p className="Portfolio-description-2">
+            <p className="Portfolio-description-2 project-Portfolio-fadeIn">
               All elements on this site were designed in Figma, written in the framework React and packaged and published utilizing react-gh-pages.
             </p>
-            <p className="project-Portfolio-title Portfolio-title-3">
+            <p className="project-Portfolio-title Portfolio-title-3 project-Portfolio-fadeIn">
               LOOKING FORWARD
             </p>
-            <p className="Portfolio-description-3">
+            <p className="Portfolio-description-3 project-Portfolio-fadeIn">
               Just like this site, born out of a spark of creativity and a dash of code, keeping it fresh is an adventure in itself! It’s not about a one-time design, but a continuous journey of updates. With every new project, the site evolves, mirroring my growth as a designer and coder. React, my trusty sidekick, makes this process a breeze.<br></br><br></br>But it’s not just about me, it’s about you, the visitor. Your interactions, your feedback, they shape the site. It’s a dance, really. A dance of design, code, and user experience, keeping the site alive and kicking!
             </p>
           </div>
