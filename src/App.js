@@ -1,7 +1,7 @@
-import './App.css';
 import $ from 'jquery';
 import anime from 'animejs';
 import TweenMax from 'gsap';
+import { useMediaQuery } from 'react-responsive';
 import skillsWheel from './Shape.png';
 import wheelPointer from './Arrow.png';
 import proj1 from './proj1.webp';
@@ -37,6 +37,18 @@ function App() {
   useEffect(() => {
     document.title = "Jens van der Sloot"
   }, []);
+
+  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+
+  const isTabletTitle = useMediaQuery({ query: '(max-width: 1152px)' });
+
+  useEffect(() => {
+    if (isMobile) {
+      import('./App.css');
+    } else {
+      import('./App.css');
+    }
+  }, [isMobile]);
 
 
   // format: out-top, in-top, out-bottom, in-bottom, bg color
@@ -129,6 +141,18 @@ function App() {
   // onload
   $(() => {
     enterBackground();
+
+    if (isTabletTitle) {
+      $("#sec2-skills-title").css({
+        "font-size": "11vh",
+        "top": "14vh"
+      });
+      $("#sec2-skills-description").css({
+        "font-size": "2vh",
+        "line-height": "3.4vh",
+        "top": "27vh",
+      });
+    }
 
     $(".background-button").addClass("background-button-active");
 
@@ -445,6 +469,7 @@ function App() {
                 $(".navbar").css("opacity", "1");
                 $(".starthere").css("opacity", "0");
                 $("body").css("height", "100vh");
+                $("body").css("positon", "unset");
                 $("body").css("overflow", "hidden");
 
               }, 200);
@@ -512,7 +537,13 @@ function App() {
     let previousScroll;
 
 
+
     function updateItems() {
+      if (isTabletTitle) {
+        $("#sec2-skills-description").css("max-width", "80vh");
+      } else {
+        $("#sec2-skills-description").css("max-width", "105vh");
+      }
       if ($(window).scrollTop() >= (2.2 * window.innerHeight)) {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(2).addClass("visible");
@@ -577,6 +608,13 @@ function App() {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(0).addClass("visible");
         $("#skillsWheel, #wheelPointer").css("opacity", "1");
+
+        if (isTabletTitle) {
+          $("#skillsWheel").css("opacity", ".2");
+          $("#wheelPointer").css("opacity", "0");
+        } else {
+          $("#skillsWheel, #wheelPointer").css("opacity", "1");
+        }
         if ($(window).scrollTop() > (1.95 * window.innerHeight) && $(window).scrollTop() < (2 * window.innerHeight)) {
           $("#sec2-skills-title, #sec2-skills-description").css({
             "opacity": "1",
@@ -594,65 +632,125 @@ function App() {
           $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0")
           setTimeout(() => {
             if (skillsTitles[currentIndex].length >= 20) {
-              $("#sec2-skills-title").css({
-                "font-size": "5.2vw",
-                "top": "15vh"
-              });
-            } else if (skillsTitles[currentIndex].length > 8) {
-              $("#sec2-skills-title").css({
-                "font-size": "6.9vw",
-                "top": "12vh"
-              });
-            } else {
-              $("#sec2-skills-title").css("font-size", "12vw");
-              if (skillsDescriptions[currentIndex].length > 700) {
-                $("#sec2-skills-title").css("top", "4vh");
-              } else if (skillsDescriptions[currentIndex].length > 700) {
-                $("#sec2-skills-title").css("top", "4vh");
+              if (isTabletTitle) {
+                $("#sec2-skills-title").css({
+                  "font-size": "6vh",
+                  "top": "14vh"
+                });
               } else {
-                $("#sec2-skills-title").css("top", "13vh");
+                $("#sec2-skills-title").css({
+                  "font-size": "9vh",
+                  "top": "15vh"
+                });
               }
 
+            } else if (skillsTitles[currentIndex].length > 8) {
+              if (isTabletTitle) {
+                $("#sec2-skills-title").css({
+                  "font-size": "9vh",
+                  "top": "14vh"
+                });
+              } else {
+                $("#sec2-skills-title").css({
+                  "font-size": "12.3vh",
+                  "top": "12vh"
+                });
+              }
+            } else {
+              if (isTabletTitle) {
+                $("#sec2-skills-title").css({
+                  "font-size": "11vh",
+                  "top": "14vh"
+                });
+              } else {
+                $("#sec2-skills-title").css("font-size", "21.3vh");
+                if (skillsDescriptions[currentIndex].length > 700) {
+                  $("#sec2-skills-title").css("top", "4vh");
+                } else if (skillsDescriptions[currentIndex].length > 700) {
+                  $("#sec2-skills-title").css("top", "4vh");
+                } else {
+                  $("#sec2-skills-title").css("top", "13vh");
+                }
+              }
             }
 
             if (skillsDescriptions[currentIndex].length > 700) {
               if (skillsDescriptions[currentIndex].length > 1400) {
                 if (skillsTitles[currentIndex].length > 18) {
-                  $("#sec2-skills-description").css({
-                    "font-size": "1vw",
-                    "line-height": "1.7vw",
-                    "top": "28vh",
-                  })
+                  if (isTabletTitle) {
+                    $("#sec2-skills-description").css({
+                      "font-size": "2vh",
+                      "line-height": "3.4vh",
+                      "top": "25vh",
+                    });
+                  } else {
+                    $("#sec2-skills-description").css({
+                      "font-size": "1.8vh",
+                      "line-height": "3.5vh",
+                      "top": "28vh",
+                    });
+                  }
                 } else {
-                  $("#sec2-skills-description").css({
-                    "font-size": "1vw",
-                    "line-height": "1.7vw",
-                    "top": "30vh",
-                  })
+                  if (isTabletTitle) {
+                    $("#sec2-skills-description").css({
+                      "font-size": "1.7vh",
+                      "line-height": "3.1vh",
+                      "top": "25vh",
+                    })
+                  } else {
+                    $("#sec2-skills-description").css({
+                      "font-size": "1.8vh",
+                      "line-height": "3.5vh",
+                      "top": "30vh",
+                    })
+                  }          
                 }
 
               } else {
                 if (skillsTitles[currentIndex].length > 18) {
-                  $("#sec2-skills-description").css({
-                    "font-size": "1.1vw",
-                    "line-height": "2vw",
-                    "top": "30vh",
-                  })
+                  if (isTabletTitle) {
+                    $("#sec2-skills-description").css({
+                      "font-size": "2vh",
+                      "line-height": "3.4vh",
+                      "top": "25vh",
+                    })
+                  } else {
+                    $("#sec2-skills-description").css({
+                      "font-size": "2vh",
+                      "line-height": "4vh",
+                      "top": "30vh",
+                    })
+                  }
                 } else {
-                  $("#sec2-skills-description").css({
-                    "font-size": "1.1vw",
-                    "line-height": "2vw",
-                    "top": "32vh",
-                  })
+                  if (isTabletTitle) {
+                    $("#sec2-skills-description").css({
+                      "font-size": "2vh",
+                      "line-height": "3.4vh",
+                      "top": "27vh",
+                    })
+                  } else {
+                    $("#sec2-skills-description").css({
+                      "font-size": "2vh",
+                      "line-height": "4vh",
+                      "top": "32vh",
+                    })
+                  }
                 }
               }
             } else {
-              $("#sec2-skills-description").css({
-                "font-size": "1.1vw",
-                "line-height": "2vw",
-                "top": "42.5vh",
-              })
-
+              if (isTabletTitle) {
+                $("#sec2-skills-description").css({
+                  "font-size": "2vh",
+                  "line-height": "3.4vh",
+                  "top": "27vh",
+                })
+              } else {
+                $("#sec2-skills-description").css({
+                  "font-size": "2vh",
+                  "line-height": "4vh",
+                  "top": "42.5vh",
+                })
+              }
             }
             $("#sec2-skills-title").html(`${skillsTitles[currentIndex]}`);
             $("#sec2-skills-description").html(`${skillsDescriptions[currentIndex]}`);
@@ -1082,7 +1180,7 @@ function App() {
       setTimeout(() => {
         for (let k = 0; k < 3; k++) {
           setTimeout(() => {
-            $(".b1-active").eq(k).css("top", "-100vw");
+            $(".b1-active").eq(k).css("top", "-100vh");
           }, k * 150)
         }
       }, 1250)
@@ -1091,6 +1189,7 @@ function App() {
       setTimeout(() => {
 
         $("body").css("height", "400vh");
+        $("body").css("position", "unset");
         $("body").css("overflow", "unset");
         $("body").css("overflow-x", "hidden");
         $(".sec2").css("background-color", "#000000bf");
@@ -1220,10 +1319,6 @@ function App() {
           easing: "easeOutExpo",
           delay: 0
         });
-
-
-
-
     
     function newCircle(x, y, queryOfLocation) {
       if (document.querySelector('transition-circle') === null) {
@@ -1620,7 +1715,9 @@ function App() {
             </div>
           </div>
           <div className="project-Portfolio">
-            <img src={projectban1} alt=""/>
+            <div className="project-Portfolio-img">
+              <img src={projectban1} alt=""/>
+            </div>
             <p className="project-Portfolio-title Portfolio-title-1 project-Portfolio-fadeIn">
               GENERAL
             </p>

@@ -20,6 +20,7 @@
 }
 
 body {
+  position: fixed;
   width: 100vw;
   height: 100vh;
   overflow: hidden;
@@ -857,8 +858,8 @@ p {
   text-align: left;
   font-weight: 200;
   font-size: 1.1vw;
-  line-height: 4vh;
-  max-width: 105vh;
+  line-height: 2vw;
+  max-width: 55vw;
 
   color: #FFFFFF;
   opacity: 0;
