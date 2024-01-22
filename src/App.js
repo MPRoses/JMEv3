@@ -152,6 +152,16 @@ function App() {
         "line-height": "3.4vh",
         "top": "27vh",
       });
+      $(".project-item-title-container").css("left", "-300px");
+      $(".project-item-title-1").css("left", "0");
+      $(".project-item-title-2").css("left", "16vh");
+      $(".project-item-title-4").css("left", "6vh");
+
+      $(".project-item-title-1").css("font-size", "12vh");
+      $(".project-item-title-2").css("font-size", "12vh");
+      $(".project-item-title-4").css("font-size", "12vh");
+
+      $(".project-item-img3").css("right", "40vw");
     }
 
     $(".background-button").addClass("background-button-active");
@@ -541,8 +551,10 @@ function App() {
     function updateItems() {
       if (isTabletTitle) {
         $("#sec2-skills-description").css("max-width", "80vh");
+        $(".empty-project-item").css("display", "none");
       } else {
         $("#sec2-skills-description").css("max-width", "105vh");
+        $(".empty-project-item").css("display", "block");
       }
       if ($(window).scrollTop() >= (2.2 * window.innerHeight)) {
         $(".sec2-identifier").removeClass("visible");
@@ -1615,8 +1627,8 @@ function App() {
             </div>
 
             <div className="project-item project-item-bottom" tag="ToBeDecided"></div>
-            <div className="project-item" tag="ToBeDecided" ></div>
-            <div className="project-item project-item-bottom" tag="ToBeDecided" ></div>
+            <div className="project-item empty-project-item" tag="ToBeDecided" ></div>
+            <div className="project-item project-item-bottom empty-project-item" tag="ToBeDecided" ></div>
           </div>
           <div className="project-Numero">
             <p className="project-Numero-paragraph project-Numero-par1 fade-transform">

@@ -880,7 +880,7 @@ p {
   position: relative;
   top: 100vh;
   opacity: 0;
-  width: 15vw;
+  width: 24vh;
   height: 100vh;
   background-color: rgb(0, 0, 0);
   border-left: solid #171616 2px;
@@ -914,7 +914,7 @@ p {
 
 .project-item-img {
   height: 115vh;
-  width: 15vw;
+  width: 24vh;
   position: relative;
   top: 0;
   opacity: 0.2;
@@ -1047,7 +1047,7 @@ p {
 
 .project-item-title-1 {
   position: relative;
-  left: -250px;
+  left: 0;
   font-weight: 900;
   width: 810px;
   top: 37vh;
