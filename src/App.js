@@ -40,7 +40,7 @@ function App() {
 
   const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
-  const isTabletTitle = useMediaQuery({ query: '(max-width: 1152px)' });
+  const isTabletTitle = useMediaQuery({ query: '(max-width: 1400px)' });
 
   useEffect(() => {
     if (isMobile) {
@@ -49,6 +49,12 @@ function App() {
       import('./App.css');
     }
   }, [isMobile]);
+
+  useEffect(() => {
+    if (isTabletTitle) {
+      import('./AppTablet.css');
+    }
+  }, [isTabletTitle]);
 
 
   // format: out-top, in-top, out-bottom, in-bottom, bg color
@@ -142,7 +148,9 @@ function App() {
   $(() => {
     enterBackground();
 
-    if (isTabletTitle) {
+   /* if (isTabletTitle) {
+      $("#sec2-skills-description").css("max-width", "80vw");
+      $(".empty-project-item").css("display", "none");
       $("#sec2-skills-title").css({
         "font-size": "11vh",
         "top": "14vh"
@@ -154,15 +162,92 @@ function App() {
       });
       $(".project-item-title-container").css("left", "-300px");
       $(".project-item-title-1").css("left", "0");
-      $(".project-item-title-2").css("left", "16vh");
-      $(".project-item-title-4").css("left", "6vh");
+      $(".project-item-title-2").css("left", "12.5vh");
+      $(".project-item-title-4").css("left", "5vh");
 
-      $(".project-item-title-1").css("font-size", "12vh");
-      $(".project-item-title-2").css("font-size", "12vh");
-      $(".project-item-title-4").css("font-size", "12vh");
+      $(".project-item-title-1").css("font-size", "9vh");
+      $(".project-item-title-2").css("font-size", "9vh");
+      $(".project-item-title-4").css("font-size", "9vh");
 
       $(".project-item-img3").css("right", "40vw");
-    }
+
+      $(".aboutme-section-title").css("font-size", "7vh");
+      $(".aboutme-section-description").css({
+        "font-size": "2vh",
+        "max-width": "65vw"
+      });
+
+      $(".aboutme-section-photo-description-aboutme1").css({
+        "right": "3vw",
+        "top": "17vh"
+      });
+
+      $(".aboutme-section-aboutme2").css({
+        "right": "9vw",
+        "width": "19vw"
+      });
+      
+      $(".aboutme-section-photo-description-aboutme2").css({
+        "right": "-3vw",
+        "top": "11.5vh"
+      });
+      
+      $(".aboutme-section-aboutme4").css({
+        "top": "60vh",
+        "right": "9vw"
+      });
+      
+      $(".aboutme-section-photo-description-aboutme4").css({
+        "right": "0",
+        "top": "63.7vh"
+      });
+      
+      $(".aboutme-section-aboutme3").css({
+        "top": "19.3vh",
+        "right": "9vw"
+      });
+      
+      $(".aboutme-section-photo-description-aboutme3").css({
+        "right": "6vw",
+        "top": "28vh"
+      });
+      
+      $(".aboutme-section-aboutme5").css({
+        "width": "23vw"
+      });
+      
+      $(".aboutme-section-photo-description-aboutme5").css({
+        "right": "4.4vw",
+        "top": "17vh",
+        "font-size": "15px"
+      });
+      
+      $(".aboutme-section-photo-description-aboutme6").css({
+        "right": "13.5vw",
+        "top": "19vh"
+      });
+      
+      $(".abt5-container-one-email").css({
+        "height": "10vw",
+        "top": "calc(4.5vh - 5vw)",
+        "left": "calc(7.5vw - 5vw)"
+      });
+      
+      $(".abt5-container-two-calling").css({
+        "height": "10vw",
+        "top": "calc(4.5vh - 5vw)",
+        "left": "calc(7.5vw - 5vw)"
+      });
+      
+      $(".abt5-container-three-linkedin").css({
+        "height": "10vw",
+        "top": "calc(4.5vh - 5vw)",
+        "left": "calc(7.5vw - 5vw)"
+      });
+
+      $(".aboutme-section-abt5-or").css("top", "38.5vh");
+
+    }*/
 
     $(".background-button").addClass("background-button-active");
 
@@ -550,7 +635,7 @@ function App() {
 
     function updateItems() {
       if (isTabletTitle) {
-        $("#sec2-skills-description").css("max-width", "80vh");
+        $("#sec2-skills-description").css("max-width", "80vw");
         $(".empty-project-item").css("display", "none");
       } else {
         $("#sec2-skills-description").css("max-width", "105vh");
@@ -646,7 +731,7 @@ function App() {
             if (skillsTitles[currentIndex].length >= 20) {
               if (isTabletTitle) {
                 $("#sec2-skills-title").css({
-                  "font-size": "6vh",
+                  "font-size": "5vh",
                   "top": "14vh"
                 });
               } else {
@@ -659,7 +744,7 @@ function App() {
             } else if (skillsTitles[currentIndex].length > 8) {
               if (isTabletTitle) {
                 $("#sec2-skills-title").css({
-                  "font-size": "9vh",
+                  "font-size": "7vh",
                   "top": "14vh"
                 });
               } else {
@@ -671,7 +756,7 @@ function App() {
             } else {
               if (isTabletTitle) {
                 $("#sec2-skills-title").css({
-                  "font-size": "11vh",
+                  "font-size": "10vh",
                   "top": "14vh"
                 });
               } else {
@@ -691,7 +776,7 @@ function App() {
                 if (skillsTitles[currentIndex].length > 18) {
                   if (isTabletTitle) {
                     $("#sec2-skills-description").css({
-                      "font-size": "2vh",
+                      "font-size": "1.7vh",
                       "line-height": "3.4vh",
                       "top": "25vh",
                     });
@@ -705,8 +790,8 @@ function App() {
                 } else {
                   if (isTabletTitle) {
                     $("#sec2-skills-description").css({
-                      "font-size": "1.7vh",
-                      "line-height": "3.1vh",
+                      "font-size": "1.5vh",
+                      "line-height": "3vh",
                       "top": "25vh",
                     })
                   } else {
@@ -736,7 +821,7 @@ function App() {
                 } else {
                   if (isTabletTitle) {
                     $("#sec2-skills-description").css({
-                      "font-size": "2vh",
+                      "font-size": "1.7vh",
                       "line-height": "3.4vh",
                       "top": "27vh",
                     })
@@ -823,12 +908,19 @@ function App() {
     }
 
     function changeSlide() {
-
+      
       $(".aboutme-section-title").css("opacity", "0");
-      $(".aboutme-section-description").css({
-        opacity: "0",
-        top: "22vh"
-      });
+      if (isTabletTitle) {
+        $(".aboutme-section-description").css({
+          opacity: "0",
+          top: "13vh"
+        });
+      } else {
+        $(".aboutme-section-description").css({
+          opacity: "0",
+          top: "22vh"
+        });
+      }
 
       // animations for images, e.g. when they enter on viewport run x
 
@@ -883,10 +975,18 @@ function App() {
         })
 
         $(".aboutme-section-title").eq(3).css("opacity", "0.5");
-        $(".aboutme-section-description:eq(3)").css({
-          opacity: "1",
-          top: "25vh"
-        });
+        if (isTabletTitle) {
+          $(".aboutme-section-description:eq(3)").css({
+            opacity: "1",
+            top: "16vh"
+          });
+        } else {
+          $(".aboutme-section-description:eq(3)").css({
+            opacity: "1",
+            top: "25vh"
+          });
+        }
+        
 
       } else if (($(window).scrollTop() / $(window).innerHeight()) >= 2.55) {
         $(".abt2, .abt1").css({
@@ -903,11 +1003,17 @@ function App() {
         })
 
         $(".aboutme-section-title").eq(2).css("opacity", "0.5");
-        $(".aboutme-section-description:eq(2)").css({
-          opacity: "1",
-          top: "23.5vh"
-        });
-
+        if (isTabletTitle) {
+          $(".aboutme-section-description:eq(2)").css({
+            opacity: "1",
+            top: "16vh"
+          });
+        } else {
+          $(".aboutme-section-description:eq(2)").css({
+            opacity: "1",
+            top: "23.5vh"
+          });
+        }
       } else if (($(window).scrollTop() / $(window).innerHeight()) >= 2.40) {
         $(".abt1").css({
           opacity: "0",
@@ -923,11 +1029,17 @@ function App() {
         })
 
         $(".aboutme-section-title").eq(1).css("opacity", "0.5");
-        $(".aboutme-section-description:eq(1)").css({
-          opacity: "1",
-          top: "25vh"
-        });
-
+        if (isTabletTitle) {
+          $(".aboutme-section-description:eq(1)").css({
+            opacity: "1",
+            top: "16vh"
+          });
+        } else {
+          $(".aboutme-section-description:eq(1)").css({
+            opacity: "1",
+            top: "25vh"
+          });
+        }
       } else if (($(window).scrollTop() / $(window).innerHeight()) >= 2.20) {
         $(".abt1").css({
           opacity: "1",
@@ -939,11 +1051,17 @@ function App() {
         })
 
         $(".aboutme-section-title").eq(0).css("opacity", "0.5");
-        $(".aboutme-section-description:eq(0)").css({
-          opacity: "1",
-          top: "25vh"
-        });
-
+        if (isTabletTitle) {
+          $(".aboutme-section-description:eq(0)").css({
+            opacity: "1",
+            top: "16vh"
+          });
+        } else {
+          $(".aboutme-section-description:eq(0)").css({
+            opacity: "1",
+            top: "25vh"
+          });
+        }
       }
 
     }

@@ -1,20 +1,64 @@
+#sec2-skills-description {
+  max-width: 80vw;
+}
+
+.empty-project-item {
+  display: none;
+}
+
+#sec2-skills-title {
+  font-size: 11vh;
+  top: 14vh;
+}
+
+#sec2-skills-description {
+  font-size: 2vh;
+  line-height: 3.4vh;
+  top: 27vh;
+}
+
+.project-item-title-container {
+  left: -300px;
+}
+
+.project-item-title-1 {
+  left: 0;
+  font-size: 9vh;
+}
+
+.project-item-title-2 {
+  left: 12.5vh;
+  font-size: 9vh;
+}
+
+.project-item-title-4 {
+  left: 5vh;
+  font-size: 9vh;
+}
+
+.project-item-img3 {
+  right: 40vw;
+}
+
 .aboutme-section-title {
   font-size: 7vh;
 }
+
 .aboutme-section-description {
-  top: 16vh;
+  font-size: 2vh;
   max-width: 65vw;
 }
 
 .aboutme-section-photo-description-aboutme1 {
   right: 3vw;
   top: 17vh;
-}/*above done*/
+}
 
 .aboutme-section-aboutme2 {
   right: 9vw;
   width: 19vw;
 }
+
 .aboutme-section-photo-description-aboutme2 {
   right: -3vw;
   top: 11.5vh;
@@ -29,26 +73,32 @@
   right: 0;
   top: 63.7vh;
 }
+
 .aboutme-section-aboutme3 {
   top: 19.3vh;
   right: 9vw;
 }
+
 .aboutme-section-photo-description-aboutme3 {
   right: 6vw;
   top: 28vh;
 }
+
 .aboutme-section-aboutme5 {
   width: 23vw;
 }
+
 .aboutme-section-photo-description-aboutme5 {
   right: 4.4vw;
   top: 17vh;
   font-size: 15px;
 }
+
 .aboutme-section-photo-description-aboutme6 {
   right: 13.5vw;
   top: 19vh;
 }
+
 .abt5-container-one-email {
   height: 10vw;
   top: calc(4.5vh - 5vw);
@@ -60,8 +110,13 @@
   top: calc(4.5vh - 5vw);
   left: calc(7.5vw - 5vw);
 }
+
 .abt5-container-three-linkedin {
   height: 10vw;
   top: calc(4.5vh - 5vw);
   left: calc(7.5vw - 5vw);
+}
+
+.aboutme-section-abt5-or {
+  top: 38.5vh;
 }
