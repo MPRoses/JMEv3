@@ -17,6 +17,13 @@
   top: 27vh;
 }
 
+.project-item {
+  width: 21.25vw;
+}
+.project-item-img {
+  width: 21.25vw;
+}
+
 .project-item-title-container {
   left: -300px;
 }
@@ -119,4 +126,95 @@
 
 .aboutme-section-abt5-or {
   top: 38.5vh;
+}
+.project-Numero-par1 {
+  font-size: 4.3vh;
+}
+.project-Numero-par2 {
+  font-size: 4.3vh;
+}
+.project-Numero-phone {
+  width: 130vw;
+  left: 14vw;
+}
+#project-Numero-title2 {
+  font-size: 15vw;
+  left: calc(0.5 * 100vw - 0.5 * 7.5vw) !important;
+}
+.project-Numero-par3 {
+  font-size: 3vh;
+}
+.project-Numero-par4 {
+  font-size: 2.6vh;
+}
+.project-Numero-par5 {
+  font-size: 3.5vh;
+}
+.Numero-navbar-item2-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item1-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item3-txt {
+  transform: translateY(5vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item4-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item4-txt::before {
+  top: 34px;
+}
+.project-Portfolio p {
+  left: 16vw;
+  max-width: 50vw;
+}
+.project-Portfolio-title {
+  left: 10vw !important;
+  max-width: 85vw !important;
+}
+.Portfolio-title-1 {
+  top: 8vh;
+}
+.Portfolio-title-2 {
+  top: 46vh;
+}
+.Portfolio-title-3 {
+  top: 64vh;
+}
+.project-Various-title-letters p {
+  font-size: 7.4vw;
+}
+.project-Various-seperator {
+  transform: translateY(-0.7vw);
+  width: 43.5vw;
+}
+.project-Various-pentagon3 {
+  width: 65vw;
+}
+.project-Various-pentagon {
+  width: 64vw;
+}
+.project-Various-pentagon4 {
+  width: 41vw;
+  left: 10vw;
+  transform: translateY(-23vw);
+}
+.project-Various-pentagon2 {
+  width: 29vw;
+  transform: translateY(35vw);
+}
+.project-Various-pentagon5 {
+  width: 65vw;
+  left: 10vw;
+  transform: translateY(95vw);
+}
+.project-Various-pentagon6 {
+  width: 38vw;
+  transform: translateY(7vw);
+  left: 10vw;
 }

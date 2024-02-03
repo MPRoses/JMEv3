@@ -506,7 +506,12 @@ function App() {
 
       if ($(".sec2-item:eq(1)").hasClass("project-active")) {
 
-        $(".project-item").css("display", "block");
+        if (!isTabletTitle) {
+          $(".project-item").css("display", "block");
+        } else {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "none");
+        }
         $(".sec2-item:eq(1)").removeClass("project-active");
         document.querySelector(".transition-circle").style.transform = "scale(0, 0)";
         $(".back").css("opacity", "0")
@@ -1209,19 +1214,38 @@ function App() {
         $(".project-Various-arrow-description").css("opacity", "1");
       }
 
+      $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
+      $(".project-Various-seperator").css("opacity",`calc(.5 - 2 * ${parScroll})`);
+
+      $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
+      $(".project-Various-description").css("opacity",`calc(1 - 2 * ${parScroll})`);
+
       $(".project-Various-title-letters p").each(function(index) {
         const parScrollMultiplier = [115, 95, 75][index];
         const topValue = `calc(-${parScrollMultiplier * parScroll}vh + 23vh)`;
         $(this).css("top", topValue);
+
+        if (parScroll === 0) {
+          $(".project-Various-title-letters p").css("transition", "top cubic-bezier(0.16, 0.69, 0.26, 0.88) .78s .1s");
+          $(".project-Various-seperator").css("transition", "top cubic-bezier(0.16, 0.69, 0.26, 0.88) .78s");
+          $(".project-Various-description").css("transition", "top cubic-bezier(0.16, 0.69, 0.26, 0.88) .78s");
+          $(this).css("top",`calc(-${parScrollMultiplier * parScroll}vh + 28vh)`);
+          $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh + 5vh)`);
+          $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh + 5vh)`);
+          setTimeout(() => {
+            $(this).css("top",`calc(-${parScrollMultiplier * parScroll}vh + 23vh)`);
+            $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
+            $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
+
+            setTimeout(() => {
+              $(".project-Various-title-letters p").css("transition", "unset")
+              $(".project-Various-seperator, .project-Various-description").css("transition", "unset");
+            }, 580);
+          }, 200);
+        }
       });
 
       $(".project-Various-title-letters p").css("opacity",`calc(1 - 2 * ${parScroll})`);
-
-      $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
-      $(".project-Various-seperator").css("opacity",`calc(1 - 2 * ${parScroll})`);
-
-      $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
-      $(".project-Various-description").css("opacity",`calc(1 - 2 * ${parScroll})`);
 
       $(".project-Various-pentagon-container").css("top", `calc(-${parScroll * 100}vh + 80vh)`);
       
@@ -1509,11 +1533,17 @@ function App() {
           $(".back").css("opacity", "1");
 
           $(`.project-${projectTag}`).addClass("expanded-project");
-          $(`.project-${projectTag}`).css({
-            "right": "0",
-            "opacity": "1"
-          })
-          
+          if (isTabletTitle) {
+            $(`.project-${projectTag}`).css({
+              "right": "-3.3vw",
+              "opacity": "1"
+            })
+          } else {
+            $(`.project-${projectTag}`).css({
+              "right": "0",
+              "opacity": "1"
+            })
+          } 
         }, 1500);
 
         setTimeout(() => {
@@ -1545,7 +1575,12 @@ function App() {
         scrollTop: (2.05 * (window.innerHeight))
       }, 0);
 
-      $(".project-item").css("display", "block");
+      if (!isTabletTitle) {
+        $(".project-item").css("display", "block");
+      }  else {
+        $(".project-item").css("display", "block");
+        $(".empty-project-item").css("display", "none");
+      }
       document.querySelector(".transition-circle").style.transform = "scale(0, 0)";
       $(".sec2-item:eq(1)").removeClass("project-active");
 

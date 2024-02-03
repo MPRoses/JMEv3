@@ -1620,7 +1620,6 @@ p {
   width: 23.5vw;
   height: 4px;
   background-color: white;
-  transition: opacity cub;
 }
 
 .project-Various-description {
@@ -1707,6 +1706,7 @@ p {
   top: 146vh;
   left: 10vw;
   width: 28.1vw;
+  transform: translateY(1.5vw);
 }
 
 .project-Various-pentagon-container {
