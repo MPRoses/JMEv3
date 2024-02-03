@@ -29,6 +29,7 @@ import pentagon6 from './pentagon6.png';
 import codepen from './codepen.png';
 import github from './github.png';
 import projectban1 from './project_ban1.png';
+import './App.css';
 
 import { useEffect } from 'react';
 
@@ -38,17 +39,10 @@ function App() {
     document.title = "Jens van der Sloot"
   }, []);
 
-  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  //const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
   const isTabletTitle = useMediaQuery({ query: '(max-width: 1400px)' });
 
-  useEffect(() => {
-    if (isMobile) {
-      import('./App.css');
-    } else {
-      import('./App.css');
-    }
-  }, [isMobile]);
 
   useEffect(() => {
     if (isTabletTitle) {
@@ -1062,7 +1056,7 @@ function App() {
             top: "25vh"
           });
         }
-      }
+      } 
 
     }
 
@@ -1183,17 +1177,17 @@ function App() {
 
     function updateNumeroItems(parScroll) {
 
-      $(".project-Numero-par3").css("top", `calc(-${parScroll * 110}vh + 150vh)`);
+      $(".project-Numero-par3").css("top", `calc(-${parScroll * 112}vh + 150vh)`);
       $(".project-Numero-par4, .project-Numero-par5").css("top", `calc(-${parScroll * 110}vh + 150vh)`);
 
-      $(".project-Numero-timeline").css("top", `calc(-${parScroll * 110}vh + 150vh)`);
-        $(".project-Numero-par2").css("top", `calc(-${parScroll * 90}vh + 40vh)`);
-        $(".project-Numero-par1").css("top", `calc(-${parScroll * 75}vh + 15vh)`);
-        $(".hor-line-1").css("top", `calc(-${parScroll * 100}vh + 95vh)`);
-        $(".hor-line-2").css("top", `calc(-${parScroll * 100}vh + 135vh)`);
-        $(".project-Numero-line").css("top", `calc(-${parScroll * 100}vh + 135vh)`);
-        $(".project-Numero-banner").css("top", `calc(-${parScroll * 100}vh + (95vh + 2px))`);
-        $(".project-Numero-phone").css("top", `calc(-${parScroll * 40}vh + 0vh)`);
+      $(".project-Numero-timeline").css("top", `calc(-${parScroll * 112}vh + 150vh)`);
+        $(".project-Numero-par2").css("top", `calc(-${parScroll * 88}vh + 40vh)`);
+        $(".project-Numero-par1").css("top", `calc(-${parScroll * 73}vh + 15vh)`);
+        $(".hor-line-1").css("top", `calc(-${parScroll * 98}vh + 95vh)`);
+        $(".hor-line-2").css("top", `calc(-${parScroll * 98}vh + 135vh)`);
+        $(".project-Numero-line").css("top", `calc(-${parScroll * 98}vh + 135vh)`);
+        $(".project-Numero-banner").css("top", `calc(-${parScroll * 98}vh + (95vh + 2px))`);
+        $(".project-Numero-phone").css("top", `calc(-${parScroll * 45}vh + 0vh)`);
         $(".project-Numero-navbar").css("top", `calc(-${parScroll * 100}vh + 135vh)`);
 
         if (parScroll < 0.15) {
@@ -1215,13 +1209,18 @@ function App() {
         $(".project-Various-arrow-description").css("opacity", "1");
       }
 
-      $(".project-Various-title-letters p").css("top",`calc(-${parScroll * 100}vh + 23vh)`);
+      $(".project-Various-title-letters p").each(function(index) {
+        const parScrollMultiplier = [115, 95, 75][index];
+        const topValue = `calc(-${parScrollMultiplier * parScroll}vh + 23vh)`;
+        $(this).css("top", topValue);
+      });
+
       $(".project-Various-title-letters p").css("opacity",`calc(1 - 2 * ${parScroll})`);
 
-      $(".project-Various-seperator").css("top",`calc(-${parScroll * 100}vh + 60vh)`);
+      $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
       $(".project-Various-seperator").css("opacity",`calc(1 - 2 * ${parScroll})`);
 
-      $(".project-Various-description").css("top",`calc(-${parScroll * 100}vh + 62vh)`);
+      $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
       $(".project-Various-description").css("opacity",`calc(1 - 2 * ${parScroll})`);
 
       $(".project-Various-pentagon-container").css("top", `calc(-${parScroll * 100}vh + 80vh)`);
@@ -1819,7 +1818,13 @@ function App() {
             </div>
             <div className="project-Various-title-letters">
               <p>
-                EMBARKED<br></br>FROM THE<br></br><span>NULL</span>
+                EMBARKED
+              </p>
+              <p>
+                <br></br>FROM THE
+              </p>
+              <p>
+              <br></br><br></br>NULL
               </p>
             </div>
             <div className="project-Various-seperator"></div>

@@ -833,13 +833,13 @@ p {
 
 #sec2-skills-title {
   position: fixed;
-  top: 13vh;
+  top: 4vh;
   left: 8vw;
   font-family: 'Montserrat';
   font-style: italic;
   text-align: left;
   font-weight: 500;
-  font-size: 12vw;
+  font-size: 21.3vh;
   text-align: left;
 
   color: #FFFFFF;
@@ -850,13 +850,13 @@ p {
 
 #sec2-skills-description {
   position: fixed;
-  top: 40vh;
+  top: 32vh;
   left: 10vw;
   font-family: 'Montserrat';
   font-style: normal;
   text-align: left;
   font-weight: 200;
-  font-size: 1.1vw;
+  font-size: 2vh;
   line-height: 4vh;
   max-width: 105vh;
 
@@ -880,7 +880,7 @@ p {
   position: relative;
   top: 100vh;
   opacity: 0;
-  width: 24vh;
+  width: 15vw;
   height: 100vh;
   background-color: rgb(0, 0, 0);
   border-left: solid #171616 2px;
@@ -914,7 +914,7 @@ p {
 
 .project-item-img {
   height: 115vh;
-  width: 24vh;
+  width: 15vw;
   position: relative;
   top: 0;
   opacity: 0.2;
@@ -1616,7 +1616,7 @@ p {
 .project-Various-seperator {
   position: absolute;
   left: 10vw;
-  top: 60vh;
+  top: 64.5vh;
   width: 23.5vw;
   height: 4px;
   background-color: white;
@@ -1633,7 +1633,7 @@ p {
   letter-spacing: 4px;
   position: absolute;
   left: 13vw;
-  top: 62vh;
+  top: 63vh;
 
 }
 
