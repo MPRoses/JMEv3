@@ -1,20 +1,71 @@
+#sec2-skills-description {
+  max-width: 80vw;
+}
+
+.empty-project-item {
+  display: none;
+}
+
+#sec2-skills-title {
+  font-size: 11vh;
+  top: 14vh;
+}
+
+#sec2-skills-description {
+  font-size: 2vh;
+  line-height: 3.4vh;
+  top: 27vh;
+}
+
+.project-item {
+  width: 21.25vw;
+}
+.project-item-img {
+  width: 21.25vw;
+}
+
+.project-item-title-container {
+  left: -300px;
+}
+
+.project-item-title-1 {
+  left: 0;
+  font-size: 9vh;
+}
+
+.project-item-title-2 {
+  left: 12.5vh;
+  font-size: 9vh;
+}
+
+.project-item-title-4 {
+  left: 5vh;
+  font-size: 9vh;
+}
+
+.project-item-img3 {
+  right: 40vw;
+}
+
 .aboutme-section-title {
   font-size: 7vh;
 }
+
 .aboutme-section-description {
-  top: 16vh;
+  font-size: 2vh;
   max-width: 65vw;
 }
 
 .aboutme-section-photo-description-aboutme1 {
   right: 3vw;
   top: 17vh;
-}/*above done*/
+}
 
 .aboutme-section-aboutme2 {
   right: 9vw;
   width: 19vw;
 }
+
 .aboutme-section-photo-description-aboutme2 {
   right: -3vw;
   top: 11.5vh;
@@ -29,26 +80,32 @@
   right: 0;
   top: 63.7vh;
 }
+
 .aboutme-section-aboutme3 {
   top: 19.3vh;
   right: 9vw;
 }
+
 .aboutme-section-photo-description-aboutme3 {
   right: 6vw;
   top: 28vh;
 }
+
 .aboutme-section-aboutme5 {
   width: 23vw;
 }
+
 .aboutme-section-photo-description-aboutme5 {
   right: 4.4vw;
   top: 17vh;
   font-size: 15px;
 }
+
 .aboutme-section-photo-description-aboutme6 {
   right: 13.5vw;
   top: 19vh;
 }
+
 .abt5-container-one-email {
   height: 10vw;
   top: calc(4.5vh - 5vw);
@@ -60,8 +117,128 @@
   top: calc(4.5vh - 5vw);
   left: calc(7.5vw - 5vw);
 }
+
 .abt5-container-three-linkedin {
   height: 10vw;
   top: calc(4.5vh - 5vw);
   left: calc(7.5vw - 5vw);
+}
+
+.aboutme-section-abt5-or {
+  top: 38.5vh;
+}
+.project-Numero-par1 {
+  font-size: 4.3vh;
+}
+.project-Numero-par2 {
+  font-size: 4.3vh;
+}
+.project-Numero-phone {
+  width: 130vw;
+  left: 14vw;
+}
+#project-Numero-title2 {
+  font-size: 15vw;
+  left: calc(0.5 * 100vw - 0.5 * 7.5vw) !important;
+}
+.project-Numero-par3 {
+  font-size: 3vh;
+}
+.project-Numero-par4 {
+  font-size: 2.6vh;
+}
+.project-Numero-par5 {
+  font-size: 3.5vh;
+}
+.Numero-navbar-item2-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item1-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item3-txt {
+  transform: translateY(5vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item4-txt {
+  transform: translateY(6vh);
+  font-size: 3vw;
+}
+.Numero-navbar-item4-txt::before {
+  top: 34px;
+}
+.project-Portfolio p {
+  left: 16vw;
+  max-width: 50vw;
+}
+.project-Portfolio-title {
+  left: 10vw !important;
+  max-width: 85vw !important;
+}
+.Portfolio-title-1 {
+  top: 8vh;
+}
+.Portfolio-title-2 {
+  top: 46vh;
+}
+.Portfolio-title-3 {
+  top: 64vh;
+}
+.project-Various-title-letters p {
+  font-size: 7.4vw;
+}
+.project-Various-seperator {
+  transform: translateY(-0.7vw);
+  width: 43.5vw;
+}
+.project-Various-pentagon3 {
+  width: 65vw;
+}
+.project-Various-pentagon {
+  width: 64vw;
+}
+.project-Various-pentagon4 {
+  width: 41vw;
+  left: 10vw;
+  transform: translateY(-23vw);
+}
+.project-Various-pentagon2 {
+  width: 29vw;
+  transform: translateY(35vw);
+}
+.project-Various-pentagon5 {
+  width: 65vw;
+  left: 10vw;
+  transform: translateY(95vw);
+}
+.project-Various-pentagon6 {
+  width: 38vw;
+  transform: translateY(7vw);
+  left: 10vw;
+}
+#tape-size {
+  transform: scale(.9) rotate(90deg) translate(120vw, -45vh);
+}
+body {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+}
+html {
+  overflow-x: hidden;
+}
+.cursor {
+  display: none;
+}
+#sec2-skills-description {
+  font-size: 1.8vh;
+  line-height: 2.2vh;
+  top: 25vh;
+}
+#sec2-skills-title {
+  font-size: 7.6vh;
+  top: 13vh;
 }

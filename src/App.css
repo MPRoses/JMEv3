@@ -188,6 +188,10 @@ body {
   }
 }
 
+#tape-size {
+  transform: scale(1);
+}
+
 #tape-movement {
   transition: transform 3s cubic-bezier(0.16, 0.69, 0.26, 0.88);
 }
@@ -1047,7 +1051,7 @@ p {
 
 .project-item-title-1 {
   position: relative;
-  left: 0;
+  left: -270px;
   font-weight: 900;
   width: 810px;
   top: 37vh;

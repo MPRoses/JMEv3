@@ -39,16 +39,22 @@ function App() {
     document.title = "Jens van der Sloot"
   }, []);
 
-  //const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
+  const isMobile = useMediaQuery({ query: '(max-width: 1000px)' });
 
   const isTabletTitle = useMediaQuery({ query: '(max-width: 1400px)' });
-
+  
 
   useEffect(() => {
     if (isTabletTitle) {
       import('./AppTablet.css');
     }
   }, [isTabletTitle]);
+
+  useEffect(() => {
+    if (isMobile) {
+      import('./Appmobile.css');
+    }
+  }, [isMobile]);
 
 
   // format: out-top, in-top, out-bottom, in-bottom, bg color
@@ -141,108 +147,6 @@ function App() {
   // onload
   $(() => {
     enterBackground();
-
-   /* if (isTabletTitle) {
-      $("#sec2-skills-description").css("max-width", "80vw");
-      $(".empty-project-item").css("display", "none");
-      $("#sec2-skills-title").css({
-        "font-size": "11vh",
-        "top": "14vh"
-      });
-      $("#sec2-skills-description").css({
-        "font-size": "2vh",
-        "line-height": "3.4vh",
-        "top": "27vh",
-      });
-      $(".project-item-title-container").css("left", "-300px");
-      $(".project-item-title-1").css("left", "0");
-      $(".project-item-title-2").css("left", "12.5vh");
-      $(".project-item-title-4").css("left", "5vh");
-
-      $(".project-item-title-1").css("font-size", "9vh");
-      $(".project-item-title-2").css("font-size", "9vh");
-      $(".project-item-title-4").css("font-size", "9vh");
-
-      $(".project-item-img3").css("right", "40vw");
-
-      $(".aboutme-section-title").css("font-size", "7vh");
-      $(".aboutme-section-description").css({
-        "font-size": "2vh",
-        "max-width": "65vw"
-      });
-
-      $(".aboutme-section-photo-description-aboutme1").css({
-        "right": "3vw",
-        "top": "17vh"
-      });
-
-      $(".aboutme-section-aboutme2").css({
-        "right": "9vw",
-        "width": "19vw"
-      });
-      
-      $(".aboutme-section-photo-description-aboutme2").css({
-        "right": "-3vw",
-        "top": "11.5vh"
-      });
-      
-      $(".aboutme-section-aboutme4").css({
-        "top": "60vh",
-        "right": "9vw"
-      });
-      
-      $(".aboutme-section-photo-description-aboutme4").css({
-        "right": "0",
-        "top": "63.7vh"
-      });
-      
-      $(".aboutme-section-aboutme3").css({
-        "top": "19.3vh",
-        "right": "9vw"
-      });
-      
-      $(".aboutme-section-photo-description-aboutme3").css({
-        "right": "6vw",
-        "top": "28vh"
-      });
-      
-      $(".aboutme-section-aboutme5").css({
-        "width": "23vw"
-      });
-      
-      $(".aboutme-section-photo-description-aboutme5").css({
-        "right": "4.4vw",
-        "top": "17vh",
-        "font-size": "15px"
-      });
-      
-      $(".aboutme-section-photo-description-aboutme6").css({
-        "right": "13.5vw",
-        "top": "19vh"
-      });
-      
-      $(".abt5-container-one-email").css({
-        "height": "10vw",
-        "top": "calc(4.5vh - 5vw)",
-        "left": "calc(7.5vw - 5vw)"
-      });
-      
-      $(".abt5-container-two-calling").css({
-        "height": "10vw",
-        "top": "calc(4.5vh - 5vw)",
-        "left": "calc(7.5vw - 5vw)"
-      });
-      
-      $(".abt5-container-three-linkedin").css({
-        "height": "10vw",
-        "top": "calc(4.5vh - 5vw)",
-        "left": "calc(7.5vw - 5vw)"
-      });
-
-      $(".aboutme-section-abt5-or").css("top", "38.5vh");
-
-    }*/
-
     $(".background-button").addClass("background-button-active");
 
     $(".background-button").on("click", () => {
@@ -724,143 +628,180 @@ function App() {
           }
         }
 
+
         if (currentIndex !== previousIndex) {
           $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0")
           setTimeout(() => {
-            if (skillsTitles[currentIndex].length >= 20) {
-              if (isTabletTitle) {
-                $("#sec2-skills-title").css({
-                  "font-size": "5vh",
-                  "top": "14vh"
-                });
-              } else {
-                $("#sec2-skills-title").css({
-                  "font-size": "9vh",
-                  "top": "15vh"
-                });
-              }
 
-            } else if (skillsTitles[currentIndex].length > 8) {
-              if (isTabletTitle) {
-                $("#sec2-skills-title").css({
-                  "font-size": "7vh",
-                  "top": "14vh"
-                });
-              } else {
-                $("#sec2-skills-title").css({
-                  "font-size": "12.3vh",
-                  "top": "12vh"
-                });
-              }
-            } else {
-              if (isTabletTitle) {
-                $("#sec2-skills-title").css({
-                  "font-size": "10vh",
-                  "top": "14vh"
-                });
-              } else {
-                $("#sec2-skills-title").css("font-size", "21.3vh");
-                if (skillsDescriptions[currentIndex].length > 700) {
-                  $("#sec2-skills-title").css("top", "4vh");
-                } else if (skillsDescriptions[currentIndex].length > 700) {
-                  $("#sec2-skills-title").css("top", "4vh");
+              if (skillsTitles[currentIndex].length >= 20) {
+                if (isTabletTitle) {
+                  $("#sec2-skills-title").css({
+                    "font-size": "5vh",
+                    "top": "14vh"
+                  });
                 } else {
-                  $("#sec2-skills-title").css("top", "13vh");
+                  $("#sec2-skills-title").css({
+                    "font-size": "9vh",
+                    "top": "15vh"
+                  });
+                }
+
+              } else if (skillsTitles[currentIndex].length > 8) {
+                if (isTabletTitle) {
+                  $("#sec2-skills-title").css({
+                    "font-size": "7vh",
+                    "top": "14vh"
+                  });
+                } else {
+                  $("#sec2-skills-title").css({
+                    "font-size": "12.3vh",
+                    "top": "12vh"
+                  });
+                }
+              } else {
+                if (isTabletTitle) {
+                  $("#sec2-skills-title").css({
+                    "font-size": "10vh",
+                    "top": "14vh"
+                  });
+                } else {
+                  $("#sec2-skills-title").css("font-size", "21.3vh");
+                  if (skillsDescriptions[currentIndex].length > 700) {
+                    $("#sec2-skills-title").css("top", "4vh");
+                  } else if (skillsDescriptions[currentIndex].length > 700) {
+                    $("#sec2-skills-title").css("top", "4vh");
+                  } else {
+                    $("#sec2-skills-title").css("top", "13vh");
+                  }
                 }
               }
-            }
 
-            if (skillsDescriptions[currentIndex].length > 700) {
-              if (skillsDescriptions[currentIndex].length > 1400) {
-                if (skillsTitles[currentIndex].length > 18) {
-                  if (isTabletTitle) {
-                    $("#sec2-skills-description").css({
-                      "font-size": "1.7vh",
-                      "line-height": "3.4vh",
-                      "top": "25vh",
+              if (skillsDescriptions[currentIndex].length > 700) {
+                if (skillsDescriptions[currentIndex].length > 1400) {
+                  if (skillsTitles[currentIndex].length > 18) {
+                    if (isTabletTitle) {
+                      $("#sec2-skills-description").css({
+                        "font-size": "1.7vh",
+                        "line-height": "3.4vh",
+                        "top": "25vh",
+                      });
+                    } else {
+                      $("#sec2-skills-description").css({
+                        "font-size": "1.8vh",
+                        "line-height": "3.5vh",
+                        "top": "28vh",
+                      });
+                    }
+                  } else {
+                    if (isTabletTitle) {
+                      $("#sec2-skills-description").css({
+                        "font-size": "1.5vh",
+                        "line-height": "3vh",
+                        "top": "25vh",
+                      })
+                    } else {
+                      $("#sec2-skills-description").css({
+                        "font-size": "1.8vh",
+                        "line-height": "3.5vh",
+                        "top": "30vh",
+                      })
+                    }          
+                  }
+
+                } else {
+                  if (skillsTitles[currentIndex].length > 18) {
+                    if (isTabletTitle) {
+                      $("#sec2-skills-description").css({
+                        "font-size": "2vh",
+                        "line-height": "3.4vh",
+                        "top": "25vh",
+                      })
+                    } else {
+                      $("#sec2-skills-description").css({
+                        "font-size": "2vh",
+                        "line-height": "4vh",
+                        "top": "30vh",
+                      })
+                    }
+                  } else {
+                    if (isTabletTitle) {
+                      $("#sec2-skills-description").css({
+                        "font-size": "1.7vh",
+                        "line-height": "3.4vh",
+                        "top": "27vh",
+                      })
+                    } else {
+                      $("#sec2-skills-description").css({
+                        "font-size": "2vh",
+                        "line-height": "4vh",
+                        "top": "32vh",
+                      })
+                    }
+                  }
+                }
+              } else {
+                if (isTabletTitle) {
+                  $("#sec2-skills-description").css({
+                    "font-size": "2vh",
+                    "line-height": "3.4vh",
+                    "top": "27vh",
+                  })
+                } else {
+                  $("#sec2-skills-description").css({
+                    "font-size": "2vh",
+                    "line-height": "4vh",
+                    "top": "42.5vh",
+                  })
+                }
+            }
+              $("#sec2-skills-title").html(`${skillsTitles[currentIndex]}`);
+              $("#sec2-skills-description").html(`${skillsDescriptions[currentIndex]}`);
+              if ($(window).scrollTop() < (2 * window.innerHeight)) {
+
+                if (isMobile) {
+                  if (skillsTitles[currentIndex].length > 13) {
+                    $("#sec2-skills-title").css({
+                      "font-size": "5.6vh",
+                      "top": "9.5vh"
                     });
+                  } else if (skillsTitles[currentIndex].length > 9) {
+                    $("#sec2-skills-title").css({
+                      "font-size": "5.5vh",
+                      "top": "15vh"
+                    });
+                  }   else if (skillsTitles[currentIndex].length > 4) {
+                    $("#sec2-skills-title").css({
+                      "font-size": "7.6vh",
+                      "top": "13vh"
+                    });
+                  }
+                  console.log(skillsDescriptions[currentIndex].length);
+                  if (skillsDescriptions[currentIndex].length > 1500) {
+                    $("#sec2-skills-description").css({
+                      "font-size": "1.6vh",
+                      "line-height": "1.8vh",
+                      "top": "25vh",
+                    })
                   } else {
                     $("#sec2-skills-description").css({
                       "font-size": "1.8vh",
-                      "line-height": "3.5vh",
-                      "top": "28vh",
-                    });
-                  }
-                } else {
-                  if (isTabletTitle) {
-                    $("#sec2-skills-description").css({
-                      "font-size": "1.5vh",
-                      "line-height": "3vh",
+                      "line-height": "2.2vh",
                       "top": "25vh",
-                    })
-                  } else {
-                    $("#sec2-skills-description").css({
-                      "font-size": "1.8vh",
-                      "line-height": "3.5vh",
-                      "top": "30vh",
-                    })
-                  }          
-                }
-
-              } else {
-                if (skillsTitles[currentIndex].length > 18) {
-                  if (isTabletTitle) {
-                    $("#sec2-skills-description").css({
-                      "font-size": "2vh",
-                      "line-height": "3.4vh",
-                      "top": "25vh",
-                    })
-                  } else {
-                    $("#sec2-skills-description").css({
-                      "font-size": "2vh",
-                      "line-height": "4vh",
-                      "top": "30vh",
-                    })
-                  }
-                } else {
-                  if (isTabletTitle) {
-                    $("#sec2-skills-description").css({
-                      "font-size": "1.7vh",
-                      "line-height": "3.4vh",
-                      "top": "27vh",
-                    })
-                  } else {
-                    $("#sec2-skills-description").css({
-                      "font-size": "2vh",
-                      "line-height": "4vh",
-                      "top": "32vh",
                     })
                   }
                 }
-              }
-            } else {
-              if (isTabletTitle) {
-                $("#sec2-skills-description").css({
-                  "font-size": "2vh",
-                  "line-height": "3.4vh",
-                  "top": "27vh",
-                })
-              } else {
-                $("#sec2-skills-description").css({
-                  "font-size": "2vh",
-                  "line-height": "4vh",
-                  "top": "42.5vh",
-                })
-              }
-            }
-            $("#sec2-skills-title").html(`${skillsTitles[currentIndex]}`);
-            $("#sec2-skills-description").html(`${skillsDescriptions[currentIndex]}`);
-            if ($(window).scrollTop() < (2 * window.innerHeight)) {
-              $("#sec2-skills-title, #sec2-skills-description").css({
-                "opacity": "1",
-                "transform": "translate(0,0px)"
-              })
+                
 
-            } else {
-              $("#sec2-skills-title, #sec2-skills-description").css({
-                "opacity": "0",
-                "transform": "translate(0,40px)"
-              })
+                $("#sec2-skills-title, #sec2-skills-description").css({
+                  "opacity": "1",
+                  "transform": "translate(0,0px)"
+                })
+
+              } else {
+                $("#sec2-skills-title, #sec2-skills-description").css({
+                  "opacity": "0",
+                  "transform": "translate(0,40px)"
+                })
             }
           }, 650);
         }
@@ -1647,57 +1588,59 @@ function App() {
           <path fill="#254562" className="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z" />
         </svg>
       </div>
-      <div id="tape-movement">
-        <div id="tape-container">
-          <svg className="tape" width="758" height="394" viewBox="0 0 758 394" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <div id="tape-size">
+        <div id="tape-movement">
+          <div id="tape-container">
+            <svg className="tape" width="758" height="394" viewBox="0 0 758 394" fill="none" xmlns="http://www.w3.org/2000/svg">
 
-            <rect width="696" height="354" transform="matrix(1 0 0 -1 5 388)" fill="#F2F2F2" />
-            <rect x="2.5" y="31.5" width="701" height="359" stroke="black" strokeWidth="5" />
+              <rect width="696" height="354" transform="matrix(1 0 0 -1 5 388)" fill="#F2F2F2" />
+              <rect x="2.5" y="31.5" width="701" height="359" stroke="black" strokeWidth="5" />
 
-            <rect x="5" y="157" width="696" height="3" fill="black" />
-            <rect x="5" y="236" width="696" height="3" fill="black" />
-            <rect x="5" y="315" width="696" height="3" fill="black" />
-            <rect x="281" y="160" width="3" height="76" fill="black" />
-            <rect x="514" y="239" width="3" height="76" fill="black" />
-            <rect x="364" y="315" width="3" height="76" fill="black" />
-            <rect x="534" y="315" width="3" height="76" fill="black" />
+              <rect x="5" y="157" width="696" height="3" fill="black" />
+              <rect x="5" y="236" width="696" height="3" fill="black" />
+              <rect x="5" y="315" width="696" height="3" fill="black" />
+              <rect x="281" y="160" width="3" height="76" fill="black" />
+              <rect x="514" y="239" width="3" height="76" fill="black" />
+              <rect x="364" y="315" width="3" height="76" fill="black" />
+              <rect x="534" y="315" width="3" height="76" fill="black" />
 
-            <path d="M51 5H750L703.5 29H10L51 5Z" fill="#F2F2F2" />
-            <path d="M752 360.756V7L706 33.5V387.5L752 360.756Z" fill="#F2F2F2" />
+              <path d="M51 5H750L703.5 29H10L51 5Z" fill="#F2F2F2" />
+              <path d="M752 360.756V7L706 33.5V387.5L752 360.756Z" fill="#F2F2F2" />
 
 
-            <rect x="0.192627" y="29.3336" width="58.6673" height="4.61474" transform="rotate(-30 0.192627 29.3336)" fill="black" />
-            <rect x="702" y="30" width="60" height="5" transform="rotate(-30 702 30)" fill="black" />
-            <rect x="703.515" y="388.703" width="59.4053" height="5" transform="rotate(-30 703.515 388.703)" fill="black" />
-            <rect x="51" width="706" height="5" fill="black" />
-            <rect x="752" y="363" width="363" height="5" transform="rotate(-90 752 363)" fill="black" />
-          </svg>
-          <p className="tape-title">FEATURING</p>
-          <p className="tape-name">JENS VAN
-            <br />&nbsp;&nbsp;&nbsp;&nbsp;DER SLOOT
-          </p>
-          <p className="tape-whoisthat">Who's that?</p>
-          <p className="tape-description">DESIGNER AND DEVELOPER BASED IN LISSE, NETHERLANDS</p>
-          <p className="tape-age">17.09.05</p>
-          <div className="tape-colorwheel">
-          <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#360000" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#6B1111" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#96411C" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#C0633B" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#E38157" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#E3A357" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#F0BE74" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#8DC3DA" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#94ABB5" }}></div>
-            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#293C44" }}></div>
+              <rect x="0.192627" y="29.3336" width="58.6673" height="4.61474" transform="rotate(-30 0.192627 29.3336)" fill="black" />
+              <rect x="702" y="30" width="60" height="5" transform="rotate(-30 702 30)" fill="black" />
+              <rect x="703.515" y="388.703" width="59.4053" height="5" transform="rotate(-30 703.515 388.703)" fill="black" />
+              <rect x="51" width="706" height="5" fill="black" />
+              <rect x="752" y="363" width="363" height="5" transform="rotate(-90 752 363)" fill="black" />
+            </svg>
+            <p className="tape-title">FEATURING</p>
+            <p className="tape-name">JENS VAN
+              <br />&nbsp;&nbsp;&nbsp;&nbsp;DER SLOOT
+            </p>
+            <p className="tape-whoisthat">Who's that?</p>
+            <p className="tape-description">DESIGNER AND DEVELOPER BASED IN LISSE, NETHERLANDS</p>
+            <p className="tape-age">17.09.05</p>
+            <div className="tape-colorwheel">
+            <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#360000" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#6B1111" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#96411C" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#C0633B" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#E38157" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#E3A357" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#F0BE74" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#8DC3DA" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#94ABB5" }}></div>
+              <div className="colorwheel-segment hoverable" style={{ "backgroundColor": "#293C44" }}></div>
 
+            </div>
+            <div className="tape-colorspot"></div>
+            <div className="tape-hashtag">
+              <p className="hashtag-text glitch" data-text="#MAKINGDREAMSCOMETRUE">#MAKINGDREAMSCOMETRUE</p>
+            </div>
+            <img className="tape-img-globe clickable hoverable open-webpage" src="https://mproses.github.io/hosted-assets/image%201.png" alt="globe-icon" />
+            <img className="tape-img-linkedin clickable hoverable open-linkedin" src="https://mproses.github.io/hosted-assets/image%202.png" alt="linkedin-icon" />
           </div>
-          <div className="tape-colorspot"></div>
-          <div className="tape-hashtag">
-            <p className="hashtag-text glitch" data-text="#MAKINGDREAMSCOMETRUE">#MAKINGDREAMSCOMETRUE</p>
-          </div>
-          <img className="tape-img-globe clickable hoverable open-webpage" src="https://mproses.github.io/hosted-assets/image%201.png" alt="globe-icon" />
-          <img className="tape-img-linkedin clickable hoverable open-linkedin" src="https://mproses.github.io/hosted-assets/image%202.png" alt="linkedin-icon" />
         </div>
       </div>
       <div className="navbar">
