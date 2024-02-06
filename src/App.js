@@ -169,6 +169,41 @@ function App() {
       }
    })
 
+   if (isMobile) {
+    // unsupported timer
+    const endDate = new Date(2024, 1, 8, 8, 33, 0);
+
+    const countdown = document.getElementById('countdown-container');
+    const daysDisplay = document.getElementById('days');
+    const hoursDisplay = document.getElementById('hours');
+    const minutesDisplay = document.getElementById('minutes');
+    const secondsDisplay = document.getElementById('seconds');
+
+    const updateCountdown = () => {
+      const now = new Date();
+      const distance = endDate.getTime() - now.getTime();
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysDisplay.textContent = days < 10 ? '0' + days : days;
+      hoursDisplay.textContent = hours < 10 ? '0' + hours : hours;
+      minutesDisplay.textContent = minutes < 10 ? '0' + minutes : minutes;
+      secondsDisplay.textContent = seconds < 10 ? '0' + seconds : seconds;
+
+      if (distance < 0) {
+        clearInterval(timeInterval);
+        countdown.innerHTML = '<h2>Countdown Expired!</h2>';
+      }
+    };
+
+    const timeInterval = setInterval(updateCountdown, 1000);
+    updateCountdown(); // Call the function immediately to display the initial countdown
+
+   }
+
     //cursor
 
     $(".cursor").css("opacity", "1");
@@ -1658,6 +1693,16 @@ function App() {
           <p className="item-text text-aboutme">ABOUT&nbsp;ME</p>
         </div>
 
+      </div>
+
+      <div className="mobile-cover">
+        <p><span>Hey sorry!</span><br></br> I just finished this website a day ago for desktop / tablet and am still working on the making it compatible with every mobile device. Rest assured, it will be working on all mobile devices very shortly!</p>
+        <div class="time-display">
+          <span id="days">00</span> Days
+          <span id="hours">00</span> Hours
+          <span id="minutes">00</span> Minutes
+          <span id="seconds">00</span> Seconds
+        </div>
       </div>
 
 

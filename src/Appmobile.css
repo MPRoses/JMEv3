@@ -242,3 +242,60 @@ html {
   font-size: 7.6vh;
   top: 13vh;
 }
+/* temp settings*/
+
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.mobile-cover {
+  display: block;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(18, 17, 24); 
+  z-index: 300;
+  pointer-events: all;
+}
+.mobile-cover p {
+  color: white;
+  font-size: .9em;
+  position: absolute;
+  max-width: 70vw;
+  top: 15vh;
+  left: 15vw;
+  font-family: "Changa One", sans-serif;
+}
+.mobile-cover p span {
+  color: white;
+  font-size: 8em;
+  position: relative;
+}
+
+#countdown-container {
+  margin: 50px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  max-width: 60vw;
+  color: white;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-family: "Changa One", sans-serif;
+  position: relative;
+  top: 53vh;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+
+#countdown-container span {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 10px;
+}

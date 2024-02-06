@@ -30,6 +30,9 @@ body {
   background-color: white;
 }
 
+.mobile-cover {
+  display: none;
+}
 .background-button {
   width: 40px;
   height: 40px;
