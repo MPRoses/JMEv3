@@ -1591,6 +1591,10 @@ height: 100vh;
   opacity: 0;
 }
 
+.initial-wave {
+  display: none;
+}
+
 .project-Various-title-letters p {
   color: #FFF;
   position: absolute;

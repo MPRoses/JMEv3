@@ -18,10 +18,10 @@
 }
 
 .project-item {
-  width: 21.25vw;
+  width: 28.34vw;
 }
 .project-item-img {
-  width: 21.25vw;
+  width: 28.34vw;
 }
 
 .project-item-title-container {
@@ -242,7 +242,7 @@ html {
   font-size: 7.6vh;
   top: 13vh;
 }
-/* temp settings*/
+/* temp settings
 
 html {
   width: 100vw;
@@ -298,4 +298,238 @@ html {
   font-size: 18px;
   font-weight: bold;
   margin: 0 10px;
+}*/
+
+.starthere {
+  opacity: 0 !important;
+}
+
+
+
+.aboutme-section-title {
+  font-size: 4.5vh;
+}
+
+.aboutme-section-description {
+  font-size: 2vh;
+  max-width: 65vw;
+}
+
+.aboutme-section-photo-description-aboutme1 {
+  right: 4vw;
+  font-size: .8vh;
+  top: 12.5vh;
+}
+
+.aboutme-section-aboutme2 {
+  right: 9vw;
+  width: 19vw;
+}
+
+.aboutme-section-photo-description-aboutme2 {
+  font-size: .8vh;
+  right: -2vw;
+  top: 9.2vh;
+}
+
+.aboutme-section-aboutme4 {
+  top: 65vh;
+  right: 9vw;
+}
+
+.aboutme-section-photo-description-aboutme4 {
+  font-size: .8vh;
+  right: 1vw;
+  top: 68.7vh;
+}
+
+.aboutme-section-aboutme3 {
+  top: 19.3vh;
+  right: 9vw;
+}
+
+.aboutme-section-photo-description-aboutme3 {
+  font-size: .8vh;
+  right: 8.5vw;
+  top: 25vh;
+}
+
+.aboutme-section-aboutme5 {
+  width: 23vw;
+}
+
+.aboutme-section-photo-description-aboutme5 {
+  right: 2.2vw;
+  top: 12vh;
+  font-size: .8vh;
+}
+.smaller-description {
+  font-size: 1.65vh;
+}
+
+.aboutme-section-photo-description-aboutme6 {
+  right: 11vw;
+  font-size: .8vh;
+  top: 14vh;
+}
+
+.abt5-container-one-email {
+  height: 10vw;
+  top: calc(4.5vh - 5vw);
+  left: calc(7.5vw - 5vw);
+}
+
+.abt5-container-two-calling {
+  height: 10vw;
+  top: calc(4.5vh - 5vw);
+  left: calc(7.5vw - 5vw);
+}
+
+.abt5-container-three-linkedin {
+  height: 10vw;
+  top: calc(4.5vh - 5vw);
+  left: calc(7.5vw - 5vw);
+}
+
+.aboutme-section-abt5-or {
+  top: 38.76vh;
+}
+.project-item-noshow-mobile {
+  display: none;
+}
+
+
+.project-item-title-container {
+  left: -300px;
+}
+
+.project-item-title-1 {
+  left: -5vh;
+  font-size: 9vh;
+}
+
+.project-item-title-2 {
+  left: 12.5vh;
+  font-size: 9vh;
+}
+
+.project-item-title-4 {
+  left: 1.5vh;
+  font-size: 9vh;
+}
+
+.project-item-img3 {
+  right: 40vw;
+}
+
+.project-Portfolio p {
+  left: 16vw;
+  max-width: 80vw;
+  font-size: 1.7vh;
+}
+.project-Portfolio-title {
+  left: 10vw !important;
+  font-size: 3.7vh !important;
+}
+.project-Portfolio-img {
+  opacity: .2;
+}
+.back {
+  z-index: 300 !important;
+  left: 27px;
+}
+
+.project-Numero-par1 {
+  font-size: 3vh;
+}
+.project-Numero-par2 {
+  font-size: 4vh;
+  max-width: 80vw;
+}
+.project-Numero-phone {
+  width: 130vw;
+  left: 14vw;
+}
+#project-Numero-title2 {
+  font-size: 15vw;
+  left: calc(0.5 * 100vw + 0.5 * 6vw) !important;
+}
+.project-Numero-par3 {
+  font-size: 2.45vh;
+}
+.project-Numero-par4 {
+  font-size: 2vh;
+}
+.project-Numero-par5 {
+  font-size: 2.7vh;
+}
+.Numero-navbar-item2-txt {
+  transform: translateY(6vh);
+  font-size: 2.5vw;
+}
+.Numero-navbar-item1-txt {
+  transform: translateY(6vh);
+  font-size: 2.5vw;
+}
+.Numero-navbar-item3-txt {
+  transform: translateY(5vh);
+  font-size: 2.5vw;
+}
+.Numero-navbar-item4-txt {
+  transform: translateY(6vh);
+  font-size: 2.5vw;
+}
+.Numero-navbar-item4-txt::before {
+  top: 9px;
+}
+.project-Numero-timeline {
+  transform: rotate(90deg) scale(1.8);
+  left: 4vw;
+}
+
+.project-Various-title-letters p {
+  font-size: 7vw;
+}
+.project-Various-description {
+  font-size: 1.5vw;
+  top: 40vh;
+}
+.project-Various-seperator {
+  transform: translateY(-0.7vw);
+  width: 43.5vw;
+  top: 41.5vh;
+}
+.project-Various-pentagon3 {
+  width: 65vw;
+}
+.project-Various-pentagon {
+  width: 64vw;
+}
+.project-Various-pentagon4 {
+  width: 41vw;
+  left: 10vw;
+  transform: translateY(-10.7vh);
+}
+.project-Various-pentagon2 {
+  width: 41vw;
+  transform: translate(-40vw, 16.5vh) ;
+}
+.project-Various-pentagon5 {
+  width: 65vw;
+  left: 10vw;
+  transform: translateY(26vh);
+}
+.project-Various-pentagon6 {
+  width: 31.5vw;
+  transform: translateY(12vh);
+  left: 10vw;
+}
+.project-Various-arrow-description {
+  left: calc(45vw - 0.5 * 126px);
+}
+.project-Various-arrow {
+  left: calc(45vw - 12px);
+}
+.project-Various-more {
+  left: 15vw;
 }

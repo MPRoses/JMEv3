@@ -57,6 +57,19 @@ function App() {
   }, [isMobile]);
 
 
+  const MOBILE_BREAKPOINT = 1000;
+  const TABLET_BREAKPOINT = 1400;
+
+  function handleResize() {
+    const viewportWidth = $(window).width();
+
+    if (viewportWidth > TABLET_BREAKPOINT || viewportWidth < MOBILE_BREAKPOINT) {
+      window.location.reload();
+    }
+  }
+
+  $(window).resize(handleResize);
+
   // format: out-top, in-top, out-bottom, in-bottom, bg color
   let colorthemes = [
     ["#FC8E00", "#798A9A", "#E6BD69", "#254562", "#F60000"],
@@ -168,41 +181,6 @@ function App() {
 
       }
    })
-
-   if (isMobile) {
-    // unsupported timer
-    const endDate = new Date(2024, 1, 8, 8, 33, 0);
-
-    const countdown = document.getElementById('countdown-container');
-    const daysDisplay = document.getElementById('days');
-    const hoursDisplay = document.getElementById('hours');
-    const minutesDisplay = document.getElementById('minutes');
-    const secondsDisplay = document.getElementById('seconds');
-
-    const updateCountdown = () => {
-      const now = new Date();
-      const distance = endDate.getTime() - now.getTime();
-
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-      daysDisplay.textContent = days < 10 ? '0' + days : days;
-      hoursDisplay.textContent = hours < 10 ? '0' + hours : hours;
-      minutesDisplay.textContent = minutes < 10 ? '0' + minutes : minutes;
-      secondsDisplay.textContent = seconds < 10 ? '0' + seconds : seconds;
-
-      if (distance < 0) {
-        clearInterval(timeInterval);
-        countdown.innerHTML = '<h2>Countdown Expired!</h2>';
-      }
-    };
-
-    const timeInterval = setInterval(updateCountdown, 1000);
-    updateCountdown(); // Call the function immediately to display the initial countdown
-
-   }
 
     //cursor
 
@@ -445,12 +423,20 @@ function App() {
 
       if ($(".sec2-item:eq(1)").hasClass("project-active")) {
 
-        if (!isTabletTitle) {
-          $(".project-item").css("display", "block");
-        } else {
+        if (isMobile) {
           $(".project-item").css("display", "block");
           $(".empty-project-item").css("display", "none");
+          $(".project-item-noshow-mobile").css("display", "none");
+        } else if (isTabletTitle) {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "none");
+          $(".project-item-noshow-mobile").css("display", "block");
+        } else {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "block");
+          $(".project-item-noshow-mobile").css("display", "block");
         }
+
         $(".sec2-item:eq(1)").removeClass("project-active");
         document.querySelector(".transition-circle").style.transform = "scale(0, 0)";
         $(".back").css("opacity", "0")
@@ -466,7 +452,7 @@ function App() {
 
           setTimeout(() => {
             $(".back-to-home").css("opacity", "0");
-            $("#skillsWheel, #wheelPointer").css("opacity", "0")
+            $("#skillsWheel, #wheelPointer").css("opacity", "0");
             $(".sec2").css("background-color", "#00000000");
             $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
             $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
@@ -516,7 +502,7 @@ function App() {
 
         setTimeout(() => {
           $(".back-to-home").css("opacity", "0");
-          $("#skillsWheel, #wheelPointer").css("opacity", "0")
+          $("#skillsWheel, #wheelPointer").css("opacity", "0");
           $(".sec2").css("background-color", "#00000000");
           $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
           $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
@@ -572,18 +558,27 @@ function App() {
 
 
     function updateItems() {
-      if (isTabletTitle) {
-        $("#sec2-skills-description").css("max-width", "80vw");
+      if (isMobile) {
+        $(".project-item").css("display", "block");
         $(".empty-project-item").css("display", "none");
-      } else {
+        $(".project-item-noshow-mobile").css("display", "none");
         $("#sec2-skills-description").css("max-width", "105vh");
+      } else if (isTabletTitle) {
+        $("#sec2-skills-description").css("max-width", "80vw");
+        $(".project-item").css("display", "block");
+        $(".empty-project-item").css("display", "none");
+        $(".project-item-noshow-mobile").css("display", "block");
+      } else {
+        $(".project-item").css("display", "block");
         $(".empty-project-item").css("display", "block");
+        $(".project-item-noshow-mobile").css("display", "block");
+        $("#sec2-skills-description").css("max-width", "105vh");
       }
       if ($(window).scrollTop() >= (2.2 * window.innerHeight)) {
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(2).addClass("visible");
 
-        $("#skillsWheel, #wheelPointer, #sec2-skills-title, #sec2-skills-description").css("opacity", "0")
+        $("#skillsWheel, #wheelPointer, #sec2-skills-title, #sec2-skills-description").css("opacity", "0");
         $("#sec2-skills-title, #sec2-skills-description").css("transform", "translate(0,40px)");
 
         $(".project-item").removeClass("item-visible");
@@ -617,8 +612,7 @@ function App() {
 
         $(".sec2-identifier").removeClass("visible");
         $(".sec2-identifier").eq(0).addClass("visible");
-        $("#skillsWheel, #wheelPointer, .aboutme-section").css("opacity", "0")
-
+        $("#skillsWheel, #wheelPointer, .aboutme-section").css("opacity", "0");
         $(".project-item").removeClass("item-visible");
 
       } else {
@@ -647,9 +641,8 @@ function App() {
         if (isTabletTitle) {
           $("#skillsWheel").css("opacity", ".2");
           $("#wheelPointer").css("opacity", "0");
-        } else {
-          $("#skillsWheel, #wheelPointer").css("opacity", "1");
         }
+
         if ($(window).scrollTop() > (1.95 * window.innerHeight) && $(window).scrollTop() < (2 * window.innerHeight)) {
           $("#sec2-skills-title, #sec2-skills-description").css({
             "opacity": "1",
@@ -813,13 +806,13 @@ function App() {
                   console.log(skillsDescriptions[currentIndex].length);
                   if (skillsDescriptions[currentIndex].length > 1500) {
                     $("#sec2-skills-description").css({
-                      "font-size": "1.6vh",
+                      "font-size": "1.4vh",
                       "line-height": "1.8vh",
                       "top": "25vh",
                     })
                   } else {
                     $("#sec2-skills-description").css({
-                      "font-size": "1.8vh",
+                      "font-size": "1.65vh",
                       "line-height": "2.2vh",
                       "top": "25vh",
                     })
@@ -844,7 +837,7 @@ function App() {
         previousIndex = currentIndex;
 
         if ($(window).scrollTop() === 5) {
-          $("#skillsWheel, #wheelPointer").css("opacity", "0")
+          $("#skillsWheel, #wheelPointer").css("opacity", "0");
         }
       }
     }
@@ -1075,6 +1068,7 @@ function App() {
       
         function createWave(top, left) {
           const newWave = wave.clone().css({ top: `calc(${top}px + 20vh)`, left: `${left}px` });
+          newWave.removeClass("initial-wave");
           return newWave;
         }
 
@@ -1157,11 +1151,14 @@ function App() {
     });
 
     function updateNumeroItems(parScroll) {
-
+    
       $(".project-Numero-par3").css("top", `calc(-${parScroll * 112}vh + 150vh)`);
       $(".project-Numero-par4, .project-Numero-par5").css("top", `calc(-${parScroll * 110}vh + 150vh)`);
-
-      $(".project-Numero-timeline").css("top", `calc(-${parScroll * 112}vh + 150vh)`);
+      if (isMobile) {
+        $(".project-Numero-timeline").css("top", `calc(-${parScroll * 87}vh + 150vh)`)
+      } else {
+        $(".project-Numero-timeline").css("top", `calc(-${parScroll * 112}vh + 150vh)`)
+      }
         $(".project-Numero-par2").css("top", `calc(-${parScroll * 88}vh + 40vh)`);
         $(".project-Numero-par1").css("top", `calc(-${parScroll * 73}vh + 15vh)`);
         $(".hor-line-1").css("top", `calc(-${parScroll * 98}vh + 95vh)`);
@@ -1190,11 +1187,16 @@ function App() {
         $(".project-Various-arrow-description").css("opacity", "1");
       }
 
-      $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
       $(".project-Various-seperator").css("opacity",`calc(.5 - 2 * ${parScroll})`);
-
-      $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
       $(".project-Various-description").css("opacity",`calc(1 - 2 * ${parScroll})`);
+
+      if (isMobile) {
+        $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 41.5vh)`);
+        $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 40vh)`);
+      } else {
+        $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
+        $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
+      }
 
       $(".project-Various-title-letters p").each(function(index) {
         const parScrollMultiplier = [115, 95, 75][index];
@@ -1206,13 +1208,23 @@ function App() {
           $(".project-Various-seperator").css("transition", "top cubic-bezier(0.16, 0.69, 0.26, 0.88) .78s");
           $(".project-Various-description").css("transition", "top cubic-bezier(0.16, 0.69, 0.26, 0.88) .78s");
           $(this).css("top",`calc(-${parScrollMultiplier * parScroll}vh + 28vh)`);
-          $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh + 5vh)`);
-          $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh + 5vh)`);
+          if (isMobile) {
+            $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 41.5vh + 5vh)`);
+            $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 40vh + 5vh)`);
+          } else {
+            $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh + 5vh)`);
+            $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh + 5vh)`);
+          }
           setTimeout(() => {
             $(this).css("top",`calc(-${parScrollMultiplier * parScroll}vh + 23vh)`);
-            $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
-            $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
-
+            if (isMobile) {
+              $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 41.5vh)`);
+              $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 40vh)`);
+            } else {
+              $(".project-Various-seperator").css("top",`calc(-${parScroll * 60}vh + 64.5vh)`);
+              $(".project-Various-description").css("top",`calc(-${parScroll * 60}vh + 63vh)`);
+            }
+    
             setTimeout(() => {
               $(".project-Various-title-letters p").css("transition", "unset")
               $(".project-Various-seperator, .project-Various-description").css("transition", "unset");
@@ -1237,7 +1249,11 @@ function App() {
       $(".project-Various-pentagon5").css("top",`calc(-${parScroll * 100}vh + 115vh)`);
       $(".project-Various-pentagon6").css("top",`calc(-${parScroll * 100}vh + 146vh)`);
 
-      $(".project-Various-more").css("top",`calc(-${parScroll * 100}vh + 150vh)`);
+      if (isMobile) {
+        $(".project-Various-more").css("top",`calc(-${parScroll * 100}vh + 167vh)`);
+      } else {
+        $(".project-Various-more").css("top",`calc(-${parScroll * 100}vh + 150vh)`);
+      }
 
       if (parScroll > 0.85) {
         $(".project-Various-more").css("opacity", "1");
@@ -1258,33 +1274,18 @@ function App() {
       $(e.target).addClass("Numero-navbar-item-active"); 
 
       console.log($(e.target).text());
+
+      $(".project-Numero-par3, .project-Numero-par4, .project-Numero-par5, .project-Numero-timeline").removeClass("fade-transform fade-transform-true");
+
       if ($(e.target).text() === "TIMELINE") {
-        // disable general
-          $(".project-Numero-par3").removeClass("fade-transform fade-transform-true");
-          $(".project-Numero-par4").removeClass("fade-transform fade-transform-true");
-          $(".project-Numero-par5").removeClass("fade-transform fade-transform-true");
           $(".project-Numero-timeline").addClass("fade-transform fade-transform-true");
       } else if ($(e.target).text() === "GENERAL") {
-        // disable general
-
-          $(".project-Numero-timeline").removeClass("fade-transform fade-transform-true");
           $(".project-Numero-par3").addClass("fade-transform fade-transform-true");
-          $(".project-Numero-par4").removeClass("fade-transform fade-transform-true");
-          $(".project-Numero-par5").removeClass("fade-transform fade-transform-true");
       } else if ($(e.target).text() === "METHODOLOGY") {
-        // disable general
-        $(".project-Numero-timeline").removeClass("fade-transform fade-transform-true");
-        $(".project-Numero-par3").removeClass("fade-transform fade-transform-true");
         $(".project-Numero-par4").addClass("fade-transform fade-transform-true");
-        $(".project-Numero-par5").removeClass("fade-transform fade-transform-true");
       } else {
-        // disable general
-        $(".project-Numero-timeline").removeClass("fade-transform fade-transform-true");
-        $(".project-Numero-par3").removeClass("fade-transform fade-transform-true");
-        $(".project-Numero-par4").removeClass("fade-transform fade-transform-true");
         $(".project-Numero-par5").addClass("fade-transform fade-transform-true");
       }
-
     }
 
     $(".Numero-navbar-item-txt").on("click", (e) => {
@@ -1453,7 +1454,7 @@ function App() {
       if (document.querySelector('transition-circle') === null) {
         $(`${queryOfLocation}`).prepend(`<div class="transition-circle" style="top: ${y}px; left: ${x}px"></div>`);
         setTimeout(() => {
-          $(".transition-circle:eq(0)").css("transform", "scale(250, 250)");
+          $(".transition-circle:eq(0)").css("transform", "scale(500, 500)");
         }, 200);
       }
     }
@@ -1510,10 +1511,17 @@ function App() {
 
           $(`.project-${projectTag}`).addClass("expanded-project");
           if (isTabletTitle) {
-            $(`.project-${projectTag}`).css({
-              "right": "-3.3vw",
-              "opacity": "1"
-            })
+            if ((isMobile && projectTag === "Various") || ( isMobile && projectTag === "Numero")) {
+              $(`.project-${projectTag}`).css({
+                "right": "-5vw",
+                "opacity": "1"
+              })
+            } else  {
+              $(`.project-${projectTag}`).css({
+                "right": "-3.3vw",
+                "opacity": "1"
+              })
+            }
           } else {
             $(`.project-${projectTag}`).css({
               "right": "0",
@@ -1551,12 +1559,20 @@ function App() {
         scrollTop: (2.05 * (window.innerHeight))
       }, 0);
 
-      if (!isTabletTitle) {
-        $(".project-item").css("display", "block");
-      }  else {
-        $(".project-item").css("display", "block");
-        $(".empty-project-item").css("display", "none");
-      }
+       if (isMobile) {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "none");
+          $(".project-item-noshow-mobile").css("display", "none");
+        } else if (isTabletTitle) {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "none");
+          $(".project-item-noshow-mobile").css("display", "block");
+        } else {
+          $(".project-item").css("display", "block");
+          $(".empty-project-item").css("display", "block");
+          $(".project-item-noshow-mobile").css("display", "block");
+        }
+
       document.querySelector(".transition-circle").style.transform = "scale(0, 0)";
       $(".sec2-item:eq(1)").removeClass("project-active");
 
@@ -1695,16 +1711,6 @@ function App() {
 
       </div>
 
-      <div className="mobile-cover">
-        <p><span>Hey sorry!</span><br></br> I just finished this website a day ago for desktop / tablet and am still working on the making it compatible with every mobile device. Rest assured, it will be working on all mobile devices very shortly!</p>
-        <div class="time-display">
-          <span id="days">00</span> Days
-          <span id="hours">00</span> Hours
-          <span id="minutes">00</span> Minutes
-          <span id="seconds">00</span> Seconds
-        </div>
-      </div>
-
 
       <div className="black-bars">
         <div className="bars-b1"></div>
@@ -1766,7 +1772,7 @@ function App() {
               </div>
             </div>
 
-            <div className="project-item project-item-bottom" tag="ToBeDecided"></div>
+            <div className="project-item project-item-bottom project-item-noshow-mobile" tag="ToBeDecided"></div>
             <div className="project-item empty-project-item" tag="ToBeDecided" ></div>
             <div className="project-item project-item-bottom empty-project-item" tag="ToBeDecided" ></div>
           </div>
@@ -1837,7 +1843,7 @@ function App() {
           </div>
           <div className="project-Various">
             <div className="wave-container">
-              <img alt="singular-wave" src="https://i.ibb.co/QCZv8JZ/Group-14.png" className="wave"/> 
+              <img alt="singular-wave" src="https://i.ibb.co/QCZv8JZ/Group-14.png" className="wave initial-wave"/> 
             </div>
             <div className="project-Various-title-letters">
               <p>

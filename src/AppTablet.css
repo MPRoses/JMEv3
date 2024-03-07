@@ -2,8 +2,15 @@
   max-width: 80vw;
 }
 
+.cursor {
+  display: none;
+}
+
 .empty-project-item {
   display: none;
+}
+.project-item-noshow-mobile {
+  display: block;
 }
 
 #sec2-skills-title {
@@ -102,7 +109,7 @@
 }
 
 .aboutme-section-photo-description-aboutme6 {
-  right: 13.5vw;
+  right: 9vw;
   top: 19vh;
 }
 
@@ -171,11 +178,12 @@
 }
 .project-Portfolio p {
   left: 16vw;
-  max-width: 50vw;
+  max-width: 75vw;
+  font-size: 2vh;
 }
 .project-Portfolio-title {
   left: 10vw !important;
-  max-width: 85vw !important;
+  font-size: 3.7vh !important;
 }
 .Portfolio-title-1 {
   top: 8vh;
@@ -217,4 +225,7 @@
   width: 38vw;
   transform: translateY(7vw);
   left: 10vw;
+}
+.project-Portfolio-img {
+  opacity: .3;
 }
