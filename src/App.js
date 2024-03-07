@@ -30,6 +30,7 @@ import codepen from './codepen.png';
 import github from './github.png';
 import projectban1 from './project_ban1.png';
 import './App.css';
+import Orientation from 'react-native-orientation-locker';
 
 import { useEffect } from 'react';
 
@@ -56,6 +57,10 @@ function App() {
     }
   }, [isMobile]);
 
+  Orientation.lockToPortrait();
+
+  
+/*
 
   const MOBILE_BREAKPOINT = 1000;
   const TABLET_BREAKPOINT = 1400;
@@ -68,7 +73,7 @@ function App() {
     }
   }
 
-  $(window).resize(handleResize);
+  $(window).resize(handleResize);*/
 
   // format: out-top, in-top, out-bottom, in-bottom, bg color
   let colorthemes = [
@@ -562,7 +567,7 @@ function App() {
         $(".project-item").css("display", "block");
         $(".empty-project-item").css("display", "none");
         $(".project-item-noshow-mobile").css("display", "none");
-        $("#sec2-skills-description").css("max-width", "105vh");
+        $("#sec2-skills-description").css("max-width", "80vw");
       } else if (isTabletTitle) {
         $("#sec2-skills-description").css("max-width", "80vw");
         $(".project-item").css("display", "block");
