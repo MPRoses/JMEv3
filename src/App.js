@@ -1862,7 +1862,7 @@ function App() {
               </p>
             </div>
             <div className="project-Various-seperator"></div>
-            <div className="project-Various-description">HERE’S WHAT I’VE BUILD</div>
+            <div className="project-Various-description">HERE’S WHAT I’VE BUILT</div>
             <svg className="project-Various-arrow" xmlns="http://www.w3.org/2000/svg" width="4" height="8" viewBox="0 0 4 8" fill="none">
               <path d="M1.82322 7.17678C1.92085 7.27441 2.07915 7.27441 2.17678 7.17678L3.76777 5.58579C3.8654 5.48816 3.8654 5.32986 3.76777 5.23223C3.67014 5.1346 3.51184 5.1346 3.41421 5.23223L2 6.64645L0.585786 5.23223C0.488155 5.1346 0.329864 5.1346 0.232233 5.23223C0.134602 5.32986 0.134602 5.48816 0.232233 5.58579L1.82322 7.17678ZM1.75 0L1.75 7H2.25L2.25 0L1.75 0Z" fill="white"/>
             </svg>
