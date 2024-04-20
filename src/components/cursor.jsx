@@ -9,6 +9,7 @@ function Cursor() {
     const $smallBall = $('.cursor__ball--small');
     const $hoverables = $('.hoverable');
 
+    $(document).off("mousemove");
     $(document).on('mousemove', onMouseMove);
 
     $hoverables.each(function() {
@@ -24,6 +25,8 @@ function Cursor() {
     $(document).on("mousemove", (e) => {
         captureMousePosition(e);
     })  
+
+    $(window).off("scroll");
 
     $(window).on("scroll", (e) => {
             if(lastScrolledLeft !== $(document).scrollLeft()){

@@ -29,3 +29,110 @@
   opacity: 1;
   left: 0;
 }
+.spline-container {
+  width: 100vw;
+  height: 101vh;
+  overflow: hidden;
+  position: absolute;
+  top: 0vh;
+  display: block;
+  opacity: 1;
+  transition: opacity .78s ease-in-out;
+}
+.spline-container div{
+  width: 120vw;
+  top: -10%;
+  left: -10%;
+  height: 110vh;
+  overflow: hidden;
+  position: relative;
+  top: 0vh;
+}
+.bottom-border-spline {
+  width: 100vw !important;
+  position: absolute !important;
+  top: calc(100% - 13vh) !important;
+  left: 0 !important;
+  background-color: black;
+  height: 13vh !important;
+}
+
+.transition {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  pointer-events: none;
+  left: 0;
+  background-color: black;
+  z-index: 2500;
+  opacity: 1;
+  transition: opacity .76s ease-in-out;
+}
+
+.loader {
+  width: 0;
+  height: 4.8px;
+  display: inline-block;
+  position: relative;
+  background: #FFF;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  animation: animFw 1.8s linear 1;
+}
+  .loader::after,
+  .loader::before {
+    content: '';
+    width: 10px;
+    height: 1px;
+    background: #FFF;
+    position: absolute;
+    top: 9px;
+    right: -2px;
+    opacity: 0;
+    transform: rotate(-45deg) translateX(0px);
+    box-sizing: border-box;
+    animation: coli1 0.3s linear infinite;
+  }
+  .loader::before {
+    top: -4px;
+    transform: rotate(45deg);
+    animation: coli2 0.3s linear infinite;
+  }
+
+@keyframes animFw {
+    0% {
+  width: 0;
+}
+    100% {
+  width: 100%;
+}
+  }
+
+@keyframes coli1 {
+    0% {
+  transform: rotate(-45deg) translateX(0px);
+  opacity: 0.7;
+}
+    100% {
+  transform: rotate(-45deg) translateX(-45px);
+  opacity: 0;
+}
+  }
+
+@keyframes coli2 {
+    0% {
+  transform: rotate(45deg) translateX(0px);
+  opacity: 1;
+}
+    100% {
+  transform: rotate(45deg) translateX(-45px);
+  opacity: 0.7;
+}
+  }
+  button {
+    z-index: 40000;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }

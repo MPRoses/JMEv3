@@ -6,7 +6,9 @@
 body {
   background-color: #232323;
   height: 400vh; }
-
+.title-container2 {
+  top: 300vh !important;
+}
 .title-container {
   width: 100vw;
   height: 150px;

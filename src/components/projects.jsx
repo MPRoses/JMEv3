@@ -3,8 +3,6 @@ import $ from 'jquery';
 import gsap from 'gsap';
 
 function Projects() {
-
-    
 $(() => {
     var strength = 500;
     var targetStrength = 50;
@@ -22,6 +20,7 @@ $(() => {
     });
   
     $(".project-item")
+      .off()
       .on("mousemove", function (e) {
         clearTimeout(hoverTimeout);
         updatePosition(e, this);
@@ -122,23 +121,6 @@ $(() => {
           duration: 0.15
         });
       }, 300);
-
-      if (($(window).scrollTop() / window.innerHeight) > 0.6) {
-        setTimeout(() => {
-            $(".project-row").eq(0).css("opacity", "1");
-            setTimeout(() => {
-                $(".project-row").eq(1).css("opacity", "1");
-                setTimeout(() => {
-                    $(".project-row").eq(2).css("opacity", "1");
-                    setTimeout(() => {
-                        $(".project-row").eq(3).css("opacity", "1");
-                    }, 150);
-                }, 150);
-            }, 150);
-        }, 150);
-    } else {
-        $(".project-row").css("opacity", "0");
-    }
     });
 
   

@@ -2,64 +2,9 @@ import './menu.css';
 import $ from 'jquery';
 import animejs from 'animejs';
 
-function Menu() {
+const Menu = ({ skillsOff }) => {
 
     $(() => {
-        /*CODE FOR NAV */
-        $(".navbar").css("opacity", ".5");
-        var isNavAnimating = false;
-        $(".navbar").on("click", () => {
-          if (isNavAnimating) {
-            return;
-          }
-          isNavAnimating = true;
-            if($(".navbar").hasClass("navbar-active")) {
-                $(".navbar").removeClass("navbar-active");
-                // CLOSE MENU
-                $('body, #root, html').css('overflow-y', 'auto'); // Prevent scrolling
-
-                $(".menu-left-1, .menu-left-2, .menu-left-switch-item, .menu-left-switch-item2").css({
-                  opacity: 0,
-                  "pointer-events": "none"
-                })
-                $(".menu-container").css("pointer-events", "none");
-                $(".navbar div").css("background-color", "black")
-                setTimeout(() => {
-                    animejs({
-                        targets: '.menu-left-1, .menu-credits, .main-textitem',
-                        translateY: [0, -50],
-                        opacity: [1, 0],
-                        easing: 'spring',
-                        duration: 500,
-                        delay: animejs.stagger(50)
-                    }); 
-                }, 0);
-                setTimeout(() => {
-                    $(".menu-circle").css("transform", "scale(0)")
-                }, 500);
-            } else {
-                $(".navbar").addClass("navbar-active");
-                // OPEN MENU
-                $('body, #root, html').css('overflow-y', 'hidden'); // Prevent scrolling
-
-                $(".menu-container").css("pointer-events", "all");
-                $(".navbar div").css("background-color", "white");
-                $(".menu-circle").css("transform", "scale(250)")
-                setTimeout(() => {
-                    animejs({
-                        targets: '.menu-left-1, .menu-credits, .main-textitem',
-                        translateY: [-50, 0],
-                        opacity: [0, 1],
-                        easing: 'spring',
-                        duration: 500,
-                        delay: animejs.stagger(50)
-                    }); 
-                }, 780);
-            }
-            setTimeout(() => {
-                  isNavAnimating = false;
-            }, 1400);
-        })
         /*CODE FOR MENU */
          // Split text into letters for all elements with .menu-left-switch-item span and .main-textitem span
         const allSpans = $(
@@ -181,17 +126,6 @@ function Menu() {
         $(".codepen").on("click", () => {
             window.location.href = "https://codepen.io/mproses";
         });
-
-        $(".main-textitem").on("click", function() {
-          if($(this).attr("tag") === "PROJECTS") {
-            $(".navbar").trigger("click");
-
-            setTimeout(() => {
-              $(window).scrollTop(window.innerHeight * .95);
-            }, 0);
-
-          };
-        })
     })
 
     return (
