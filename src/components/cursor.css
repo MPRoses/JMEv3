@@ -1,0 +1,42 @@
+
+.cursor {
+    pointer-events: none;
+    z-index: 11;
+    opacity: 0;
+    transition: opacity .75s ease-in-out .5s;
+  }
+  .cursor__ball {
+    position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    transform: translate(0,0)
+  }
+  
+  .bigCircle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    border: 2px solid #1F95F8;
+    border-radius: 50%;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .3s ease-in-out, border .3s ease-in-out, transform .5s ease-in-out;
+  }
+  .smallCircle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: auto;
+    height: auto;
+    border: 2px solid #54D6C0;
+    border-radius: 50%;
+  }
+  
+  circle {
+    fill: white;
+    opacity: 1;
+    transition: opacity .3s ease-in-out;
+  }

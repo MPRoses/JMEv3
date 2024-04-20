@@ -1,0 +1,118 @@
+.project-container {
+  width: 100vw;
+  height: fit-content;
+  z-index: 0;
+  padding: 50px 0 50px 0;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 112vh; }
+
+.project-row {
+  width: 100vw;
+  height: 400px;
+  position: relative;
+  white-space: nowrap;
+  margin-bottom: 20px;
+  opacity: 0;
+  transition: opacity 2.32s cubic-bezier(0.25, 0.85, 0.4, 0.96); }
+  @media (max-width: 1550px) {
+    .project-row {
+      height: 300px; } }
+  @media (max-width: 1300px) {
+    .project-row {
+      height: 300px; } }
+  @media (max-width: 1070px) {
+    .project-row {
+      height: 300px; } }
+  @media (max-width: 776px) {
+    .project-row {
+      height: 300px; } }
+
+.project-item {
+  height: 400px;
+  width: 600px;
+  position: relative;
+  pointer-events: all;
+  border-radius: 50px;
+  display: inline-block;
+  overflow: hidden;
+  margin-right: 16px;
+  filter: blur(15px);
+  transform: translate(0px, 0px);
+  background-color: white;
+  transition: filter .73s cubic-bezier(0.25, 0.85, 0.4, 0.96), transform 0.73s cubic-bezier(0.25, 0.85, 0.4, 0.96); }
+  .project-item:hover {
+    filter: blur(0px);
+    transform: scale(1); }
+  .project-item.black {
+    background-color: black; }
+  @media (max-width: 1550px) {
+    .project-item {
+      height: 300px;
+      width: 450px; } }
+  @media (max-width: 1300px) {
+    .project-item {
+      height: 300px;
+      width: 450px; } }
+  @media (max-width: 1070px) {
+    .project-item {
+      height: 300px;
+      width: 400px; } }
+  @media (max-width: 776px) {
+    .project-item {
+      height: 300px;
+      width: 400px; } }
+  .project-item img {
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none; }
+    .project-item.black p {
+      color: white !important;
+    }
+  
+  .project-item p {
+    font-family: "Seaweed Script", "Poppins", sans-serif;
+    font-size: 6em;
+    text-align: center;
+    position: relative;
+    color: black;
+    top: calc(50% - 0.5 * 131px);
+    pointer-events: none; }
+    .project-item p:nth-child(3) {
+      font-family: "Poppins", sans-serif;
+      font-size: 1em;
+      color: black;
+      margin-top: -50px;
+      opacity: .5;
+      top: calc(50% - 0.5 * 87px); }
+
+      .project-item-smalltext {
+        font-size: 4em !important;
+        top: calc(50% - 0.5 * 88px) !important;
+      }
+      .project-item-smalltext-description {
+        top: calc(50% - 0.5 * 15px) !important;
+      }
+  .project-item div {
+    background-color: #232323;
+    position: absolute;
+    bottom: 20px;
+    right: 40px;
+    width: 60px;
+    height: 60px;
+    border-radius: 100%; }
+    .project-item div img {
+      width: 30px;
+      height: 30px;
+      position: relative;
+      top: 15px;
+      opacity: 1;
+      transform: rotate(0deg);
+      transition: transform 2s cubic-bezier(0.25, 0.85, 0.4, 0.96); }
+
+      
