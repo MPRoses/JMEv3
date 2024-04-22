@@ -56,6 +56,24 @@
   background-color: black;
   height: 13vh !important;
 }
+.bottom-border-descr, .bottom-border-spline p {
+  font-family: "Poppins", sans-serif;
+  font-size: .7em;
+  position: relative;
+  text-align: center;
+  display: inline-block;
+  top: calc(20%);
+  color: white;
+  margin-left: 10px;
+  margin-right: 10px;
+  pointer-events: all !important;
+  transition: border .78s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.bottom-border-descr {
+  font-size: 1.5em;
+  top: -16.5%;
+  font-family: "Poppins";
+}
 
 .transition {
   width: 100vw;

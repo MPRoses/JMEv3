@@ -1,10 +1,4 @@
 // butter.js
-
-(function(root) {
-    if (root.butter) {
-      root.butter.cleanup();
-    }
-
     var Butter = function() {
 
         var self = this;
@@ -23,39 +17,51 @@
             }
         }
 
-        this.wrapperDamper;
-        this.wrapperId;
-        this.cancelOnTouch;
-        this.wrapper;
+        this.wrapperDamper = 0.011;
+        this.wrapperId = "root";
+        this.cancelOnTouch = false;
+        this.wrapper = "";
         this.wrapperOffset = 0;
-        this.animateId;
+        this.animateId = "";
         this.resizing = false;
         this.active = false;
-        this.wrapperHeight;
-        this.bodyHeight;
+        this.wrapperHeight = "";
+        this.bodyHeight= "";
     };
 
     Butter.prototype = {
 
         cleanup: function() {
             if (this.active) {
+              window.cancelAnimationFrame(this.animateId); // Cancel the animation frame
+          
+              // Remove event listeners
               window.removeEventListener('resize', this.resize);
               if (this.cancelOnTouch) {
                 window.removeEventListener('touchstart', this.cancel);
               }
+          
+              // Reset CSS styles
               this.wrapper.removeAttribute('style');
               document.body.removeAttribute('style');
-              var navbarElement = document.querySelector(".navbar");
-                if (navbarElement) {
-                    navbarElement.style.transform = `${movementFixedElements}`;
-                    document.querySelector(".menu-circle-fixed").removeAttribute('style');
-                    document.querySelector(".menu-container").removeAttribute('style');
-                    document.querySelector(".fixedbg").removeAttribute('style');
-                    document.querySelector(".transition").removeAttribute('style');
-                }
+          
+              // Reset state variables
+              this.wrapperOffset = 0;
+              this.resizing = false;
+              this.animateId = null;
+              this.wrapperHeight = null;
+              this.bodyHeight = null;
               this.active = false;
+          
+              // Reset scroll positions
+              var lastScrolledLeft = 0;
+              var lastScrolledTop = 0;
+          
+              // Reset mouse positions
+              var xMousePos = 0;
+              var yMousePos = 0;
             }
-        },
+          },
 
         init: function(options) {
             this.cleanup();
@@ -150,5 +156,4 @@
         },
     };
 
-    root.butter = new Butter();
-})(this);
+export default new Butter();

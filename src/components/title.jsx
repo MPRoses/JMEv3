@@ -1,9 +1,11 @@
 import $ from 'jquery';
 import gsap from 'gsap';
 import './title.css';
+import { useEffect } from 'react';
 
 function Title() {
-    $(() => {
+
+    useEffect(() => {
 
         const normalSpeed = 120;
         let tlMain = gsap.timeline({
@@ -13,7 +15,7 @@ function Title() {
             ease: "none"
         }
         });
-
+    
         let tlTop = gsap.timeline({
         repeat: -1,
         defaults: {
@@ -21,7 +23,7 @@ function Title() {
             ease: "none" 
         }
         });
-
+    
         let tlBottom = gsap.timeline({
         repeat: -1, 
         defaults: {
@@ -29,7 +31,7 @@ function Title() {
             ease: "none"
         }
         });
-
+    
         tlMain.fromTo(".title-main", 
         { x: "-2690px" },
         { x: "0", 
@@ -38,7 +40,7 @@ function Title() {
             }
         }
         );
-
+    
         tlTop.fromTo(".title-topfade", 
         { x: "0" },
         { x: "-2690px",
@@ -47,7 +49,7 @@ function Title() {
             }
         }
         );
-
+    
         tlBottom.fromTo(".title-bottomfade", 
         { x: "-2690px" }, 
         { x: "0", 
@@ -58,20 +60,13 @@ function Title() {
         );
 
         $(window).off("scroll");
-
         $(window).on("scroll", function() {
             gsap.to([tlMain, tlTop, tlBottom], { timeScale: 3, duration: 0.15 });
             setTimeout(function() {
                 gsap.to([tlMain, tlTop, tlBottom], { timeScale: 1, duration: 0.15 });
             }, 300);
-
-            if (($(window).scrollTop() / window.innerHeight) > 0.1) {
-                $(".title-container").css("opacity", "1");
-            } else {
-                $(".title-container").css("opacity", "0");
-            }
         });
-    })
+    }, []);
 
     return(
         <div className="title-container">

@@ -1,9 +1,12 @@
 import $ from 'jquery';
 import gsap from 'gsap';
 import './title.css';
+import {
+    useEffect
+} from 'react';
 
 function Title2() {
-    $(() => {
+    useEffect(() => {
 
         const normalSpeed = 120;
         let tlMain = gsap.timeline({
@@ -56,6 +59,7 @@ function Title2() {
             }
         }
         );
+    
 
         $(window).off("scroll");
 
@@ -69,34 +73,58 @@ function Title2() {
                 $(".title-container").css("opacity", "1");
             } else {
                 $(".title-container").css("opacity", "0");
-            } 
-
-            if (($(window).scrollTop() / window.innerHeight) > 0.6) {
-                setTimeout(() => {
-                    $(".project-row").eq(0).css("opacity", "1");
-                    setTimeout(() => {
-                        $(".project-row").eq(1).css("opacity", "1");
-                        setTimeout(() => {
-                            $(".project-row").eq(2).css("opacity", "1");
-                            setTimeout(() => {
-                                $(".project-row").eq(3).css("opacity", "1");
-                            }, 150);
-                        }, 150);
-                    }, 150);
-                }, 150);
-            } else {
-                $(".project-row").css("opacity", "0");
             }
+
+            if (($(window).scrollTop() / window.innerHeight) <= 0.4) {
+                $(".project-row").css("opacity", "0");
+            } else if (($(window).scrollTop() / window.innerHeight) <= 0.7) {
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "0");
+                $(".project-row").eq(2).css("opacity", "0");
+                $(".project-row").eq(3).css("opacity", "0");
+            } else if (($(window).scrollTop() / window.innerHeight) <= 1.4) {
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "1");
+                $(".project-row").eq(2).css("opacity", "0");
+                $(".project-row").eq(3).css("opacity", "0");
+            }  else if (($(window).scrollTop() / window.innerHeight) <= 1.75) {
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "1");
+                $(".project-row").eq(2).css("opacity", "1");
+                $(".project-row").eq(3).css("opacity", "0");
+            }  else if (($(window).scrollTop() / window.innerHeight) <= 2) {
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "1");
+                $(".project-row").eq(2).css("opacity", "1");
+                $(".project-row").eq(3).css("opacity", "1");
+                $(".title-container2").attr("style", "opacity: 0 !important");
+            }  else if (($(window).scrollTop() / window.innerHeight) <= 2.5) {
+                $(".title-container2").attr("style", "opacity: 1 !important");
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "1");
+                $(".project-row").eq(2).css("opacity", "1");
+                $(".project-row").eq(3).css("opacity", "1");
+            } else {
+                $(".title-container2").attr("style", "opacity: 1 !important");
+                $(".project-row").eq(0).css("opacity", "1");
+                $(".project-row").eq(1).css("opacity", "1");
+                $(".project-row").eq(2).css("opacity", "1");
+                $(".project-row").eq(3).css("opacity", "1");
+
+            }
+
+
         });
-    })
+    }, []);
 
     return(
-        <div className="title-container title-container2">
+        <div className="title-container title-container2 hoverable">
             <div></div>
             <div></div>
             <p className="title-main">SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○</p>
             <p className="title-topfade">SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○</p>
             <p className="title-bottomfade">SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○</p>
+            <p className="title-reenter" style={{ opacity: sessionStorage.getItem("skillsVisited") === "1" ? 0.3 : 0 }}>click title to re-enter</p>
         </div>
     );
 }

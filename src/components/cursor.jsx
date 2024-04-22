@@ -1,18 +1,26 @@
 import './cursor.css';
 import TweenMax from 'gsap';
 import $ from 'jquery';
+import { useEffect, React, memo} from 'react';
 
-function Cursor() {
-  $(() => {
+const Cursor = memo(function Cursor() {
+
+  useEffect(() => {
+
+
+
     $(".cursor").css("opacity", "1");
     const $bigBall = $('.cursor__ball--big');
     const $smallBall = $('.cursor__ball--small');
     const $hoverables = $('.hoverable');
 
-    $(document).off("mousemove");
+    TweenMax.killTweensOf($bigBall);
+    TweenMax.killTweensOf($smallBall);
+
     $(document).on('mousemove', onMouseMove);
 
     $hoverables.each(function() {
+      $(this).off();
       $(this).on('mouseenter', onMouseHover);
       $(this).on('mouseleave', onMouseHoverOut);
     });
@@ -57,6 +65,8 @@ function Cursor() {
       }
 
     function onMouseMove(e) {
+      TweenMax.killTweensOf($bigBall);
+      TweenMax.killTweensOf($smallBall);
       TweenMax.to($bigBall, .7, {
         x: e.pageX - 15,
         y: e.pageY - 15
@@ -81,7 +91,13 @@ function Cursor() {
         "border": "2px solid #1F95F8"
       });
     }
-  });
+    return () => {
+      $(document).off('mousemove', onMouseMove);
+      $hoverables.off('mouseenter', onMouseHover);
+      $hoverables.off('mouseleave', onMouseHoverOut);
+      $(window).off('scroll');
+    };
+  }, []);
     return (
         <div className="cursor">
           <div className="cursor__ball cursor__ball--big ">
@@ -97,6 +113,6 @@ function Cursor() {
           </div>
       </div>
     );
-}
+});
 
 export default Cursor;

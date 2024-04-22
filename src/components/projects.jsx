@@ -1,11 +1,12 @@
 import './projects.css';
 import $ from 'jquery';
+import {useEffect} from 'react';
 import gsap from 'gsap';
 
 function Projects() {
-$(() => {
+useEffect(() => {
     var strength = 500;
-    var targetStrength = 50;
+    var targetStrength = 70;
     var lerpRate = 0.03;
     var elementSize = 0.5 * $(".project-item").width();
     let isHovering = false;
@@ -20,7 +21,6 @@ $(() => {
     });
   
     $(".project-item")
-      .off()
       .on("mousemove", function (e) {
         clearTimeout(hoverTimeout);
         updatePosition(e, this);
@@ -37,13 +37,30 @@ $(() => {
         .eq(3)
         .children()
         .css("transform", `rotate(0deg)`);
+        $(this).children().eq(1).css(
+          "transition",
+          "transform .73s cubic-bezier(.25,.85,.4,.96)"
+        );
+        $(this).children().eq(1).css(
+          "transform",
+          "scale(1) translate(0px, 0px)"
+        );
+
       })
+
       .on("mouseenter", function (e) {
         isHovering = true;
         strength = 300;
         $(this).css(
           "transition",
           "filter .73s cubic-bezier(.25,.85,.4,.96), transform 0s cubic-bezier(.25,.85,.4,.96)"
+        );
+        $(this)
+        .children()
+        .eq(1)
+        .css(
+          "transition",
+          "transform 0s cubic-bezier(.25,.85,.4,.96)"
         );
         updatePosition(e, this);
   
@@ -107,14 +124,16 @@ $(() => {
     }
   
     // on scroll speed up movement
+    $(() => {
     $(window).on("scroll", function () {
       $(".project-row").css("pointer-events", "none");
   
       setTimeout(() => {
         $(".project-row").css("pointer-events", "all");
       }, 600);
+      console.log("reached");
   
-      gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], { timeScale: 3, duration: 0.15 });
+      gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], { timeScale: 4, duration: 0.15 });
       setTimeout(function () {
         gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], {
           timeScale: 1,
@@ -122,6 +141,8 @@ $(() => {
         });
       }, 300);
     });
+    }, []);
+
 
   
     // gsap

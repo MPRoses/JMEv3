@@ -4,8 +4,14 @@ import './index.css';
 import './Fonts.css'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import butter from './butter.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+butter.cleanup();
+butter.init({
+  wrapperDamper: .016
+});
 
 root.render(
     <App />

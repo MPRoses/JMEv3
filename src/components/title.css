@@ -6,8 +6,11 @@
 body {
   background-color: #232323;
   height: 400vh; }
+
 .title-container2 {
   top: 300vh !important;
+  opacity: 0 !important;
+  pointer-events: all !important;
 }
 .title-container {
   width: 100vw;
@@ -49,6 +52,14 @@ body {
       -webkit-text-fill-color: transparent;
       left: -330px;
       display: inline-block; }
+
+      .title-reenter {
+        font-size: 1em !important;
+        text-align: center !important;
+        top: 130px !important;
+        left: calc(50% - 101px) !important;
+        color: white !important;
+      }
 
 .title-main {
   z-index: 1;
