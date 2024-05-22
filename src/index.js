@@ -2,9 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './Fonts.css'
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import butter from './butter.js';
+
+let App;
+if (1) {
+  App = require('./AppPCLow.js').default;
+} else {
+  App = require('./AppPCThree.js').default;
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -12,6 +18,8 @@ butter.cleanup();
 butter.init({
   wrapperDamper: .016
 });
+
+
 
 root.render(
     <App />

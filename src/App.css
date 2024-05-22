@@ -54,6 +54,7 @@
   top: calc(100% - 13vh) !important;
   left: 0 !important;
   background-color: black;
+  pointer-events: none !important;
   height: 13vh !important;
 }
 .bottom-border-descr, .bottom-border-spline p {
@@ -85,7 +86,7 @@
   background-color: black;
   z-index: 2500;
   opacity: 1;
-  transition: opacity .76s ease-in-out;
+  transition: opacity .35s ease-in-out;
 }
 
 .loader {

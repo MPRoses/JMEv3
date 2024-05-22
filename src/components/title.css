@@ -8,7 +8,7 @@ body {
   height: 400vh; }
 
 .title-container2 {
-  top: 300vh !important;
+  top: calc(235vh + 400px);
   opacity: 0 !important;
   pointer-events: all !important;
 }

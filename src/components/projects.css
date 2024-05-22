@@ -38,7 +38,7 @@
   display: inline-block;
   overflow: hidden;
   margin-right: 16px;
-  filter: blur(15px);
+  filter: blur(0px);
   transform: translate(0px, 0px);
   background-color: white;
   transition: filter .73s cubic-bezier(0.25, 0.85, 0.4, 0.96), transform 0.73s cubic-bezier(0.25, 0.85, 0.4, 0.96); }
@@ -77,7 +77,7 @@
   
   .project-item p {
     font-family: "Seaweed Script", "Poppins", sans-serif;
-    font-size: 6em;
+    font-size: 5em;
     text-align: center;
     position: relative;
     color: black;
@@ -92,11 +92,11 @@
       top: calc(50% - 0.5 * 87px); }
 
       .project-item-smalltext {
-        font-size: 4em !important;
+        font-size: 3em !important;
         top: calc(50% - 0.5 * 88px) !important;
       }
       .project-item-smalltext-description {
-        top: calc(50% - 0.5 * 15px) !important;
+        top: calc(50% - 0.5 * 25px) !important;
       }
   .project-item div {
     background-color: #232323;
@@ -105,6 +105,7 @@
     right: 40px;
     width: 60px;
     height: 60px;
+    transition: background-color 1.5s cubic-bezier(0.25, 0.85, 0.4, 0.96);
     border-radius: 100%; }
     .project-item div img {
       width: 30px;
@@ -113,6 +114,6 @@
       top: 15px;
       opacity: 1;
       transform: rotate(0deg);
-      transition: transform 2s cubic-bezier(0.25, 0.85, 0.4, 0.96); }
+      transition: transform 2s cubic-bezier(0.25, 0.85, 0.4, 0.96), filter 1.5s cubic-bezier(0.25, 0.85, 0.4, 0.96);; }
 
       

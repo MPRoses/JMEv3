@@ -52,8 +52,9 @@ function App() {
     if (!sessionStorage.getItem("skillsOff")) {
       sessionStorage.setItem("skillsOff", "1");
     }
-    
-
+    if (!sessionStorage.getItem("76t6g3hja5sd")) {
+      sessionStorage.setItem("76t6g3hja5sd", "0");
+    }
     if (!sessionStorage.getItem("skillsVisited")) {
       sessionStorage.setItem("skillsVisited", "0");
     }
@@ -69,10 +70,11 @@ function App() {
 
     if (sessionStorage.getItem("skillsOff") === "0") {
       if (skillsOff === 1) {
-        toggleSkillsOff();
+        //toggleSkillsOff();
       }
     } else {
       console.log("reached1");
+      console.log("WE GET SCROLLTOP " + sessionStorage.getItem("scrollTop"));
       if (sessionStorage.getItem("scrollTop") !== "0") {
         console.log("reached2");
         setTimeout(() => {
@@ -98,15 +100,24 @@ function App() {
     
     $(() => {
       $(window).scrollTop(0);
-
+      
       $(window).on('beforeunload', function() {
-        sessionStorage.setItem("scrollTop", "0");
+        if (sessionStorage.getItem("scrollTop") !== "0") {
+          sessionStorage.setItem("76t6g3hja5sd", `${sessionStorage.getItem("76t6g3hja5sd")}1`);
+
+          if (sessionStorage.getItem("76t6g3hja5sd").length > 3) {
+            sessionStorage.setItem("76t6g3hja5sd", "0");
+            sessionStorage.setItem("scrollTop", "0");
+          }
+        }
+
       });
 
 
       //#############################
 
       $(".title-container2").on("click", () => {
+        sessionStorage.setItem("76t6g3hja5sd", "0");
         toggleSkillsOff();
       })
       
@@ -126,7 +137,7 @@ function App() {
                   $(".navbar").removeClass("navbar-active");
                   // CLOSE MENU
                   if (skillsOff === 1) {
-                      $('body, #root, html').css('overflow-y', 'auto'); // Prevent scrolling
+                      $('body, #root, html').css('overflow-y', 'auto'); // allow scrolling
                   }
   
                   $(".menu-left-1, .menu-left-2, .menu-left-switch-item, .menu-left-switch-item2").css({

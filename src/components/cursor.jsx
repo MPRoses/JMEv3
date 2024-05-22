@@ -6,9 +6,6 @@ import { useEffect, React, memo} from 'react';
 const Cursor = memo(function Cursor() {
 
   useEffect(() => {
-
-
-
     $(".cursor").css("opacity", "1");
     const $bigBall = $('.cursor__ball--big');
     const $smallBall = $('.cursor__ball--small');
@@ -37,43 +34,52 @@ const Cursor = memo(function Cursor() {
     $(window).off("scroll");
 
     $(window).on("scroll", (e) => {
-            if(lastScrolledLeft !== $(document).scrollLeft()){
-                xMousePos -= lastScrolledLeft;
-                lastScrolledLeft = $(document).scrollLeft();
-                xMousePos += lastScrolledLeft;
-            }
-            if(lastScrolledTop !== $(document).scrollTop()){
-                yMousePos -= lastScrolledTop;
-                lastScrolledTop = $(document).scrollTop();
-                yMousePos += lastScrolledTop;
-            }
+        if(lastScrolledLeft !== $(document).scrollLeft()){
+            xMousePos -= lastScrolledLeft;
+            lastScrolledLeft = $(document).scrollLeft();
+            xMousePos += lastScrolledLeft;
+        }
+        if(lastScrolledTop !== $(document).scrollTop()){
+            yMousePos -= lastScrolledTop;
+            lastScrolledTop = $(document).scrollTop();
+            yMousePos += lastScrolledTop;
+        }
 
-            TweenMax.to($bigBall, .7, {
-              x: xMousePos - 15,
-              y: yMousePos - 15
-            });
-            TweenMax.to($smallBall, .2, {
-              x: xMousePos - 5,
-              y: yMousePos - 7
-            });
-      });
+        xMousePos = e.pageX;
+        yMousePos = e.pageY;
+  
+        TweenMax.killTweensOf($bigBall);
+        TweenMax.killTweensOf($smallBall);
+
+        TweenMax.to($bigBall, .7, {
+          x: xMousePos - 15,
+          y: yMousePos - 15
+        });
+        TweenMax.to($smallBall, .2, {
+          x: xMousePos - 5,
+          y: yMousePos - 7
+        });
+    });
 
 
     function captureMousePosition(e){
         xMousePos = e.pageX;
         yMousePos = e.pageY;
-      }
+    }
 
     function onMouseMove(e) {
+      xMousePos = e.pageX;
+      yMousePos = e.pageY;
+
       TweenMax.killTweensOf($bigBall);
       TweenMax.killTweensOf($smallBall);
       TweenMax.to($bigBall, .7, {
-        x: e.pageX - 15,
-        y: e.pageY - 15
+        x: xMousePos - 15,
+        y: yMousePos - 15
       });
       TweenMax.to($smallBall, .2, {
-        x: e.pageX - 5,
-        y: e.pageY - 7
+        x: xMousePos - 5,
+        y: yMousePos - 7
       });
     }
 

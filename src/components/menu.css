@@ -107,8 +107,8 @@
   right: 0; }
   .menu-main img {
     position: relative;
-    left: 40px;
-    top: 45px;
+    left: 0;
+    top: calc(30% - 20px);
     width: 40px;
     margin-right: 20px;
     opacity: 0;

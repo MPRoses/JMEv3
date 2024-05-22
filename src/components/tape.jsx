@@ -1,8 +1,10 @@
 import $ from 'jquery';
 import './tape.css';
-
+import { useEffect } from 'react';
 function Tape() {
-    $(() => {
+  useEffect(() => {
+    setTimeout(() => {
+      
         $("#tape-movement").on("mouseenter", () => {
             $("#tape-movement").css(
               "transition",
@@ -34,7 +36,6 @@ function Tape() {
             );
           });
 
-        
     if (localStorage.getItem("colorSpot")) {
         $(".tape-colorspot").css("background-color", `${localStorage.getItem("colorSpot")}`);
       } else {
@@ -42,6 +43,7 @@ function Tape() {
       }
   
       $(".colorwheel-segment").on("mouseenter", (e) => {
+        console.log("reached2");
         $(e.target).css({
           height: "25px",
           top: "-6.25px"
@@ -67,7 +69,8 @@ function Tape() {
   
         $(".tape-colorspot").css("background-color", `${colorSpotTemp}`);
       });
-    })
+    }, 1000);
+    }, []);
     return (
         <div id="tape-size">
         <div id="tape-movement">

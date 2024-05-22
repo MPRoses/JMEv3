@@ -45,7 +45,8 @@ useEffect(() => {
           "transform",
           "scale(1) translate(0px, 0px)"
         );
-
+        $(this).children().eq(3).css("background-color", "#232323");
+        $(this).children().eq(3).children().css("filter", "invert(0)");
       })
 
       .on("mouseenter", function (e) {
@@ -62,6 +63,8 @@ useEffect(() => {
           "transition",
           "transform 0s cubic-bezier(.25,.85,.4,.96)"
         );
+        $(this).children().eq(3).css("background-color", "#C3FFB4");
+        $(this).children().eq(3).children().css("filter", "invert(1)");
         updatePosition(e, this);
   
         var lerpInterval = setInterval(() => {
@@ -124,23 +127,22 @@ useEffect(() => {
     }
   
     // on scroll speed up movement
-    $(() => {
-    $(window).on("scroll", function () {
-      $(".project-row").css("pointer-events", "none");
-  
-      setTimeout(() => {
-        $(".project-row").css("pointer-events", "all");
-      }, 600);
-      console.log("reached");
-  
-      gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], { timeScale: 4, duration: 0.15 });
-      setTimeout(function () {
-        gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], {
-          timeScale: 1,
-          duration: 0.15
-        });
-      }, 300);
+
+$(() => {
+$(window).on("scroll", () => {
+  $(".project-row").css("pointer-events", "none");
+
+  setTimeout(() => {
+    $(".project-row").css("pointer-events", "all");
+  }, 600);
+  gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], { timeScale: 4, duration: 0.15 });
+  setTimeout(function () {
+    gsap.to([tlRow1, tlRow2, tlRow3, tlRow4], {
+      timeScale: 1,
+      duration: 0.15
     });
+  }, 300);
+});
     }, []);
 
 

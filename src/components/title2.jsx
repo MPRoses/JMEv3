@@ -1,11 +1,10 @@
 import $ from 'jquery';
 import gsap from 'gsap';
 import './title.css';
-import {
-    useEffect
-} from 'react';
+import { useEffect} from 'react';
 
 function Title2() {
+
     useEffect(() => {
 
         const normalSpeed = 120;
@@ -63,7 +62,7 @@ function Title2() {
 
         $(window).off("scroll");
 
-        $(window).on("scroll", function() {
+        $(window).on("scroll", () => {
             gsap.to([tlMain, tlTop, tlBottom], { timeScale: 3, duration: 0.15 });
             setTimeout(function() {
                 gsap.to([tlMain, tlTop, tlBottom], { timeScale: 1, duration: 0.15 });
@@ -85,9 +84,9 @@ function Title2() {
             } else if (($(window).scrollTop() / window.innerHeight) <= 1.4) {
                 $(".project-row").eq(0).css("opacity", "1");
                 $(".project-row").eq(1).css("opacity", "1");
-                $(".project-row").eq(2).css("opacity", "0");
+                $(".project-row").eq(2).css("opacity", "1");
                 $(".project-row").eq(3).css("opacity", "0");
-            }  else if (($(window).scrollTop() / window.innerHeight) <= 1.75) {
+            }  else if (($(window).scrollTop() / window.innerHeight) <= 1.4) {
                 $(".project-row").eq(0).css("opacity", "1");
                 $(".project-row").eq(1).css("opacity", "1");
                 $(".project-row").eq(2).css("opacity", "1");
@@ -110,15 +109,12 @@ function Title2() {
                 $(".project-row").eq(1).css("opacity", "1");
                 $(".project-row").eq(2).css("opacity", "1");
                 $(".project-row").eq(3).css("opacity", "1");
-
             }
-
-
         });
     }, []);
 
     return(
-        <div className="title-container title-container2 hoverable">
+        <div className="title-container title-container2">
             <div></div>
             <div></div>
             <p className="title-main">SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○ SKILLS ○</p>

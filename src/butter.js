@@ -106,7 +106,7 @@
                 document.querySelector(".menu-circle-fixed").style.transform = `${movementFixedElements}`;
                 document.querySelector(".menu-container").style.transform = `${movementFixedElements}`;
                 document.querySelector(".fixedbg").style.transform = `${movementFixedElements}`;
-                document.querySelector(".transition").style.transform = `${movementFixedElements}`;
+                document.querySelector(".sec2-item").style.transform = `${movementFixedElements}`;
             }
         },
 

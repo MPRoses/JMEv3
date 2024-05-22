@@ -1,0 +1,70 @@
+.sec2-item {
+    display: block;
+    height: 87.5vh;
+    padding: 6.25vh 0 6.25vh 0;
+    background-color: rgba(0, 0, 0, 0.733);
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    z-index: 0;
+    opacity: 0;
+    transition: opacity .78s ease-in-out;
+    pointer-events: none;
+}
+
+#skillsWheel {
+    position: absolute;
+    height: 110vh;
+    top: calc(-12vh + 6.25vh);
+    right: -30vw;
+    opacity: 1;
+    filter: blur(0);
+  
+    transform: rotate(90deg);
+  
+    transition: transform .69s cubic-bezier(0.33, 0.65, 0.39, 0.94) 0s, opacity 1.5s cubic-bezier(0.33, 0.65, 0.39, 0.94) 0s;
+  }
+  
+  #wheelPointer {
+    position: absolute;
+    top: calc(50vh - 0.5 * .9vw);
+    width: .9vw;
+    right: 40vh;
+    opacity: 1;
+    transition: opacity 1.5s cubic-bezier(0.33, 0.65, 0.39, 0.94);
+  }
+  
+  #sec2-skills-title {
+    position: absolute;
+    top: calc(4vh + 6.25vh);
+    left: 8vw;
+    font-family: 'Montserrat';
+    font-style: italic;
+    text-align: left;
+    font-weight: 500;
+    font-size: 21.3vh;
+    text-align: left;
+  
+    color: #FFFFFF;
+    opacity: 0;
+    transform: translate(0, -40px);
+    transition: opacity .43s ease-in-out, transform .43s ease-in-out;
+  }
+  
+  #sec2-skills-description {
+    position: absolute;
+    top: calc(32vh + 6.25vh);
+    left: 10vw;
+    font-family: 'Montserrat';
+    font-style: normal;
+    text-align: left;
+    font-weight: 200;
+    font-size: 2vh;
+    line-height: 4vh;
+    max-width: 105vh;
+  
+    color: #FFFFFF;
+    opacity: 0;
+    transform: translate(0, -40px);
+    transition: opacity .43s ease-in-out, transform .43s ease-in-out;
+  }  
