@@ -106,7 +106,7 @@ function SkillsWheel() {
     console.log(parseInt($(".project-container").css("height")));
     $(window).on("scroll", () => {
       $(".title-container2").css("top", `calc(117.5vh + ${$(".project-container").css("height")})`);
-      if ((($(window).scrollTop() - parseInt($(".project-container").css("height"))) / window.innerHeight) > 1.2 && currentItem < 8) {
+      if ((($(window).scrollTop() - parseInt($(".project-container").css("height"))) / window.innerHeight) > 1.2) {
         if ($(".navbar div").css("background-color") === "rgb(0, 0, 0)") {
           $(".navbar div").css("background-color", "rgb(255,255,255)");
         }
@@ -116,15 +116,17 @@ function SkillsWheel() {
               $(".sec2-item").css("opacity", "0");
               $(".sec2-item").css("pointer-events: none");
             }
-          }
-          if ($(".sec2-item").css("opacity") === "0") {
-            $(".sec2-item").css("opacity", "1");
-            $(".sec2-item").css("pointer-events: all");
+          } else {
+            if ($(".sec2-item").css("opacity") === "0") {
+              $(".sec2-item").css("opacity", "1");
+              $(".sec2-item").css("pointer-events: all");
+            }
           }
         }
       } else {
         if (currentItem + previousItem === 0) {
           previousItem = -1;
+          currentItem = 0;
         }
         if ($(".sec2-item").css("opacity") === "1") {
           $(".sec2-item").css("opacity", "0");
