@@ -13,6 +13,7 @@ import Title from './components/title.jsx';
 import Title2 from './components/title2.jsx';
 import Projects from './components/projects.jsx';
 import SkillsWheel from './components/skillsWheel.jsx';
+import Abtme from './components/abtme.jsx';
 
 function App() {
 
@@ -33,7 +34,7 @@ function App() {
         
           /*CODE FOR NAV */
   
-          $(".navbar").css("opacity", ".5");
+          $(".navbar").css("opacity", "1");
           var isNavAnimating = false;
           $(".navbar").on("click", () => {
               console.log("reached");
@@ -52,7 +53,7 @@ function App() {
                       "pointer-events": "none"
                   })
                   $(".menu-container").css("pointer-events", "none");
-                  $(".navbar div").css("background-color", "black")
+                  //$(".navbar div").css("background-color", "black")
                   setTimeout(() => {
                       animejs({
                           targets: '.menu-left-1, .menu-credits, .main-textitem',
@@ -72,7 +73,7 @@ function App() {
                   $('body, #root, html').css('overflow-y', 'hidden'); // Prevent scrolling
   
                   $(".menu-container").css("pointer-events", "all");
-                  $(".navbar div").css("background-color", "white");
+                  //$(".navbar div").css("background-color", "white");
                   $(".menu-circle").css("transform", "scale(250)")
                   setTimeout(() => {
                       animejs({
@@ -175,6 +176,7 @@ function App() {
             <Projects />
             <Title2 />
             <SkillsWheel />
+            <Abtme />
             <Menu />
             </div>
     </div>

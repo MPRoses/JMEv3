@@ -48,6 +48,9 @@ function SkillsWheel() {
     }
 
     function updateItems() {
+      if (currentItem + previousItem === 0) {
+        $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
+      }
       console.log("currentite " + currentItem + " previ " + previousItem);
 
 
@@ -108,7 +111,6 @@ function SkillsWheel() {
       $(".title-container2").css("top", `calc(117.5vh + ${$(".project-container").css("height")})`);
       if ((($(window).scrollTop() - parseInt($(".project-container").css("height"))) / window.innerHeight) > 1.2) {
         if ($(".navbar div").css("background-color") === "rgb(0, 0, 0)") {
-          $(".navbar div").css("background-color", "rgb(255,255,255)");
         }
         if (!running) {
           if (!updateItems()) {
@@ -133,7 +135,6 @@ function SkillsWheel() {
           $(".sec2-item").css("pointer-events: none");
         }
         if ($(".navbar div").css("background-color") === "rgb(255, 255, 255)") {
-          $(".navbar div").css("background-color", "rgb(0,0,0)");
         }
       }
 
