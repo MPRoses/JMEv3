@@ -51,7 +51,7 @@ function SkillsWheel() {
       if (currentItem + previousItem === 0) {
         $("#sec2-skills-title, #sec2-skills-description").css("opacity", "0");
       }
-      console.log("currentite " + currentItem + " previ " + previousItem);
+      //console.log("currentite " + currentItem + " previ " + previousItem);
 
 
       var rotation = 90 + 43 * (($(window).scrollTop() - parseInt($(".project-container").css("height")) - sectionStart) / 300)
@@ -106,7 +106,7 @@ function SkillsWheel() {
     
 
 
-    console.log(parseInt($(".project-container").css("height")));
+    //console.log(parseInt($(".project-container").css("height")));
     $(window).on("scroll", () => {
       $(".title-container2").css("top", `calc(117.5vh + ${$(".project-container").css("height")})`);
       if ((($(window).scrollTop() - parseInt($(".project-container").css("height"))) / window.innerHeight) > 1.2) {

@@ -28,6 +28,13 @@ function App() {
     
     $(() => {
       $(window).scrollTop(0);
+
+      // reference to module abtme.jsx
+      setTimeout(() => {
+        if ($(window).scrollTop() > 0.74 * $(document).height()) {
+            $(window).scrollTop(0.74 * $(document).height());
+          }
+      }, 500);
       
       setTimeout(() => {
         $(".transition").css("opacity", "0");

@@ -1,6 +1,7 @@
 import './abtme.css';
 import $ from 'jquery';
 import { useEffect, React} from 'react';
+import animejs from 'animejs';
 
 import aboutMe1 from './../img/aboutMe1.png';
 import aboutMe2 from './../img/aboutMe2.png';
@@ -17,185 +18,163 @@ function Abtme() {
 
     useEffect(() => {
         let previousScrollTop = 0;
-        let abtPositions = [];
-        
-        $(window).on("load", () => {
-            // Calculate the scroll position of each .abt div after the page has loaded
-            for (let i = 1; i <= 5; i++) {
-                abtPositions[i] = $(".abt" + i).offset().top;
+        let abtPositions = [0.55, 0.62, 0.69, 0.76, 0.83, 0.9];
+        let occurence = 1;
+        var current = 1;
+
+        function changeAnimation(index) {
+            console.log("changeanimation reachedcn with index " + index);
+            if (index < 1 || index > 5) {
+                return;
             }
-        });
+
+            for (var i = 1; i <= 5; i++) {
+                if (i === index) continue;
+                if (i > index) {
+                    $(`.abt${i}`).css({
+                        "opacity": "0",
+                        "transform": "translateY(1000px)" 
+                     });
+                } else {
+                    $(`.abt${i}`).css({
+                        "opacity": "0",
+                        "transform": "translateY(-1000px)" 
+                     });
+                }
+            }
+
+            $(`.abt${index}`).css({
+               "opacity": "1",
+               "transform": "translateY(0)" 
+            });
+        }   
         
 
         var isAnimationActive = 0;
         // Calculate the interval at which each .abt div should appear
         const interval = (.9 - 0.55) / 5;
+        console.log(interval + "INTERVAL");
+        let previousBoard = 0;
 
         $(window).on("scroll", () => {
             
-            if (isAnimationActive === 1) {
-                return;
-            }
-
-            const scrollTop = $(window).scrollTop();
+                if (isAnimationActive === 1) {
+                    return;
+                }
+            
+            
+            var scrollTop = $(window).scrollTop();
             const windowHeight = $(window).innerHeight();
             const totalHeight = $(document).height();
             const scrollRatio = scrollTop / totalHeight;
         
             // Determine scroll direction
-            let scrollDirection;
-            console.log("SCROLLTOP " + scrollTop);
-            console.log("PREVIOUSSCROLLTOP " + previousScrollTop);
-            if (scrollTop > previousScrollTop) {
-                console.log("Scrolling down");
-                scrollDirection = "down";
-            } else {
-                console.log("Scrolling up");
-                scrollDirection = "up";
-            }
-        
+     
             console.log(scrollRatio);
-
-            if (scrollRatio > 0.55) {
-
-                // disable scrolling:
-                //$('body, #root, html').addClass("stopScrolling");
+            if (scrollRatio > 0.74) {
+                // disable scrolling
+                $('body, #root, html').addClass("stopScrolling");
 
                 isAnimationActive = 1;
+                var direction = 0;
+
                 setTimeout(() => {
-                    isAnimationActive = 0;
+                    scrollTop = $(window).scrollTop();
+                    
+                    if (scrollTop > previousScrollTop && occurence > 1 && current < 5) {
+                        console.log("We are scrolling down");
+                        if (current === 5) {
+                            $(window).scrollTop(previousScrollTop);
+                        }
+                        current++;
+                        direction = 1;
+                    } else if (occurence > 1 && current > 1 && current <= 5) {
+                        console.log("We are scrolling up"); 
+                        current--;
+
+                        
+                        if (previousBoard === 1 && current === 1) {
+                            $(window).scrollTop(.70 * totalHeight);
+                        }
+                    }
+
+                    
+                    console.log("previousBoard " + previousBoard);
+                    console.log("currentBoard " + current);
+
+                    occurence++;
+
+                    changeAnimation(current);
+                                        
+                }, 200);
+
+                setTimeout(() => {
+                        if (current !== 1) {
+                        console.log("SCROLL TO " + current);
+                        //window.scrollTo(0, abtPositions[current] * totalHeight);
+                        //$(window).scrollTop(abtPositions[current] * totalHeight);
+                    }
+                }, 400);
+
+                setTimeout(() => {
                     $('body, #root, html').removeClass("stopScrolling");
-                }, 1000);
+                    isAnimationActive = 0;
+                }, 1500);
                 
                 $("#aboutme").css({ 
                     "opacity": "1",
                     "pointer-events": "all"
                 });            
 
-                const interval = (1 - 0.55) / 5;
-                var current = 1;
-
-                for (let i = 1; i <= 5; i++) {
-                    if (scrollRatio > 0.55 + interval * (i - 1) && scrollRatio < 0.55 + interval * i) {
-                        // only true for 1 i
-                        $(".abt" + i).css({
-                            "opacity": "1",
-                            "transform": "translateY(0)"
-                        });
-                        current = i;
-                    } else if (scrollRatio < 0.55 + interval * (i - 1)) {
-                        $(".abt" + i).css({
-                            "opacity": "0",
-                            "transform": "translateY(1000px)"
-                        });
-                    } else {
-                        $(".abt" + i).css({
-                            "opacity": "0",
-                            "transform": "translateY(-1000px)"
-                        });
-                    }
-                } 
-
-
-                console.log("current" + current);
-                if (scrollDirection === "down") {
-                    $(window).scrollTop((0.55 + interval * (current + 1)) * totalHeight);
-                } else {
-                    if (current !== 1) {
-                        $(window).scrollTop((0.55 + interval * (current - 1)) * totalHeight);
-                    } else {
-                        $(window).scrollTop(.55 * totalHeight);
-                    }
-
-                }
 
             } else {
+                current = 1;
+                previousBoard = 0;
+                occurence = 1;
+
+
                 $("#aboutme").css({
                     "opacity": "0",
                     "pointer-events": "none"
                 });
-        
-                // Reset the opacity and position of each .abt div
-                for (let i = 1; i <= 5; i++) {
-                    $(".abt" + i).css({
-                        "opacity": "0",
-                        "transform": "translateY(100px)"
-                    });
-                }
             }
-        
-            /*if (scrollRatio > 0.55) {
-
-                //$('body, #root, html').addClass("stopScrolling");
-
-                // disallow scrolling in case of off
-                isAnimationActive = 1;
-                setTimeout(() => {
-                    isAnimationActive = 0;
-                    //$('body, #root, html').removeClass("stopScrolling");
-                }, 1000);
-
-                console.log("reached");
-                $("#aboutme").css({ 
-                    "opacity": "1",
-                    "pointer-events": "all"
-                });
-                
-                var current = 1;
-        
-                for (let i = 1; i <= 5; i++) {
-                    if (scrollRatio > 0.55 + interval * (i - 1) && scrollRatio < 0.55 + interval * i) {
-                        $(".abt" + i).css({
-                            "opacity": "1",
-                            "transform": "translateY(0)"
-                        });
-
-                        console.log("reached")
-
-                        // Log the next .abt div based on the scroll direction
-                        if (scrollDirection === "down" && i <= 5) {
-                            console.log("Next is .abt" + (i + 1));
-                            current = (i+1)
-                        } else if (scrollDirection === "up" && i > 1) {
-                            console.log("Next is .abt" + (i - 1)); 
-                            current = (i-1);
-                        }
-
-
-
-                    } else {
-                        $(".abt" + i).css({
-                            "opacity": "0",
-                            "transform": "translateY(-1000px)"
-                        });
-                    }
-                }
-
-                console.log("current " + current);
-                //$(window).scrollTop((0.55 + interval * current) * totalHeight);
-            } else {
-                $("#aboutme").css({
-                    "opacity": "0",
-                    "pointer-events": "none"
-                });
-        
-                // Reset the opacity and position of each .abt div
-                for (let i = 1; i <= 5; i++) {
-                    $(".abt" + i).css({
-                        "opacity": "0",
-                        "transform": "translateY(100px)"
-                    });
-                }
-            }
-            setTimeout(() => {
-                //previousScrollTop = scrollTop;
-            }, 3000);
+    
+           setTimeout(() => {
             previousScrollTop = scrollTop;
-
-            */
-            previousScrollTop = scrollTop;
+            previousBoard = current;
+           }, 200);
         });
-        
+
+       // Select all the sections
+        const sections = $('.aboutme-section');
+
+        // Iterate over each section
+        sections.each(function() {
+        // Reference to the section
+        const section = $(this);
+
+        // Create an interval to check the opacity
+        const interval = setInterval(() => {
+            // Check if the section's opacity is 1
+            if (section.css('opacity') === '1') {
+            // Clear the interval
+            clearInterval(interval);
+
+            // Select all the children of the section
+            const children = section.children();
+
+            // Create the animation
+            animejs({
+                targets: children.toArray(),
+                translateY: ['-300px', '0'],
+                opacity: [0, 1],
+                easing: 'easeOutExpo',
+                duration: 750,
+                delay: animejs.stagger(30),
+            });
+            }
+        }, 100);
+        });
         
 
         
@@ -218,7 +197,6 @@ function Abtme() {
         <p className="aboutme-section-description">You probably know my name by now, but if you don’t, you should pay more attention… It’s Jens!<br/><br/>
         I love programming and designing, but I also have a lot of other interests. I love to learn and explore new things, but there are a few things that really define who I am. <br/><br/>So, start scrolling to see a pretty cool animation scheme covering these things, if I do say so myself.</p>
         <img src={aboutMe1} alt="portrait" className="aboutme-photo aboutme-section-aboutme1"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme1">Me in Venice, Italy.</p>
         </div>
         <div className="aboutme-section abt2">
         <p className="aboutme-section-title">SPORTS</p>
@@ -228,11 +206,8 @@ function Abtme() {
         <br/><br/>To achieve such, I take great care in opening repertoire and training.
         </p>
         <img src={aboutMe2} alt="portrait" className="aboutme-photo aboutme-section-aboutme2"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme2">At a tournament.</p>
         <img src={aboutMe3} alt="portrait" className="aboutme-photo aboutme-section-aboutme3"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme3">Hiking on holiday.</p>
         <img src={aboutMe4} alt="portrait" className="aboutme-photo aboutme-section-aboutme4"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme4">Home club.</p>
         </div>
         <div className="aboutme-section abt3">
         <p className="aboutme-section-title">MUSIC</p>
@@ -243,7 +218,6 @@ function Abtme() {
         <br/><br/>Next to that you’ll find me listening and singing along to everything from U2 to James Bay, and maybe you’ll even find me “hakken” to hardcore, or listening to rap, techno, house, classical, indie/alt-rock, raggae, even mariachi!
         </p>
         <img src={aboutMe5} alt="portrait" className="aboutme-photo aboutme-section-aboutme5"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme5">Me performing back in 2015.</p>
         </div>
         <div className="aboutme-section abt4">
         <p className="aboutme-section-title">COOKING</p>
@@ -254,7 +228,6 @@ function Abtme() {
         <br/><br/>Despite my love for food, I am not planning on pursuing any sort of career in this industry, I perceive it as a hobby.
         </p>
         <img src={aboutMe6} alt="portrait" className="aboutme-photo aboutme-section-aboutme6"/>
-        <p className="aboutme-section-photo-description aboutme-section-photo-description-aboutme6">Tulum in Noordwijk.</p>
         </div>
         <div className="aboutme-section abt5">
         <p className="aboutme-section-title2 aboutme-photo">It's about time<br></br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;we get in touch.</p>
@@ -265,10 +238,10 @@ function Abtme() {
         <img src={contactBackground} alt="squares" className="aboutme-section-contactbackground aboutme-photo"/>
         <p className="aboutme-section-abt5-or aboutme-photo">OR</p>
         <div className="aboutme-section-line-2 aboutme-photo"></div>
-        <div className="aboutme-section-abt5-container abt5-container-one aboutme-photo-description send-email">
-            <img className="abt5-container-one-email" src={email} alt="email-icon" />
+        <div className="aboutme-section-abt5-container abt5-container-one aboutme-photo-description aboutme-photo send-email clickable">
+            <img className="abt5-container-one-email hoverable" src={email} alt="email-icon" />
         </div>
-        <div className="aboutme-section-abt5-container abt5-container-two aboutme-photo call-number" href="tel:+310628968296">
+        <div className="aboutme-section-abt5-container abt5-container-two aboutme-photo call-number hoverable clickable" href="tel:+310628968296">
             <img className="abt5-container-two-calling" src={calling} alt="calling-icon" />
         </div>
         <div className="aboutme-section-abt5-container abt5-container-three hoverable clickable open-linkedin aboutme-photo">

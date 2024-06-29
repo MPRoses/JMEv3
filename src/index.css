@@ -16,13 +16,14 @@ body, html  {
   overflow-x: hidden !important;
 }
 #root, body, html {
-  height: 9750px !important;
-
+  height: 7250px !important;
+  width: 100vw !important;
+  overflow-x: hidden !important;
 }
 
 .black-bg-bg {
   width: 100vw;
-  height: 9750px !important;
+  height: 7250px !important;
   background-color: black;
   position: absolute;
   top: 0;
