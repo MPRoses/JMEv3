@@ -68,3 +68,7 @@
     transform: translate(0, -40px);
     transition: opacity .43s ease-in-out, transform .43s ease-in-out;
   }  
+
+  div#skills, div#aboutme {
+    overflow: hidden
+  }

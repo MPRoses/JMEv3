@@ -18,7 +18,6 @@ function Abtme() {
 
     useEffect(() => {
         let previousScrollTop = 0;
-        let abtPositions = [0.55, 0.62, 0.69, 0.76, 0.83, 0.9];
         let occurence = 1;
         var current = 1;
 
@@ -64,7 +63,6 @@ function Abtme() {
             
             
             var scrollTop = $(window).scrollTop();
-            const windowHeight = $(window).innerHeight();
             const totalHeight = $(document).height();
             const scrollRatio = scrollTop / totalHeight;
         
@@ -76,7 +74,6 @@ function Abtme() {
                 $('body, #root, html').addClass("stopScrolling");
 
                 isAnimationActive = 1;
-                var direction = 0;
 
                 setTimeout(() => {
                     scrollTop = $(window).scrollTop();
@@ -87,14 +84,21 @@ function Abtme() {
                             $(window).scrollTop(previousScrollTop);
                         }
                         current++;
-                        direction = 1;
-                    } else if (occurence > 1 && current > 1 && current <= 5) {
-                        console.log("We are scrolling up"); 
+                    } else if (occurence > 1 && current >= 1 && current <= 5) {
+                        console.log("We are scrolling up");
                         current--;
 
-                        
-                        if (previousBoard === 1 && current === 1) {
+                        if (previousBoard === 1 && current === 0) {
+                            console.log("SHOULD RUN");
                             $(window).scrollTop(.70 * totalHeight);
+
+                            setTimeout(() => {
+                                $("#aboutme").css({
+                                    "opacity": "0",
+                                    "pointer-events": "none"
+                                });
+                            }, 300);
+
                         }
                     }
 
