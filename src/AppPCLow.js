@@ -28,6 +28,7 @@ function App() {
     
     $(() => {
       $(window).scrollTop(0);
+      
 
       // reference to module abtme.jsx
       setTimeout(() => {

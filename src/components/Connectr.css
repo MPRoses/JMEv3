@@ -1,0 +1,104 @@
+.project-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #01F3C8, #01E1E6);
+    position: relative;
+  }
+  
+  .top-section {
+    width: fit-content;
+    padding: 20px;
+    position: absolute;
+    top: 5vh;
+    left: 10vw;
+    background-color: transparent;
+    border-radius: 10px;
+    z-index: 4;
+  }
+  
+  .project-title {
+    font-size: 14rem;
+    font-weight: bold;
+    text-align: left;
+    font-family: "Poppins", sans-serif;
+  }
+  
+  .project-image {
+    display: none;
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  
+  .project-description {
+    font-family: "Poppins", sans-serif;
+    font-size: 18px;
+    max-width: 1000px;
+    text-align: left;
+    margin-left: 130px;
+    line-height: 1.5;
+  }
+  
+  .circle-app {
+    position: absolute;
+    z-index: 2;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: #00C853;
+    opacity: 0.4;
+    filter: blur(100px);
+    animation: circle-appAnimation 15s infinite;
+  }
+  
+  .circle-app:nth-child(4) {
+    top: 10%;
+    left: 20%;
+    animation-delay: 0s;
+  }
+  
+  .circle-app:nth-child(5) {
+    top: 30%;
+    left: 40%;
+    background-color: #009688;
+    animation-delay: 4s;
+  }
+  
+  .circle-app:nth-child(6) {
+    top: 50%;
+    left: 60%;
+    background-color: #007BFF;
+    animation-delay: 8s;
+  }
+  
+  .circle-app:nth-child(7) {
+    top: 70%;
+    left: 80%;
+    background-color: #321B41;
+    animation-delay: 12s;
+  }
+  
+  @keyframes circle-appAnimation {
+    0% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.4);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+  }
+
+  .wave-app {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: calc(29%);
+    z-index: 1;
+  }

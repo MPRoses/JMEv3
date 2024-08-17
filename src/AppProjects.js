@@ -10,7 +10,7 @@ import Tape from './components/tape.jsx';
 import Bg from './components/bg.jsx';
 import Cursor from './components/cursor.jsx';
 import Menu from './components/menu.jsx';
-
+import ProjectPage from './components/Connectr.jsx';
 
 function App() {
 
@@ -34,6 +34,7 @@ function App() {
       </div>
 
     <Cursor />
+    <ProjectPage />
       <div id="scroll-container">
         <div className="black-bars">
           <div className="bars-b1"></div>

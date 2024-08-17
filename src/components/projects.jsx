@@ -18,6 +18,7 @@ import banner6 from './../img/Screenshot 2024-04-19 202154.png';
 
 function Projects() {
 useEffect(() => {
+  $(() => {
     var strength = 500;
     var targetStrength = 70;
     var lerpRate = 0.03;
@@ -166,6 +167,7 @@ $(window).on("scroll", () => {
       duration: 0.15
     });
   }, 300);
+});
 });
     }, []);
 

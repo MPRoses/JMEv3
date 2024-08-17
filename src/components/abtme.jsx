@@ -80,7 +80,7 @@ function Abtme() {
         
             // Determine scroll direction
      
-            console.log(scrollRatio);
+           // console.log(scrollRatio);
             if (scrollRatio > 0.74) {
                 // disable scrolling
                 $('body, #root, html').addClass("stopScrolling");
