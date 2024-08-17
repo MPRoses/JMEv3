@@ -250,6 +250,7 @@
   color: white;
   left: 400px;
   width: fit-content;
+  display: none;
   opacity: 1; }
   .menu-left-switch-item2 span {
     font-style: italic; }
@@ -263,6 +264,7 @@
 
 .menu-left-switch-item {
   opacity: 1;
+  display: none;
   pointer-events: all; }
 
 .menu-left-2 {

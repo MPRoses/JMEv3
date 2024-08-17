@@ -6,17 +6,17 @@ import reportWebVitals from './reportWebVitals';
 import butter from './butter.js';
 
 let App;
-if (1) {
-  App = require('./AppPCLow.js').default;
+if (window.location.pathname.startsWith('/projects/')) {
+  App = require('./AppProjects.js').default;
 } else {
-  App = require('./AppPCThree.js').default;
+  App = require('./AppPCLow.js').default;
 }
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 butter.cleanup();
 butter.init({
-  wrapperDamper: .016
+  wrapperDamper: .014
 });
 
 

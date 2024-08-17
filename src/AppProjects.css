@@ -1,0 +1,10 @@
+.projects-container {
+ background-color: #1e2125;
+ width: 100vw;
+ height: 300vh;
+ position: absolute;
+ top: 0;
+ left: 0;
+ overflow-x: hidden;
+
+}

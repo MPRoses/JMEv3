@@ -2,6 +2,9 @@ import './skillswheel.css';
 import { useEffect} from 'react';
 import $ from 'jquery';
 
+import wheel from './../img/Shape.png';
+import pointer from './../img/Arrow.png';
+
 function SkillsWheel() {
   useEffect(() => {
 
@@ -239,8 +242,8 @@ function SkillsWheel() {
 
   return (
     <div className="sec2-item" id="skills">
-        <img src="https://i.ibb.co/RCv4SqS/Shape.png" alt="skillsWheel" id="skillsWheel" />
-        <img src="https://i.ibb.co/kH5YzJV/Arrow.png" alt="wheelPointer" id="wheelPointer" />
+        <img src={wheel} alt="skillsWheel" id="skillsWheel" />
+        <img src={pointer} alt="wheelPointer" id="wheelPointer" />
         <p id="sec2-skills-title">Welcome!</p>
         <p id="sec2-skills-description">Hello there! I’m excited to welcome you to my website! My name is Jens and I’m thrilled to share with you who I am, what I specialize in, and what I’ve worked on in the past.<br></br><br></br>As a computer scientist and designer, I’m passionate about creating innovative solutions that are both functional and beautiful. You’ll find that my work is inspired by my love of technology and design.<br></br><br></br>Before you start scrolling I'd like to note that there is a lot of text here on this site. Why? Because I didn't want you to just get to know my work, I also wanted you to get to know me. So, without further ado, let’s embark on a new journey together!&nbsp;&nbsp;🚀</p>
     </div>

@@ -32,9 +32,13 @@ function App() {
       // reference to module abtme.jsx
       setTimeout(() => {
         if ($(window).scrollTop() > 0.74 * $(document).height()) {
-            $(window).scrollTop(0.74 * $(document).height());
+           // $(window).scrollTop(0.74 * $(document).height());
           }
       }, 500);
+
+      setTimeout(() => {
+        $(window).scrollTop(0);
+      }, 200);
       
       setTimeout(() => {
         $(".transition").css("opacity", "0");
@@ -106,7 +110,30 @@ function App() {
                   }, 0);
   
               } else if ($(this).attr("tag") === "SKILLS") {
-                
+                $(".navbar").trigger("click");
+                setTimeout(() => {
+                    $(window).scrollTop(window.innerHeight * 2.99);
+                }, 0);
+
+              } else if ($(this).attr("tag") === "ABOUTME") {
+                $(".navbar").trigger("click");
+                setTimeout(() => {
+                    $(window).scrollTop(window.innerHeight * 5.99);
+                }, 0);
+
+              } else if ($(this).attr("tag") === "CONTACT") {
+                $(".navbar").trigger("click");
+                setTimeout(() => {
+                    $(window).scrollTop(window.innerHeight * 6.1);
+                    
+                    if (!sessionStorage.getItem("contact")) {
+                        sessionStorage.setItem("contact", "1");
+                    } else if (sessionStorage.getItem("contact") === "0") {
+                        sessionStorage.setItem("contact", "1");
+                    }
+                    console.log("APPPC REACHED69");
+                }, 0);
+
               }
           })
   

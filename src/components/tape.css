@@ -39,6 +39,12 @@
   #tape-size {
     transform: scale(1);
   }
+
+  @media screen and (max-width: 630px) {
+    #tape-size {
+      transform: scale(.6) translateY(20vh);
+    }
+  }
   
   #tape-movement {
     transition: transform 3s cubic-bezier(0.16, 0.69, 0.26, 0.88);

@@ -3,14 +3,15 @@
   background-color: white;
 }
 .black-bars {
-  height: 100vh;
+  height: 0;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 500;
-  pointer-events: none;
-
+  z-index: 800;
+  pointer-events: all;
+  background-color: black;
+  transition: height 1.78s ease-in-out;
 }
 .bars-b1 {
   width: 100vw;

@@ -17,6 +17,7 @@ import contactBackground from './../img/contactBackground.png';
 function Abtme() {
 
     useEffect(() => {
+
         let previousScrollTop = 0;
         let occurence = 1;
         var current = 1;
@@ -26,6 +27,17 @@ function Abtme() {
             if (index < 1 || index > 5) {
                 return;
             }
+
+            console.log("59599595");
+            console.log(sessionStorage.getItem("contact"));
+
+            
+            if (sessionStorage.getItem("contact") === "1") {
+                index = 5;
+                sessionStorage.setItem("contact", "0");
+                console.log("BALLS REACHED69");
+            }
+
 
             for (var i = 1; i <= 5; i++) {
                 if (i === index) continue;
@@ -135,7 +147,6 @@ function Abtme() {
                 current = 1;
                 previousBoard = 0;
                 occurence = 1;
-
 
                 $("#aboutme").css({
                     "opacity": "0",

@@ -3,6 +3,19 @@ import $ from 'jquery';
 import {useEffect} from 'react';
 import gsap from 'gsap';
 
+import arrow from './../img/image 29.png'
+
+import bg1 from './../img/gradient-varicolored-abstract-hued-soap-bubbles-black-background.jpg';
+import bg2 from './../img/gradient-multicolored-soap-bubbles-black-background.jpg';
+import bg3 from './../img/abstract-background-with-blue-pink-orange-spheres.jpg';
+
+import banner1 from './../img/banner.png';
+import banner2 from './../img/Screenshot 2024-04-11 174941.png';
+import banner3 from './../img/Screenshot 2024-04-19 195421.png';
+import banner4 from './../img/Screenshot 2024-04-19 195051.png';
+import banner5 from './../img/Screenshot 2024-04-19 201830.png';
+import banner6 from './../img/Screenshot 2024-04-19 202154.png';
+
 function Projects() {
 useEffect(() => {
     var strength = 500;
@@ -19,6 +32,17 @@ useEffect(() => {
     $(window).on("resize", () => {
       elementSize = 0.5 * $(".project-item").width();
     });
+
+    $(".project-item").on("click", function() {
+      $(".black-bars").css("height", "600vh");
+      setTimeout(() => {
+        window.location.href = "/projects/portfolio"; 
+      }, 1400);
+    });
+
+
+
+
   
     $(".project-item")
       .on("mousemove", function (e) {
@@ -63,7 +87,7 @@ useEffect(() => {
           "transition",
           "transform 0s cubic-bezier(.25,.85,.4,.96)"
         );
-        $(this).children().eq(3).css("background-color", "#C3FFB4");
+        $(this).children().eq(3).css("background-color", "white");
         $(this).children().eq(3).children().css("filter", "invert(1)");
         updatePosition(e, this);
   
@@ -233,132 +257,132 @@ $(window).on("scroll", () => {
         <div className="project-container">
         <div className="project-row">
             <div className="project-item hoverable black">
-              <img src="https://i.ibb.co/Yd13bbD/banner.png" alt="bg" />
+              <img src={banner1} alt="bg" />
               <p>Cursor Pursuit</p>
               <p>PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">
-              <img src="https://i.ibb.co/VVzq072/Screenshot-2024-04-11-174941.png" alt="bg" />
+              <img src={banner2} alt="bg" />
               <p>Connectr.</p>
               <p>LEIDEN UNIVERSITY</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-              <img src="https://i.ibb.co/Yd13bbD/banner.png" alt="bg" />
+              <img src={banner1} alt="bg" />
               <p>Cursor Pursuit</p>
               <p>PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">
-              <img src="https://i.ibb.co/VVzq072/Screenshot-2024-04-11-174941.png" alt="bg" />
+              <img src={banner2} alt="bg" />
               <p>Connectr.</p>
               <p>LEIDEN UNIVERSITY</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-              <img src="https://i.ibb.co/Yd13bbD/banner.png" alt="bg" />
+              <img src={banner1} alt="bg" />
               <p>Cursor Pursuit</p>
               <p>PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">
-              <img src="https://i.ibb.co/VVzq072/Screenshot-2024-04-11-174941.png" alt="bg" />
+              <img src={banner2} alt="bg" />
               <p>Connectr.</p>
               <p>LEIDEN UNIVERSITY</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
         </div>
         <div className="project-row">
             <div className="project-item hoverable">
-            <img src="https://i.ibb.co/R2jZvgR/Screenshot-2024-04-19-195421.png" alt="bg" />
+            <img src={banner3} alt="bg" />
               <p className="project-item-smalltext">Franse Werkwoorden</p>
               <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-            <img src="https://i.ibb.co/8XK40MK/Screenshot-2024-04-19-195051.png" alt="bg" />
+            <img src={banner4} alt="bg" />
               <p>Numero</p>
               <p>DA VINCI COLLEGE LEIDEN</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">
-            <img src="https://i.ibb.co/R2jZvgR/Screenshot-2024-04-19-195421.png" alt="bg" />
+            <img src={banner3} alt="bg" />
               <p className="project-item-smalltext">Franse Werkwoorden</p>
               <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-              <img src="https://i.ibb.co/8XK40MK/Screenshot-2024-04-19-195051.png" alt="bg" />
+              <img src={banner4} alt="bg" />
               <p>Numero</p>
               <p>DA VINCI COLLEGE LEIDEN</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">    
-            <img src="https://i.ibb.co/R2jZvgR/Screenshot-2024-04-19-195421.png" alt="bg" />
+            <img src={banner3} alt="bg" />
               <p className="project-item-smalltext">Franse Werkwoorden</p>
               <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-              <img src="https://i.ibb.co/8XK40MK/Screenshot-2024-04-19-195051.png" alt="bg" />
+              <img src={banner4} alt="bg" />
               <p>Numero</p>
               <p>DA VINCI COLLEGE LEIDEN</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
         </div>
         <div className="project-row">
-            <div className="project-item hoverable black">
-            <img src="https://i.ibb.co/BT3LhPM/Screenshot-2024-04-19-201830.png" alt="bg" />
-              <p>Portfolio</p>
-              <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
-            </div>
-            <div className="project-item hoverable">
-              <img src="https://i.ibb.co/jfqsdfb/Screenshot-2024-04-19-202154.png" alt="bg" />
+        <div className="project-item hoverable black">
+              <img src={banner6} alt="bg" />
               <p>101Mailz</p>
               <p>FIORETTI COLLEGE LISSE</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
-            </div>
-            <div className="project-item hoverable black">
-            <img src="https://i.ibb.co/BT3LhPM/Screenshot-2024-04-19-201830.png" alt="bg" />
-              <p>Portfolio</p>
-              <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable">
-            <img src="https://i.ibb.co/jfqsdfb/Screenshot-2024-04-19-202154.png" alt="bg" />
-              <p>101Mailz</p>
-              <p>FIORETTI COLLEGE LISSE</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <img src={banner5} alt="bg" />
+              <p>Portfolio</p>
+              <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
             <div className="project-item hoverable black">
-            <img src="https://i.ibb.co/BT3LhPM/Screenshot-2024-04-19-201830.png" alt="bg" />
+              <img src={banner6} alt="bg" />
+              <p>101Mailz</p>
+              <p>FIORETTI COLLEGE LISSE</p>
+              <div><img src={arrow} alt="arrow" /></div>
+            </div>
+            <div className="project-item hoverable">
+            <img src={banner5} alt="bg" />
+              <p>Portfolio</p>
+              <p className="project-item-smalltext-description">PERSONAL PROJECT</p>
+              <div><img src={arrow} alt="arrow" /></div>
+            </div>
+            <div className="project-item hoverable black">
+            <img src={banner6}alt="bg" />
+              <p>101Mailz</p>
+              <p>FIORETTI COLLEGE LISSE</p>
+              <div><img src={arrow} alt="arrow" /></div>
+            </div>
+            <div className="project-item hoverable">
+            <img src={banner5} alt="bg" />
               <p>Portfolio</p>
               <p>PERSONAL PROJECT</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
-            </div>
-            <div className="project-item hoverable">
-            <img src="https://i.ibb.co/jfqsdfb/Screenshot-2024-04-19-202154.png" alt="bg" />
-              <p>101Mailz</p>
-              <p>FIORETTI COLLEGE LISSE</p>
-              <div><img src="https://i.ibb.co/wBq8cvK/image-29.png" alt="arrow" /></div>
+              <div><img src={arrow} alt="arrow" /></div>
             </div>
         </div>
         <div className="project-row">
             <div className="project-item">
-            <img src="https://i.ibb.co/hf3Xc81/abstract-background-with-blue-pink-orange-spheres.jpg" alt="bg" />
+            <img src={bg3} alt="bg" />
               <p>To Be Decided</p>
             </div>
-            <div className="project-item black">            <img src="https://i.ibb.co/DYK1Cdy/gradient-multicolored-soap-bubbles-black-background.jpg" alt="bg" />
+            <div className="project-item black">            <img src={bg2} alt="bg" />
               <p>To Be Decided</p></div>
-            <div className="project-item">            <img src="https://i.ibb.co/vqD8SC4/gradient-varicolored-abstract-hued-soap-bubbles-black-background.jpg" alt="bg" />
+            <div className="project-item">            <img src={bg1} alt="bg" />
               <p>To Be Decided</p></div>
-            <div className="project-item black">            <img src="https://i.ibb.co/hf3Xc81/abstract-background-with-blue-pink-orange-spheres.jpg" alt="bg" />
+            <div className="project-item black">            <img src={bg3}alt="bg" />
               <p>To Be Decided</p></div>
-            <div className="project-item">            <img src="https://i.ibb.co/DYK1Cdy/gradient-multicolored-soap-bubbles-black-background.jpg" alt="bg" />
+            <div className="project-item">            <img src={bg2}alt="bg" />
               <p>To Be Decided</p></div>
-            <div className="project-item black">            <img src="https://i.ibb.co/vqD8SC4/gradient-varicolored-abstract-hued-soap-bubbles-black-background.jpg" alt="bg" />
+            <div className="project-item black">            <img src={bg1} alt="bg" />
               <p>To Be Decided</p></div>
         </div>
         </div>
