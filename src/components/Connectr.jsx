@@ -1,30 +1,138 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './Connectr.css';
-
+import anime from 'animejs';
+import $ from 'jquery';
 const ProjectPage = () => {
-  return (
-    <div className="project-page">
-      <div className="top-section">
-        <div className="project-title">Connectr</div>
-        <div className="project-image">
-          <img src="https://example.com/product-image.jpg" alt="Product Image" />
-        </div>
-        <div className="project-description">
-          <p>
-          Connectr is a powerful web texting application built using Flask (= Python framework). It empowers users to seamlessly connect with friends, create chat groups, and establish communication channels. Connectr was developed in just 5 days, showcasing over 5,000 lines of code—a testament to my efficiency and was a project for the class “Programming Techniques” at Leiden University.
-          </p>
-        </div>
-      </div>
-      <div className="circle-app"></div>
-        <div className="circle-app"></div>
-        <div className="circle-app"></div>
-        <div className="circle-app"></div>
+    useEffect(() => {
+        // Apply hover animation to each letter
+        document.querySelectorAll('.letter').forEach((letter) => {
+            letter.addEventListener('mouseenter', (e) => {
+                const letters = document.querySelectorAll('.letter');
 
-        <svg className="wave-app" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-            <path fill="#1e2125" fill-opacity="1" d="M0,288L21.8,245.3C43.6,203,87,117,131,122.7C174.5,128,218,224,262,272C305.5,320,349,320,393,277.3C436.4,235,480,149,524,128C567.3,107,611,149,655,181.3C698.2,213,742,235,785,208C829.1,181,873,107,916,112C960,117,1004,203,1047,213.3C1090.9,224,1135,160,1178,154.7C1221.8,149,1265,203,1309,224C1352.7,245,1396,235,1418,229.3L1440,224L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path>
-            </svg>
-    </div>
-  );
+                letters.forEach(letter => {
+                    anime({
+                        targets: letter,
+                        opacity: [1, 0.85],
+                        translateX: anime.random(-5, 5),  // Random movement on the X-axis
+                        translateY: anime.random(-5, 5),  // Random movement on the Y-axis
+                        scale: 0.67,  // Enlarge the letter on hover
+                        rotate: anime.random(-15, 15),  // Slight rotation
+                        easing: 'spring(1, 80, 10, 0)',
+                        duration: 800,
+                    });
+                });
+                anime({
+                    targets: e.target,
+                    opacity: 1,
+                    translateX: anime.random(-30, 30),  // Random movement on the X-axis
+                    translateY: anime.random(-30, 30),  // Random movement on the Y-axis
+                    scale: 1.5,  // Enlarge the letter on hover
+                    rotate: anime.random(-15, 15),  // Slight rotation
+                    easing: 'spring(1, 80, 10, 0)',
+                    duration: 800,
+                });
+            });
+
+            letter.addEventListener('mouseleave', () => {
+                anime({
+                    targets: '.letter',
+                    opacity: 1,
+                    translateX: 0,
+                    translateY: 0,
+                    scale: 1,  // Return to normal size
+                    rotate: 0,  // Return to original position
+                    easing: 'spring(1, 80, 10, 0)',
+                    duration: 1000,
+                });
+            });
+            $(".title").css("letter-spacing", "0");
+        });
+
+        let isScaledUp = false;
+
+        $(".exit").on("mouseenter", (e) => {
+            if ($(".circle").length > 0) return;
+            const target = e.target;
+            const rect = target.getBoundingClientRect();
+            const circle = $(`<div class="circle" style="left: ${e.clientX - rect.left}px; top: ${e.clientY - rect.top}px"></div>`);
+            circle.appendTo('.exit');
+
+            setTimeout(() => {
+                circle.css("transform", "scale(100)");
+                isScaledUp = true;
+            }, 50);
+
+            $(".exit div:nth-child(1), .exit div:nth-child(2)").css({
+                "background-color": "black",
+                "transform": "scale(1.5) rotate(15deg)"
+            });
+
+            $(".bigCircle circle").css("opacity", "0.4");
+            $(".bigCircle").css({
+                "transform": "scale(3)",
+                "border": "2px solid rgb(31 149 248 / 0%)"
+            });
+        }).on("mouseleave", (e) => {
+            if (!isScaledUp) return; // Wait until the circle has scaled up
+
+            const parentRect = $(e.target).closest('.exit')[0].getBoundingClientRect();
+            const exitX = e.clientX - parentRect.left;
+            const exitY = e.clientY - parentRect.top;
+
+            $(".circle").css({
+                "left": `${exitX}px`,
+                "top": `${exitY}px`,
+                "transform": "scale(0)"
+            });
+
+            $(".exit div:nth-child(1), .exit div:nth-child(2)").css({
+                "background-color": "#fbf8f3",
+                "transform": "scale(1) rotate(0deg)"
+            });
+
+            setTimeout(() => {
+                $(".circle").remove();
+                isScaledUp = false; // Reset the flag
+            }, 750); // Adjust this timeout to match the transition duration
+
+            $(".bigCircle circle").css("opacity", "1");
+            $(".bigCircle").css({
+                "transform": "scale(1)",
+                "border": "2px solid #1F95F8"
+            });
+        });
+
+
+
+    }, []);
+
+    // Function to split the word into spans
+    const splitText = (text) => {
+        return text.split('').map((letter, index) => (
+            <span key={index} className="letter">{letter}</span>
+        ));
+    };
+
+    return (
+        <div className="project-page">
+            <div className="title">
+                {splitText("portfolio")}
+            </div>
+            <div className="separator"></div>
+            <div className="lines">
+                {Array.from({ length: 25}).map((_) => (
+                    <div></div>
+                ))}
+            </div>
+
+            <div className="exit">
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+
+        </div>
+    );
 };
 
 export default ProjectPage;

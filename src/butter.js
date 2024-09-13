@@ -52,14 +52,6 @@
               this.wrapperHeight = null;
               this.bodyHeight = null;
               this.active = false;
-          
-              // Reset scroll positions
-              var lastScrolledLeft = 0;
-              var lastScrolledTop = 0;
-          
-              // Reset mouse positions
-              var xMousePos = 0;
-              var yMousePos = 0;
             }
           },
 
@@ -157,4 +149,5 @@
         },
     };
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default new Butter();
