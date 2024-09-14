@@ -6,7 +6,6 @@ import { useEffect, React} from 'react';
 function Cursor() {
   useEffect(() => {
     $(() => {
-      $(".cursor").css("opacity", "1");
       const $bigBall = $('.cursor__ball--big');
       const $smallBall = $('.cursor__ball--small');
       const $hoverables = $('.hoverable');
@@ -28,6 +27,10 @@ function Cursor() {
       var lastScrolledTop = 0;
   
       $(document).on("mousemove", (e) => {
+        console.log($(".cursor").css("opacity") )
+        if ($(".cursor").css("opacity") === "0") {
+          $(".cursor").css("opacity", "1");
+        }
         captureMousePosition(e);
       })  
 

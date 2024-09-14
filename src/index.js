@@ -1,31 +1,56 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
+import $ from 'jquery';
 import './index.css';
-import './Fonts.css'
+import './Fonts.css';
 import reportWebVitals from './reportWebVitals';
 import butter from './butter.js';
-
-let App;
-if (window.location.pathname.startsWith('/projects/')) {
-  App = require('./AppProjects.js').default;
-} else {
-  App = require('./AppPCLow.js').default;
-}
+import AppProjects from './AppProjects.js';
+import AppPCLow from './AppPCLow.js';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 butter.cleanup();
 butter.init({
-  wrapperDamper: .05
+    wrapperDamper: .014
 });
 
+function updateStyles(pathname) {
+    if (pathname.startsWith('/projects')) {
+        $('html, body, #root').css({
+            height: '100vh',
+            width: '100vw',
+            overflow: 'hidden'
+        });
+    } else {
+        $('html, body, #root').css({
+            height: '7250px',
+            width: '100vw',
+            overflowX: 'hidden'
+        });
+    }
+}
 
+function App() {
+    const location = useLocation();
+
+    React.useEffect(() => {
+        updateStyles(location.pathname);
+    }, [location.pathname]);
+
+    return (
+        <Routes>
+            <Route path="/projects/*" element={<AppProjects />} />
+            <Route path="/*" element={<AppPCLow />} />
+        </Routes>
+    );
+}
 
 root.render(
-    <App />
+    <Router>
+        <App />
+    </Router>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();

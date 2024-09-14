@@ -27,6 +27,9 @@ function App() {
     
     
     $(() => {
+        setTimeout(() => {
+            $(".black-cover-v1").css("height", "0vh");
+        }, 200)
       $(window).scrollTop(0);
       
 
@@ -201,7 +204,7 @@ function App() {
           <Tape />
           <Cursor />
             <div id="scroll-container">
-
+                <div className="black-cover-v1"></div>
             <div className="black-bars">
               <div className="bars-b1"></div>
               <div className="bars-b1 b1-left"></div>

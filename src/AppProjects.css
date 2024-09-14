@@ -1,5 +1,5 @@
 .projects-container {
- background-color: #1e2125;
+ background-color: black;
  width: 100vw;
  height: 100vh;
  position: absolute;
@@ -9,8 +9,14 @@
 
 }
 
-#root, body, html {
- height: 100vh !important;
- width: 100vw !important;
- overflow: hidden !important;
+.black-cover {
+ height: 600vh;
+ width: 100vw;
+ position: absolute;
+ top: 0;
+ left: 0;
+ z-index: 800;
+ pointer-events: all;
+ background-color: black;
+ transition: height .73s cubic-bezier(.12,.75,.34,1);
 }

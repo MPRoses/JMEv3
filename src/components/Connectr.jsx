@@ -2,8 +2,12 @@ import React, { useEffect } from 'react';
 import './Connectr.css';
 import anime from 'animejs';
 import $ from 'jquery';
+import { useNavigate } from 'react-router-dom';
+
 const ProjectPage = () => {
+    const navigate = useNavigate();
     useEffect(() => {
+        $(".project-page").css("opacity", "1");
         // Apply hover animation to each letter
         document.querySelectorAll('.letter').forEach((letter) => {
             letter.addEventListener('mouseenter', (e) => {
@@ -49,6 +53,12 @@ const ProjectPage = () => {
         });
 
         let isScaledUp = false;
+
+        $(".exit").on("click", () => {
+            setTimeout(() => {
+                navigate("/");
+            }, 400);
+        })
 
         $(".exit").on("mouseenter", (e) => {
             if ($(".circle").length > 0) return;
@@ -109,7 +119,7 @@ const ProjectPage = () => {
     // Function to split the word into spans
     const splitText = (text) => {
         return text.split('').map((letter, index) => (
-            <span key={index} className="letter">{letter}</span>
+            <span key={index} className="letter hoverable">{letter}</span>
         ));
     };
 

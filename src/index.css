@@ -15,11 +15,6 @@ body, html  {
   position: relative !important;
   overflow-x: hidden !important;
 }
-#root, body, html {
-  height: 7250px !important;
-  width: 100vw !important;
-  overflow-x: hidden !important;
-}
 
 .black-bg-bg {
   width: 100vw;

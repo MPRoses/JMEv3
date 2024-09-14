@@ -15,12 +15,8 @@ import ProjectPage from './components/Connectr.jsx';
 function App() {
 
   $(() => {
-    $(".black-bars").css("transition", "height 0s");
-    $(".black-bars").css("height", "600vh");
-
     setTimeout(() => {
-      $(".black-bars").css("transition", "height 1.78s ease-in-out");
-      $(".black-bars").css("height", "0");
+      $(".black-cover").css("height", "0");
     }, 300);
 
   })
@@ -36,11 +32,7 @@ function App() {
     <Cursor />
     <ProjectPage />
       <div id="scroll-container">
-        <div className="black-bars">
-          <div className="bars-b1"></div>
-          <div className="bars-b1 b1-left"></div>
-          <div className="bars-b1"></div>
-        </div>
+        <div className="black-cover"></div>
 
       </div>
       </div>

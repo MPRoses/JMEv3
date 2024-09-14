@@ -2,6 +2,18 @@
   text-align: center;
   background-color: white;
 }
+.black-cover-v1 {
+  height: 600vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 800;
+  pointer-events: all;
+  background-color: black;
+  transition: height .73s ease-in-out;
+}
+
 .black-bars {
   height: 0;
   width: 100vw;
@@ -40,6 +52,7 @@
   opacity: 1;
   transition: opacity .78s ease-in-out;
 }
+
 .spline-container div{
   width: 120vw;
   top: -10%;

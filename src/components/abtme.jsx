@@ -256,7 +256,7 @@ function Abtme() {
         <div className="aboutme-section-abt5-container abt5-container-one aboutme-photo-description aboutme-photo send-email clickable">
             <img className="abt5-container-one-email hoverable" src={email} alt="email-icon" />
         </div>
-        <div className="aboutme-section-abt5-container abt5-container-two aboutme-photo call-number hoverable clickable" ref="tel:+310628968296">
+        <div className="aboutme-section-abt5-container abt5-container-two aboutme-photo call-number hoverable clickable" href="tel:+310628968296">
             <img className="abt5-container-two-calling" src={calling} alt="calling-icon" />
         </div>
         <div className="aboutme-section-abt5-container abt5-container-three hoverable clickable open-linkedin aboutme-photo">

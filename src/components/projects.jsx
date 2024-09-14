@@ -1,13 +1,14 @@
 import './projects.css';
 import $ from 'jquery';
-import {useEffect} from 'react';
+import { useEffect } from 'react';
 import gsap from 'gsap';
+import { useNavigate } from 'react-router-dom';
 
-import arrow from './../img/image 29.png'
+import arrow from './../img/image 29.png';
 
-import bg1 from './../img/gradient-varicolored-abstract-hued-soap-bubbles-black-background.jpg';
-import bg2 from './../img/gradient-multicolored-soap-bubbles-black-background.jpg';
-import bg3 from './../img/abstract-background-with-blue-pink-orange-spheres.jpg';
+import bg1 from './../img/gradient-varicolored-abstract-hued-soap-bubbles-black-background 1_low.png';
+import bg2 from './../img/gradient-multicolored-soap-bubbles-black-background 1_low.png';
+import bg3 from './../img/abstract-background-with-blue-pink-orange-spheres 1_low.png';
 
 import banner1 from './../img/banner.png';
 import banner2 from './../img/Screenshot 2024-04-11 174941.png';
@@ -17,35 +18,37 @@ import banner5 from './../img/Screenshot 2024-04-19 201830.png';
 import banner6 from './../img/Screenshot 2024-04-19 202154.png';
 
 function Projects() {
-useEffect(() => {
-  $(() => {
-    var strength = 500;
-    var targetStrength = 70;
-    var lerpRate = 0.03;
-    var elementSize = 0.5 * $(".project-item").width();
-    let isHovering = false;
-    let hoverTimeout;
-  
-    function lerp(start, end, rate) {
-      return start * (1 - rate) + end * rate;
-    }
-  
-    $(window).on("resize", () => {
-      elementSize = 0.5 * $(".project-item").width();
-    });
+    const navigate = useNavigate();
 
-    $(".project-item").on("click", function() {
-      $(".black-bars").css("height", "600vh");
-      setTimeout(() => {
-        window.location.href = "/projects/portfolio"; 
-      }, 1400);
-    });
+    useEffect(() => {
+        $(() => {
+            var strength = 500;
+            var targetStrength = 70;
+            var lerpRate = 0.03;
+            var elementSize = 0.5 * $(".project-item").width();
+            let isHovering = false;
+            let hoverTimeout;
+
+            function lerp(start, end, rate) {
+                return start * (1 - rate) + end * rate;
+            }
+
+            $(window).on("resize", () => {
+                elementSize = 0.5 * $(".project-item").width();
+            });
+
+            $(".project-item").on("click", function() {
+                $(".black-cover-v1").css("height", "100vh");
+                $(".cursor").css("opacity", "0");
+                $('html, body').animate({ scrollTop: 0 }, 250);
+                setTimeout(() => {
+                    navigate("/projects/portfolio");
+                }, 1400);
+            });
 
 
 
-
-  
-    $(".project-item")
+            $(".project-item")
       .on("mousemove", function (e) {
         clearTimeout(hoverTimeout);
         updatePosition(e, this);
