@@ -3,7 +3,7 @@
     pointer-events: none;
     z-index: 11;
     opacity: 0;
-    transition: opacity .75s ease-in-out .5s;
+    transition: opacity .75s ease-in-out;
   }
   .cursor__ball {
     position: absolute;

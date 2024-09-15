@@ -30,7 +30,9 @@ function App() {
         setTimeout(() => {
             $(".black-cover-v1").css("height", "0vh");
         }, 200)
-      $(window).scrollTop(0);
+        if (!sessionStorage.getItem("scrollPosition")) {
+            $(window).scrollTop(0);
+        }
       
 
       // reference to module abtme.jsx
@@ -41,7 +43,9 @@ function App() {
       }, 500);
 
       setTimeout(() => {
-        $(window).scrollTop(0);
+          if (!sessionStorage.getItem("scrollPosition")) {
+              $(window).scrollTop(0);
+          }
       }, 200);
       
       setTimeout(() => {

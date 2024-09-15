@@ -40,6 +40,7 @@ function Projects() {
             $(".project-item").on("click", function() {
                 $(".black-cover-v1").css("height", "100vh");
                 $(".cursor").css("opacity", "0");
+                sessionStorage.setItem("scrollPosition", $(window).scrollTop());
                 $('html, body').animate({ scrollTop: 0 }, 250);
                 setTimeout(() => {
                     navigate("/projects/portfolio");

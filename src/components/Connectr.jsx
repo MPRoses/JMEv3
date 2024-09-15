@@ -55,10 +55,16 @@ const ProjectPage = () => {
         let isScaledUp = false;
 
         $(".exit").on("click", () => {
+            $(".black-cover").css("height", "100vh");
             setTimeout(() => {
+                const scrollPosition = sessionStorage.getItem("scrollPosition");
+                sessionStorage.removeItem("scrollPosition")
                 navigate("/");
-            }, 400);
-        })
+                setTimeout(() => {
+                    $(window).scrollTop(scrollPosition);
+                }, 250);
+            }, 730);
+        });
 
         $(".exit").on("mouseenter", (e) => {
             if ($(".circle").length > 0) return;
@@ -114,7 +120,7 @@ const ProjectPage = () => {
 
 
 
-    }, []);
+    }, [navigate]);
 
     // Function to split the word into spans
     const splitText = (text) => {
