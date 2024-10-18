@@ -1,0 +1,7 @@
+{
+    "C_Cpp.default.compilerPath": "",
+    "search.exclude": {
+        "**/node_modules": false
+    },
+    "search.useIgnoreFiles": false
+}

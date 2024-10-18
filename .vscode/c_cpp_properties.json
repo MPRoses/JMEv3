@@ -1,0 +1,30 @@
+{
+    "configurations": [
+        {
+            "name": "Win32",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "\\Program Files\\CodeBlocks\\share\\CodeBlocks\\compilers\\options_gcc.xml",
+            "cppStandard": "c++23"
+        },
+        {
+            "name": "fds",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE",
+                "_UNICODE"
+            ],
+            "compilerPath": "C:\\Program Files\\CodeBlocks\\share\\CodeBlocks\\compilers\\options_gcc.xml"
+        }
+    ],
+    "version": 4
+}

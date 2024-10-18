@@ -1,0 +1,34 @@
+{
+  "files": {
+    "main.css": "/static/css/main.4e0d0eaa.css",
+    "main.js": "/static/js/main.3ed452cf.js",
+    "static/js/787.14ead606.chunk.js": "/static/js/787.14ead606.chunk.js",
+    "static/media/calling.gif": "/static/media/calling.2c2bb4be69b6b0bd6614.gif",
+    "static/media/aboutMe2.png": "/static/media/aboutMe2.283b6f1db8598a8b8f2e.png",
+    "static/media/Screenshot 2024-04-19 202154.png": "/static/media/Screenshot 2024-04-19 202154.b0de89b40635bfafb14d.png",
+    "static/media/gradient-varicolored-abstract-hued-soap-bubbles-black-background 1_low.png": "/static/media/gradient-varicolored-abstract-hued-soap-bubbles-black-background 1_low.6a2fedaa87db9b3a7c3b.png",
+    "static/media/abstract-background-with-blue-pink-orange-spheres 1_low.png": "/static/media/abstract-background-with-blue-pink-orange-spheres 1_low.f3d1ecadc0004e88a8fd.png",
+    "static/media/banner.png": "/static/media/banner.e5403bb3773b729119de.png",
+    "static/media/gradient-multicolored-soap-bubbles-black-background 1_low.png": "/static/media/gradient-multicolored-soap-bubbles-black-background 1_low.8718a884f3afb7c14097.png",
+    "static/media/email.gif": "/static/media/email.55342cf19263f8316e8b.gif",
+    "static/media/aboutMe6.png": "/static/media/aboutMe6.9b49baae5fdf45f80abb.png",
+    "static/media/Screenshot 2024-04-11 174941.png": "/static/media/Screenshot 2024-04-11 174941.754aba0a554858eb8856.png",
+    "static/media/aboutMe1.png": "/static/media/aboutMe1.ae3c13d5e2986106389f.png",
+    "static/media/aboutMe4.png": "/static/media/aboutMe4.9742d426a10843a74e17.png",
+    "static/media/aboutMe5.png": "/static/media/aboutMe5.100bb76f2e95a5fd849c.png",
+    "static/media/contactBackground.png": "/static/media/contactBackground.8dca9198429d29961102.png",
+    "static/media/aboutMe3.png": "/static/media/aboutMe3.6dd33e84af49e17db54c.png",
+    "static/media/Screenshot 2024-04-19 195051.png": "/static/media/Screenshot 2024-04-19 195051.c2a73204e919bdff0bc0.png",
+    "static/media/Screenshot 2024-04-19 201830.png": "/static/media/Screenshot 2024-04-19 201830.e8be099af47dead324c5.png",
+    "static/media/Shape.png": "/static/media/Shape.a8f45f44586ccd5c2840.png",
+    "static/media/Screenshot 2024-04-19 195421.png": "/static/media/Screenshot 2024-04-19 195421.982e52ed268a674b333f.png",
+    "index.html": "/index.html",
+    "main.4e0d0eaa.css.map": "/static/css/main.4e0d0eaa.css.map",
+    "main.3ed452cf.js.map": "/static/js/main.3ed452cf.js.map",
+    "787.14ead606.chunk.js.map": "/static/js/787.14ead606.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.4e0d0eaa.css",
+    "static/js/main.3ed452cf.js"
+  ]
+}
