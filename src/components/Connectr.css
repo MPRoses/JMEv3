@@ -15,6 +15,13 @@
   font-family: "Neucha", sans-serif;
   font-size: 8vw;
 }
+.temp-text {
+  position: absolute;
+  top: 33vh;
+  font-family: "Neucha", sans-serif;
+  font-size: 1.2em;
+  left: 10vw;
+}
 .project-page .letter {
   display: inline-block;
 }

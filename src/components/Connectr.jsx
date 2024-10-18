@@ -132,7 +132,7 @@ const ProjectPage = () => {
     return (
         <div className="project-page">
             <div className="title">
-                {splitText("portfolio")}
+                {splitText("WIP")}
             </div>
             <div className="separator"></div>
             <div className="lines">
@@ -140,6 +140,10 @@ const ProjectPage = () => {
                     <div></div>
                 ))}
             </div>
+
+            <p className="temp-text">
+                Haven't done the writing for the projects yet sorry! Will do this after my upcoming exams, so expect all case studies online at the start of November 24.
+            </p>
 
             <div className="exit">
                 <div></div>

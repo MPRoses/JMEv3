@@ -43,7 +43,7 @@ function Projects() {
                 sessionStorage.setItem("scrollPosition", $(window).scrollTop());
                 $('html, body').animate({ scrollTop: 0 }, 250);
                 setTimeout(() => {
-                    navigate("/projects/portfolio");
+                    navigate("/projects/temp");
                 }, 1400);
             });
 
